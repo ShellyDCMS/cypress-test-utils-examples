@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  width: 100vw;
+}

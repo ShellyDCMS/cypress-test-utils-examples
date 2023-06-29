@@ -1,0 +1,15 @@
+<div class="catalog">
+  <h1 *ngIf="pokemon" data-cy="pokemon-name">{{ getPokemonName() }}</h1>
+  <pokemon-image [pokemonIndex]="getPokemonIndex()"></pokemon-image>
+  <p data-cy="count" *ngIf="pokemon">
+    {{ getPokemonIndex() }} of {{ pokemon.count }}
+  </p>
+  <div>
+    <button data-cy="prev" (click)="onPrev.emit()" [disabled]="prevDisabled()">
+      Prev
+    </button>
+    <button data-cy="next" (click)="onNext.emit()" [disabled]="nextDisabled()">
+      Next
+    </button>
+  </div>
+</div>

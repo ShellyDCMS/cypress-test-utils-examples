@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": false,
+    "outDir": "dist",
+    "rootDir": "./",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitThis": false,
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "inlineSourceMap": false,
+    "incremental": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "types": ["node"],
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": true
+      }
+    ],
+    "paths": {
+      "@*": ["src/*"]
+    }
+  },
+  "include": ["typings", "src/**/*.ts", "src/**/*.tsx", "./src/**/*.d.ts"],
+  "exclude": ["dist", "node_modules", "test", "mocker", "build"]
+}
