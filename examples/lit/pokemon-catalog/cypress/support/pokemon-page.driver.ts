@@ -1,5 +1,5 @@
 import { PokemonCatalogComponentDriver } from "@components/pokemon-catalog/pokemon-catalog.component.driver";
-import { CypressHelper } from "@def/test-utils";
+import { CypressHelper } from "dell-cypress-test-utils";
 import { PokemonList } from "@services/pokemon.service";
 
 export class PokemonPageDriver {

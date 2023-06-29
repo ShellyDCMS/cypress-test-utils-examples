@@ -1,6 +1,6 @@
 import { PokemonImageComponentDriver } from "@components/pokemon-image/pokemon-image.component.driver";
-import { CypressHelper } from "@def/test-utils";
-import { CypressLitComponentHelper } from "@def/test-utils/lit";
+import { CypressHelper } from "dell-cypress-test-utils";
+import { CypressLitComponentHelper } from "dell-cypress-test-utils/lit";
 import { ContextProvider } from "@lit-labs/context";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";

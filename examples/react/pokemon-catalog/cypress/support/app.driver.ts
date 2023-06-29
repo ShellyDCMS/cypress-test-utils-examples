@@ -1,4 +1,4 @@
-import { CypressHelper } from "@def/test-utils";
+import { CypressHelper } from "dell-cypress-test-utils";
 import { PokemonPageDriver } from "./pokemon-page.driver";
 
 export class AppDriver {

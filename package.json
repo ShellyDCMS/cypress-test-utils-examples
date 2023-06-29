@@ -1,10 +1,9 @@
 {
-  "name": "@def/test-utils",
+  "name": "cypress-test-utils-examples",
   "description": "Test Automation Utilities",
-  "version": "1.0.0-1-SNAPSHOT",
-  "author": "Dell Technologies",
+  "author": "Shelly Goldblit",
   "private": false,
-  "license": "Dell Proprietary",
+  "license": "MIT",
   "scripts": {
     "build:angular-example": "cd examples/angular/pokemon-catalog && npm i && npm run build",
     "test:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run-component",

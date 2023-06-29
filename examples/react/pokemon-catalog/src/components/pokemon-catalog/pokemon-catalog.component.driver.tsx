@@ -1,5 +1,5 @@
-import { CypressHelper } from "@def/test-utils";
-import { CypressReactComponentHelper } from "@def/test-utils/react";
+import { CypressHelper } from "dell-cypress-test-utils";
+import { CypressReactComponentHelper } from "dell-cypress-test-utils/react";
 import type { Attributes, ReactNode } from "react";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import {

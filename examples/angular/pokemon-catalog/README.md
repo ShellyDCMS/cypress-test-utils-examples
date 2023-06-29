@@ -3,7 +3,7 @@
 ## [Live Demo](https://pages.eos2git.cec.lab.emc.com/data-manager/test-utils/angular)
 ![image](https://media.eos2git.cec.lab.emc.com/user/12359/files/0963e647-1161-4c08-9914-ac72c44d99ca)
 
-This is an example app to demonstrate the use of @def/test-utils test helpers to test an angular application in all levels:
+This is an example app to demonstrate the use of dell-cypress-test-utils test helpers to test an angular application in all levels:
 - Component (Testing a component in  the browser)
 - Integration (Testing the entire Front End while intercepting http requests and mocking Back End responses)
 - E2E

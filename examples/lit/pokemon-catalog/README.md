@@ -4,7 +4,7 @@
 
 ![image](https://media.eos2git.cec.lab.emc.com/user/12359/files/77e72afa-d531-4038-b5b8-a5433a795f31)
 
-This is an example app to demonstrate the use of @def/test-utils test helpers to test an Lit application in all levels:
+This is an example app to demonstrate the use of dell-cypress-test-utils test helpers to test an Lit application in all levels:
 
 - Component (Testing a component in the browser)
 - Integration (Testing the entire Front End while intercepting http requests and mocking Back End responses)

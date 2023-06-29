@@ -41,7 +41,7 @@
     "@cypress/code-coverage": "^3.10.6",
     "@cypress/schematic": "^2.5.0",
     "@cypress/webpack-dev-server": "^3.4.1",
-    "@def/test-utils": "^1.0.0-54",
+    "dell-cypress-test-utils": "^1.0.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
     "@types/chance": "^1.1.3",

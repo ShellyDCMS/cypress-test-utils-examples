@@ -1,4 +1,4 @@
-import { CypressHelper } from "@def/test-utils";
+import { CypressHelper } from "dell-cypress-test-utils";
 import type { PokemonList } from "../../src/components/pokemon-catalog/pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "../../src/components/pokemon-catalog/pokemon-catalog.component.driver";
 
