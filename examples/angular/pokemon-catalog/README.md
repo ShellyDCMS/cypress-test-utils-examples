@@ -1,7 +1,7 @@
 # PokemonCatalog
 
-## [Live Demo](https://pages.eos2git.cec.lab.emc.com/data-manager/test-utils/angular)
-![image](https://media.eos2git.cec.lab.emc.com/user/12359/files/0963e647-1161-4c08-9914-ac72c44d99ca)
+## [Live Demo](https://shellydcms.github.io/cypress-test-utils-examples/angular/)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/19dff905-0cdd-4038-8fc4-e94d118e77b6)
 
 This is an example app to demonstrate the use of dell-cypress-test-utils test helpers to test an angular application in all levels:
 - Component (Testing a component in  the browser)
