@@ -45,8 +45,6 @@
     "@angular/core": "^14.2.0",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.7",
-    "cpx": "^1.5.0",
-    "cross-var": "^1.1.0",
     "gh-pages": "^5.0.0",
     "lit": "^2.7.4",
     "react": "^18.2.0",
