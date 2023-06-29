@@ -1,8 +1,9 @@
 # PokemonCatalog
 
-## [Live Demo](https://pages.eos2git.cec.lab.emc.com/data-manager/test-utils/lit/)
+## [Live Demo](https://shellydcms.github.io/cypress-test-utils-examples/lit/)
 
-![image](https://media.eos2git.cec.lab.emc.com/user/12359/files/77e72afa-d531-4038-b5b8-a5433a795f31)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/cf8e168f-bc10-48a1-9723-1851358d8165)
+
 
 This is an example app to demonstrate the use of dell-cypress-test-utils test helpers to test an Lit application in all levels:
 
