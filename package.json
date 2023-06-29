@@ -6,8 +6,6 @@
   "private": false,
   "license": "Dell Proprietary",
   "scripts": {
-    "build": "rm -rf dist/* && tsc && mv dist/out-tsc/src/lit dist/out-tsc/lit  && mv dist/out-tsc/src/angular dist/out-tsc/angular && mv dist/out-tsc/src/react dist/out-tsc/react",
-    "package": "node --max-old-space-size=4400 && npm run build",
     "build:angular-example": "cd examples/angular/pokemon-catalog && npm i && npm run build",
     "test:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run-component",
     "validate:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run",
@@ -54,32 +52,8 @@
     "react": "^18.2.0",
     "typescript": "^4.6.4"
   },
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "declaration": true,
-    "outDir": "./dist/out-tsc",
-    "strict": true
-  },
-  "main": "./src/index.js",
-  "exports": {
-    ".": {
-      "types": "./src/index.d.ts",
-      "default": "./src/index.js"
-    },
-    "./angular": {
-      "types": "./angular/index.d.ts",
-      "default": "./angular/index.js"
-    },
-    "./lit": {
-      "types": "./lit/index.d.ts",
-      "default": "./lit/index.js"
-    }
-  },
+ 
   "type": "module",
-  "include": [
-    "src"
-  ],
   "engines": {
     "npm": ">=6.0.0",
     "node": ">=14.18.0"
