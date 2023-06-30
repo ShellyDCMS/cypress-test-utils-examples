@@ -12,7 +12,6 @@ on:
 permissions:
   checks: write
   pull-requests: write
-  contents: read
 
 jobs:
   build:
@@ -20,20 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Checkout Code
+    - name: Use Node.js 16.15
       uses: actions/setup-node@v3
       with:
         node-version: 16.15
         cache: 'npm'
     - run: npm ci
-    - name: Build
-      run: npm run build:examples
-    - name: Component Tests
-      run: npm run test:examples
-    - name: Publish Test Report
-      if: success() || failure()
-      uses: scacap/action-surefire-report@v1
-    - name: Upload component coverage reports to Codecov
+    - run: npm run build:examples
+    - run: npm run test:examples
+    - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -49,4 +43,4 @@ jobs:
     - run: npm run validate:examples
     - run: npm run e2e:examples
 
-    
+  
