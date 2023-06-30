@@ -23,25 +23,3 @@ For example, a user doesn't mouseUp, he/she hovers.
 In the [examples](/examples) folder you can find 3 small apps; an angular app, a lit app and a react app.
 Each app contains a driver that uses helpers, component tests, integration tests and e2e tests.
 As you can see, all test levels use the *same* driver, meaning that if the feature's implementation changes, you'll need to change the driver alone, not the tests.
-
-## Usage
-This library provides an API to interact with UI elements - `CypressHelper` that combines the common features. 
-To add it to your repo use
-`npm i -D dell-cypress-test-utils`
-or
-`yarn add -D dell-cypress-test-utils`
-
-## [Cypress Knowlege Base](https://confluence.cec.lab.emc.com/display/eCDM/Cypress+KB)
-
-## Developing
-1. Set up the repo -  `npm i`
-2. Build the project - `npm run build` 
-3. Run tests - `npm run test`
-
-## Road map
-- ~~Add React Component support~~ - done
-- ~~Add examples for each fremwork (angular, lit, react)~~ - done
-- Add coverage report examples
-- branding, documentation, more examples
-- add some FAQs
-- Add API testing and performance testing examples
