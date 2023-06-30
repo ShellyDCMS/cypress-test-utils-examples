@@ -27,7 +27,7 @@
     "copy-build:lit-example": "mkdir -p build/lit && cp -r examples/lit/pokemon-catalog/dist/* examples/build/lit/",
     "copy-build:react-example": "mkdir -p build/react && cp -r examples/react/pokemon-catalog/build/* examples/build/react/",
     "copy-build:angular-example": "mkdir -p build/angular && cp -r examples/angular/pokemon-catalog/dist/pokemon-catalog/* examples/build/angular/",
-    "copy-build:examples": "mkdir -p build && npm run copy-build:angular-example && npm run copy-build:lit-example ",
+    "copy-build:examples": "mkdir -p build && npm run copy-build:react-example && npm run copy-build:angular-example && npm run copy-build:lit-example ",
     "predeploy:examples": "npm run predeploy:react-example && npm run predeploy:angular-example && npm run predeploy:lit-example",
     "predeploy": "npm run predeploy:examples && npm run copy-build:examples",
     "deploy": "cd examples && gh-pages -d build"
