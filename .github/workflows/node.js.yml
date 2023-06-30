@@ -41,7 +41,7 @@ jobs:
       with:
         name: JEST Tests            # Name of the check run which will be created
         path: examples/angular/pokemon-catalog/target/surefire-reports/*.xml   # Path to test results
-        reporter: mocha-junit-reporter        # Format of test results
+        reporter: mocha-json        # Format of test results
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
