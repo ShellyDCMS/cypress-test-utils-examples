@@ -9,7 +9,7 @@
     "test:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run-component",
     "validate:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run",
     "e2e:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run-e2e",
-    "build:react-example": "cd examples/react/pokemon-catalog && npm i && npm run build",
+    "build:react-example": "cd examples/react/pokemon-catalog && yarn && npm run build",
     "test:react-example": "cd examples/react/pokemon-catalog && npm run ci:cy-run-component",
     "validate:react-example": "cd examples/react/pokemon-catalog && npm run ci:cy-run",
     "e2e:react-example": "cd examples/react/pokemon-catalog && npm run ci:cy-run-e2e",
