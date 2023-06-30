@@ -1,6 +1,7 @@
 # React App Pokemon Catalog
-## [Live Demo](https://pages.eos2git.cec.lab.emc.com/data-manager/test-utils/react)
-![image](https://media.eos2git.cec.lab.emc.com/user/12359/files/99280f3b-541e-479b-ba3f-aa258c8ef946)
+## [Live Demo](https://shellydcms.github.io/cypress-test-utils-examples/react/)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/6b73d373-8aa3-4672-bf6f-50df2c05695e)
+
 
 This is an example app to demonstrate the use of dell-cypress-test-utils test helpers to test a React application in all levels:
 - Component (Testing a component in  the browser)
