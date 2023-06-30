@@ -40,8 +40,8 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: JEST Tests            # Name of the check run which will be created
-        path: examples/angular/pokemon-catalog/target/surefire-reports/*.xml   # Path to test results
-        reporter: mocha-json        # Format of test results
+        path: examples/angular/pokemon-catalog/target/mochawesome-report/*.json   # Path to test results
+        reporter: mochawesome        # Format of test results
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
