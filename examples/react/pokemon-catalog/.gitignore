@@ -33,3 +33,4 @@ yarn-error.log*
 /cypress/screenshots
 /instrumented
 .nyc_output
+mochawesome-report

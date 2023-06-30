@@ -69,14 +69,12 @@ export default defineConfig({
     // Default is 0
     openMode: 0
   },
-  reporter: "mocha-junit-reporter",
+  reporter: "mochawesome",
   reporterOptions: {
     suiteTitleSeparatedBy: " > ",
     testCaseSwitchClassnameAndName: false,
-    rootSuiteTitle: "Angular Tests",
-    mochaFile: "target/surefire-reports/cypress-report-[hash].xml",
+    rootSuiteTitle: "React Component Tests",
     toConsole: true,
-    jenkinsMode: true
   },
   e2e: {
     setupNodeEvents(on, config) {

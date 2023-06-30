@@ -5,14 +5,12 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   includeShadowDom: true,
-  reporter: "mocha-junit-reporter",
+  reporter: "mochawesome",
   reporterOptions: {
     suiteTitleSeparatedBy: " > ",
     testCaseSwitchClassnameAndName: false,
-    rootSuiteTitle: "Angular Tests",
-    mochaFile: "target/surefire-reports/cypress-report-[hash].xml",
+    rootSuiteTitle: "React Component Tests",
     toConsole: true,
-    jenkinsMode: true
   },
   e2e: {
     baseUrl: "http://localhost:4300", // fix once we have github pages
