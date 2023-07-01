@@ -52,11 +52,14 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Lit Tests            # Name of the check run which will be created
-        path: examples/lit/pokemon-catalog/cypress/results/json/*.json   # Path to test results
+        path: examples/lit/pokemon-catalog/cypress/results/json/index.json   # Path to test results
         reporter: mochawesome-json        # Format of test results
     - name: Tests url
       run: |
-        echo "tests url is ${{ steps.test-report.outputs.runHtmlUrl }}"
+        echo "react tests url is ${{ steps.test-report-react.outputs.runHtmlUrl }}"
+        echo "angular tests url is ${{ steps.test-report-angular.outputs.runHtmlUrl }}"
+        echo "lit tests url is ${{ steps.test-report-lit.outputs.runHtmlUrl }}"
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
