@@ -21,6 +21,10 @@
     "test:examples": "npm run test:react-example && npm run test:angular-example && npm run test:lit-example",
     "validate:examples": "npm run validate:react-example && npm run validate:angular-example  && npm run validate:lit-example",
     "e2e:examples": "npm run e2e:react-example && npm run e2e:angular-example && npm run e2e:lit-example",
+    "merge-reports:angular" : "cd examples/angular/pokemon-catalog && mochawesome-merge cypress/results/json/*.json > index.json",
+    "merge-reports:react" : "cd examples/react/pokemon-catalog && mochawesome-merge cypress/results/json/*.json > index.json",
+    "merge-reports:lit" : "cd examples/lit/pokemon-catalog && mochawesome-merge cypress/results/json/*.json > index.json",
+    "merge-reports:examples": "npm run merge-report:react && npm run merge-reprots:angular && npm run merg-reports:lit",
     "predeploy:react-example": "cd examples/react/pokemon-catalog && npm run build",
     "predeploy:angular-example": "cd examples/angular/pokemon-catalog && npm run build -- --base-href='./'",
     "predeploy:lit-example": "cd examples/lit/pokemon-catalog && npm run build",
@@ -46,10 +50,10 @@
     "@types/react": "^18.2.7",
     "gh-pages": "^5.0.0",
     "lit": "^2.7.4",
+    "mochawesome-report-generator": "^6.2.0",
     "react": "^18.2.0",
     "typescript": "^4.6.4"
   },
- 
   "type": "module",
   "engines": {
     "npm": ">=6.0.0",
