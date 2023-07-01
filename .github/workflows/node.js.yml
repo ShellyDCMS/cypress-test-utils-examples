@@ -35,7 +35,7 @@ jobs:
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
-        files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/angular/pokemon-catalog/target/integration/coverage-final.json
+        files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/react/pokemon-catalog/target/integration/coverage-final.json
         verbose: true
     - name: Angular Tests Report
       uses: phoenix-actions/test-reporting@v8
@@ -43,7 +43,7 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Angular Tests            # Name of the check run which will be created
-        path: examples/angular/pokemon-catalog/cypress/results/json/index.json  # Path to test results
+        path: examples/angular/pokemon-catalog/cypress/results/json/output.json  # Path to test results
         reporter: mochawesome-json        # Format of test results
     - name: React Tests Report
       uses: phoenix-actions/test-reporting@v8
@@ -51,7 +51,7 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: React Tests            # Name of the check run which will be created
-        path: examples/react/pokemon-catalog/cypress/results/json/index.json # Path to test results
+        path: examples/react/pokemon-catalog/cypress/results/json/output.json # Path to test results
         reporter: mochawesome-json        # Format of test results
     - name: Lit Tests Report
       uses: phoenix-actions/test-reporting@v8
@@ -59,7 +59,7 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Lit Tests            # Name of the check run which will be created
-        path: examples/lit/pokemon-catalog/cypress/results/json/index.json   # Path to test results
+        path: examples/lit/pokemon-catalog/cypress/results/json/output.json   # Path to test results
         reporter: mochawesome-json        # Format of test results
     - name: Tests url
       run: |
