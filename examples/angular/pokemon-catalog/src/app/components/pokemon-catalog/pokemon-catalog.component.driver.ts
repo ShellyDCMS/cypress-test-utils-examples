@@ -1,7 +1,8 @@
 import type { Type } from "@angular/core";
+import { MountConfig } from "cypress/angular";
 import { CypressHelper } from "dell-cypress-test-utils";
 import { CypressAngularComponentHelper } from "dell-cypress-test-utils/angular";
-import { MountConfig } from "cypress/angular";
+import { PokemonService } from "src/app/services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import type {
   PokemonCatalogComponent,
@@ -17,6 +18,9 @@ export class PokemonCatalogComponentDriver {
     new PokemonImageComponentDriver();
 
   private componentProperties: Partial<PokemonCatalogComponent> = {};
+  // @ts-ignore
+  private getPokemonStub: Cypress.Agent<sinon.SinonStub<any[], any>>;
+  private pokemonServiceMock: PokemonService = new PokemonService() ; 
 
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();
@@ -26,7 +30,16 @@ export class PokemonCatalogComponentDriver {
   given = {
     ...this.helper.given,
     image: { ...this.pokemonImageDriver.given },
-    pokemon: (value: PokemonList) => (this.componentProperties.pokemon = value)
+    pokemon: (value: PokemonList) => {
+      this.getPokemonStub = this.helper.given.stub();
+      this.pokemonServiceMock.getPokemon = this.getPokemonStub;
+      this.getPokemonStub.callsFake((url : string) => {
+        console.log('*****************'+url)
+        return value;
+      });
+    },
+    getPokemonSpy: () =>
+      this.helper.given.spyOnObject(this.pokemonServiceMock, "getPokemon")
   };
 
   when = {
@@ -60,6 +73,9 @@ export class PokemonCatalogComponentDriver {
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
-    isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev")
+    isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
+    getPokemonSpy: () => this.getPokemonStub,
+    pokemonServiceMock: () => this.pokemonServiceMock
+    
   };
 }

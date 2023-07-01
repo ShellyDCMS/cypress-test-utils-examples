@@ -18,10 +18,10 @@ export class PokemonImageComponentDriver {
     pokemonIndex: (value: number) => {
       this.props.pokemonIndex = value;
     },
-    mockImageResponse: () =>
+    mockImageResponse: (fileName: string) =>
       this.helper.given.interceptAndMockResponse({
         url: "**/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/**",
-        response: { fixture: "default.png" }
+        response: { fixture: fileName }
       }),
     missingImage: () =>
       this.helper.given.interceptAndMockResponse({
