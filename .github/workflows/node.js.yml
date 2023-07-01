@@ -30,11 +30,13 @@ jobs:
     - run: npm run validate:examples
     - run: npm run e2e:examples
     - run: npm run merge-reports:examples
+
     - name: Publish Coverage
       uses: romeovs/lcov-reporter-action@v0.2.16
       with: 
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        lcov-file: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/component.json
+        lcov-file: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
@@ -43,10 +45,11 @@ jobs:
         files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/react/pokemon-catalog/target/integration/coverage-final.json
         verbose: true
 
-    name: Code Coverage Summary Report
+    - name: Code Coverage Summary Report
     uses: irongut/CodeCoverageSummary@v1.3.0
     with:
       filename: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/clover.xml
+
     - name: Angular Tests Report
       uses: phoenix-actions/test-reporting@v8
       id: test-report-angular               # Set ID reference for step
