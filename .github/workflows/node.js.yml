@@ -34,7 +34,7 @@ jobs:
       uses: romeovs/lcov-reporter-action@v0.2.16
       with: 
         lcov-file: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/lcov.info
-      title: Angular Component Coverage
+        title: Angular Component Coverage
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
