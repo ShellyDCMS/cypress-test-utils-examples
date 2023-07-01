@@ -45,3 +45,4 @@ cypress/videos
 cypress/screenshots
 target
 mochawesome-report
+cypress/results
