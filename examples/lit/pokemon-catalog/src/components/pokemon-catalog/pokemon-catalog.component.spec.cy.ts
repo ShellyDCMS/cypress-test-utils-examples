@@ -19,6 +19,7 @@ describe("Lit PokemonCatalogComponent", () => {
 
     beforeEach(() => {
       given.pokemon(pokemon);
+      given.image.mockImageResponse("default.png");
       when.render(new PokemonCatalogComponent());
     });
 

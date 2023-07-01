@@ -2,12 +2,9 @@ import type { Type } from "@angular/core";
 import { MountConfig } from "cypress/angular";
 import { CypressHelper } from "dell-cypress-test-utils";
 import { CypressAngularComponentHelper } from "dell-cypress-test-utils/angular";
-import { PokemonService } from "src/app/services/pokemon.service";
+import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
-import type {
-  PokemonCatalogComponent,
-  PokemonList
-} from "./pokemon-catalog.component";
+import type { PokemonCatalogComponent } from "./pokemon-catalog.component";
 
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
@@ -20,7 +17,7 @@ export class PokemonCatalogComponentDriver {
   private componentProperties: Partial<PokemonCatalogComponent> = {};
   // @ts-ignore
   private getPokemonStub: Cypress.Agent<sinon.SinonStub<any[], any>>;
-  private pokemonServiceMock: PokemonService = new PokemonService() ; 
+  private pokemonServiceMock: PokemonService = new PokemonService();
 
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();
@@ -33,8 +30,7 @@ export class PokemonCatalogComponentDriver {
     pokemon: (value: PokemonList) => {
       this.getPokemonStub = this.helper.given.stub();
       this.pokemonServiceMock.getPokemon = this.getPokemonStub;
-      this.getPokemonStub.callsFake((url : string) => {
-        console.log('*****************'+url)
+      this.getPokemonStub.callsFake(() => {
         return value;
       });
     },
@@ -76,6 +72,5 @@ export class PokemonCatalogComponentDriver {
     isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
     getPokemonSpy: () => this.getPokemonStub,
     pokemonServiceMock: () => this.pokemonServiceMock
-    
   };
 }

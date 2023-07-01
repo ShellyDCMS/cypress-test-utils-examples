@@ -1,17 +1,6 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { PokemonService } from "src/app/services/pokemon.service";
+import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 
-export interface Pokemon {
-  name: string;
-  url: string;
-}
-
-export interface PokemonList {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Pokemon[];
-}
 @Component({
   selector: "pokemon-catalog",
   templateUrl: "./pokemon-catalog.component.html",
@@ -29,9 +18,8 @@ export class PokemonCatalogComponent {
   @Output() onNext: EventEmitter<any> = new EventEmitter();
   @Output() onPrev: EventEmitter<any> = new EventEmitter();
 
+  constructor(private readonly pokemonService: PokemonService) {}
 
-  constructor(private readonly pokemonService: PokemonService) { }
-  
   ngOnInit() {
     this.getFirstPokemon();
   }
@@ -46,23 +34,21 @@ export class PokemonCatalogComponent {
   prevDisabled = () => !(this.pokemon && this.pokemon.previous);
 
   fetchNext = async () => {
-    debugger;
-
     if (this.pokemon && this.pokemon.next) {
-      console.log('+++++++++++++++++++++'+ this.pokemon.next)
-       this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next);
+      this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next);
     }
-    debugger;
-    this.onNext.emit()
+    this.onNext.emit();
   };
 
   fetchPrev = async () => {
     if (this.pokemon && this.pokemon.previous) {
-      this.pokemon = await this.pokemonService.getPokemon(this.pokemon.previous)
+      this.pokemon = await this.pokemonService.getPokemon(
+        this.pokemon.previous
+      );
     }
-    this.onPrev.emit()
+    this.onPrev.emit();
   };
-  
+
   getPokemonIndex = (): number =>
     Number(
       this.pokemon?.results[0]?.url

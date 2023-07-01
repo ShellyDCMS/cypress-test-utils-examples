@@ -1,25 +1,43 @@
+import { useContext, useEffect, useState } from "react";
 import "../../App.scss";
+import {
+  PokemonList,
+  PokemonService,
+  PokemonServiceContext
+} from "../../services/pokemon.service";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
-
-export interface Pokemon {
-  name: string;
-  url: string;
+export interface IPokemonCatalogComponentsProps {
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-export interface PokemonList {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Pokemon[];
-}
-export interface IProps {
-  pokemon: PokemonList | undefined;
-  onPrev: () => void;
-  onNext: () => void;
-}
+export const PokemonCatalogComponent = (
+  props: IPokemonCatalogComponentsProps
+) => {
+  const { onNext, onPrev } = props;
+  const [pokemon, setPokemon] = useState<PokemonList>();
+  const pokemonService: PokemonService | undefined = useContext(
+    PokemonServiceContext
+  );
+  const fetchNext = async () => {
+    pokemon &&
+      pokemon.next &&
+      setPokemon(await pokemonService?.getPokemon(pokemon.next));
+    onNext && onNext();
+  };
 
-export const PokemonCatalogComponent = (props: IProps) => {
-  const { pokemon, onNext, onPrev } = props;
+  const fetchPrev = async () => {
+    pokemon &&
+      pokemon.previous &&
+      setPokemon(await pokemonService?.getPokemon(pokemon.previous));
+    onPrev && onPrev();
+  };
+
+  useEffect(() => {
+    const getFirstPokemon = async () =>
+      setPokemon(await pokemonService?.getPokemon());
+    getFirstPokemon();
+  }, [pokemonService]);
 
   const getPokemonIndex = () =>
     Number(
@@ -44,14 +62,14 @@ export const PokemonCatalogComponent = (props: IProps) => {
             <div>
               <button
                 data-cy="prev"
-                onClick={onPrev}
+                onClick={fetchPrev}
                 disabled={!(pokemon && pokemon.previous)}
               >
                 Prev
               </button>
               <button
                 data-cy="next"
-                onClick={onNext}
+                onClick={fetchNext}
                 disabled={!(pokemon && pokemon.next)}
               >
                 Next
