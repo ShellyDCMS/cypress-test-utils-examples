@@ -1,5 +1,6 @@
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
+import { PokemonService } from "src/app/services/pokemon.service";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
 import {
   PokemonCatalogComponent,
@@ -8,14 +9,21 @@ import {
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
 describe("Angular PokemonCatalogComponent Tests", () => {
+  const { when, given, get, beforeAndAfter } =
+    new PokemonCatalogComponentDriver();
+
   const testConfig = {
-    declarations: [PokemonCatalogComponent, PokemonImageComponent]
+    declarations: [PokemonCatalogComponent, PokemonImageComponent],
+    providers: [
+      {
+        provide: PokemonService,
+        useValue: get.pokemonServiceMock()
+      }
+    ]
   };
 
   const chance = new Chance();
 
-  const { when, given, get, beforeAndAfter } =
-    new PokemonCatalogComponentDriver();
   beforeAndAfter();
 
   describe("when one of many pokemons", () => {
@@ -45,16 +53,34 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       expect(await get.countText()).to.eq(" 2 of 3 ");
     });
 
-    it("should emit onNext when next is click", () => {
-      when.waitForNextToBeEnabled();
-      when.clickNext();
-      expect(get.onNextSpy().should("have.been.calledOnce"));
+    describe("when clicking prev", () => {
+      beforeEach(() => {
+        when.waitForPrevToBeEnabled();
+        when.clickPrev();
+      });
+
+      it("should emit onPrev", () => {
+        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      });
+
+      it("should call getPokemon with the prev pokemon's url", () => {
+        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
+      });
     });
 
-    it("should emit onPrev when prev is click", () => {
-      when.waitForPrevToBeEnabled();
-      when.clickPrev();
-      expect(get.onPrevSpy().should("have.been.calledOnce"));
+    describe("when clicking next", () => {
+      beforeEach(() => {
+        when.waitForNextToBeEnabled();
+        when.clickNext();
+      });
+
+      it("should emit onNext", () => {
+        expect(get.onNextSpy().should("have.been.calledOnce"));
+      });
+
+      it("should fetch next pokemon when next is click", () => {
+        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
+      });
     });
   });
 

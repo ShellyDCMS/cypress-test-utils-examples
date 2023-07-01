@@ -1,7 +1,7 @@
 import type { Type } from "@angular/core";
+import { MountConfig } from "cypress/angular";
 import { CypressHelper } from "dell-cypress-test-utils";
 import { CypressAngularComponentHelper } from "dell-cypress-test-utils/angular";
-import { MountConfig } from "cypress/angular";
 import type { PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {
@@ -19,10 +19,10 @@ export class PokemonImageComponentDriver {
     ...this.helper.given,
     pokemonIndex: (value: number) =>
       (this.componentProperties.pokemonIndex = value),
-    mockImageResponse: () =>
+    mockImageResponse: (fileName: string) =>
       this.helper.given.interceptAndMockResponse({
         url: "**/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/**",
-        response: { fixture: "default.png" }
+        response: { fixture: fileName }
       }),
     missingImage: () =>
       this.helper.given.interceptAndMockResponse({

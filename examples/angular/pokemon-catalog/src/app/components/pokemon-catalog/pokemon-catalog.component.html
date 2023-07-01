@@ -5,10 +5,10 @@
     {{ getPokemonIndex() }} of {{ pokemon.count }}
   </p>
   <div>
-    <button data-cy="prev" (click)="onPrev.emit()" [disabled]="prevDisabled()">
+    <button data-cy="prev" (click)="fetchPrev()" [disabled]="prevDisabled()">
       Prev
     </button>
-    <button data-cy="next" (click)="onNext.emit()" [disabled]="nextDisabled()">
+    <button data-cy="next" (click)="fetchNext()" [disabled]="nextDisabled()">
       Next
     </button>
   </div>

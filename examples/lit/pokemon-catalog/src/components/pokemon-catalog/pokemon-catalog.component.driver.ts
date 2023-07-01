@@ -1,7 +1,7 @@
 import { PokemonImageComponentDriver } from "@components/pokemon-image/pokemon-image.component.driver";
+import { ContextProvider } from "@lit-labs/context";
 import { CypressHelper } from "dell-cypress-test-utils";
 import { CypressLitComponentHelper } from "dell-cypress-test-utils/lit";
-import { ContextProvider } from "@lit-labs/context";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import {
@@ -31,7 +31,7 @@ export class PokemonServiceProvider extends LitElement {
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
   private litComponentHelper = new CypressLitComponentHelper();
-  private pokemonService: PokemonInternalService; // = new PokemonInternalService();
+  private pokemonServiceMock: PokemonInternalService; // = new PokemonInternalService();
   private getPokemonStub: Cypress.Agent<sinon.SinonStub<any[], any>>;
   private pokemonImageDriver: PokemonImageComponentDriver =
     new PokemonImageComponentDriver();
@@ -45,15 +45,15 @@ export class PokemonCatalogComponentDriver {
     ...this.helper.given,
     image: { ...this.pokemonImageDriver.given },
     pokemon: (value: PokemonList) => {
-      this.pokemonService = new PokemonInternalService();
+      this.pokemonServiceMock = new PokemonInternalService();
       this.getPokemonStub = this.helper.given.stub();
-      this.pokemonService.getPokemon = this.getPokemonStub;
+      this.pokemonServiceMock.getPokemon = this.getPokemonStub;
       this.getPokemonStub.callsFake(() => {
         return value;
       });
     },
     getPokemonSpy: () =>
-      this.helper.given.spyOnObject(this.pokemonService, "getPokemon")
+      this.helper.given.spyOnObject(this.pokemonServiceMock, "getPokemon")
   };
 
   when = {
@@ -64,7 +64,7 @@ export class PokemonCatalogComponentDriver {
       this.litComponentHelper.when.mount(
         element,
         html`<pokemon-service-provider
-          .pokemonService="${this.pokemonService}"
+          .pokemonService="${this.pokemonServiceMock}"
         ><pokemon-catalog></pokemon-catalog></pokemon-catalog></pokemon-service-provider>`
       );
       this.when.waitUntil(() =>

@@ -12,7 +12,7 @@ describe("React PokemonImageComponent Tests", () => {
   it("given valid pokemon index should show picture", async () => {
     const pokemonIndex: number = chance.integer({ min: 1, max: 500 });
     given.pokemonIndex(pokemonIndex);
-    given.mockImageResponse();
+    given.mockImageResponse("default.png");
     when.render(PokemonImageComponent);
     expect(await get.pictureSrc()).to.include(`${pokemonIndex}.gif`);
   });
