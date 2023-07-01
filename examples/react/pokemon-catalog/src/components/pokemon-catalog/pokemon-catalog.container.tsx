@@ -1,36 +1,29 @@
-import { useEffect, useState } from "react";
 import {
-  PokemonCatalogComponent,
-  PokemonList
+  PokemonService,
+  PokemonServiceContext
+} from "../../services/pokemon.service";
+import {
+  IPokemonCatalogComponentsProps,
+  PokemonCatalogComponent
 } from "./pokemon-catalog.component";
 
-export const PokemonCatalog = () => {
-  const [pokemon, setPokemon] = useState<PokemonList>();
+export interface IPokemonCatalogPros extends IPokemonCatalogComponentsProps {
+  service?: PokemonService;
+}
 
-  const fetchNext = async () =>
-    pokemon &&
-    pokemon.next &&
-    setPokemon(await (await fetch(pokemon.next)).json());
-
-  const fetchPrev = async () =>
-    pokemon &&
-    pokemon.previous &&
-    setPokemon(await (await fetch(pokemon.previous)).json());
-
-  useEffect(() => {
-    const getFirstPokemon = async () =>
-      setPokemon(
-        await (await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1")).json()
-      );
-
-    getFirstPokemon();
-  }, []);
+export const PokemonCatalog = ({
+  onNext,
+  onPrev,
+  service
+}: IPokemonCatalogPros) => {
+  const pokemonService = service || new PokemonService();
 
   return (
-    <PokemonCatalogComponent
-      pokemon={pokemon}
-      onNext={fetchNext}
-      onPrev={fetchPrev}
-    ></PokemonCatalogComponent>
+    <PokemonServiceContext.Provider value={pokemonService}>
+      <PokemonCatalogComponent
+        onNext={onNext}
+        onPrev={onPrev}
+      ></PokemonCatalogComponent>
+    </PokemonServiceContext.Provider>
   );
 };

@@ -31,7 +31,7 @@ export class PokemonServiceProvider extends LitElement {
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
   private litComponentHelper = new CypressLitComponentHelper();
-  private pokemonServiceMock: PokemonInternalService; // = new PokemonInternalService();
+  private pokemonServiceMock: PokemonInternalService;
   private getPokemonStub: Cypress.Agent<sinon.SinonStub<any[], any>>;
   private pokemonImageDriver: PokemonImageComponentDriver =
     new PokemonImageComponentDriver();

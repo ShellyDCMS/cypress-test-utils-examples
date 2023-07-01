@@ -1,11 +1,8 @@
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import { PokemonService } from "src/app/services/pokemon.service";
+import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
-import {
-  PokemonCatalogComponent,
-  PokemonList
-} from "./pokemon-catalog.component";
+import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
 describe("Angular PokemonCatalogComponent Tests", () => {
@@ -38,6 +35,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
     beforeEach(() => {
       given.pokemon(pokemon);
+      given.image.mockImageResponse("default.png");
       when.render(PokemonCatalogComponent, testConfig);
     });
 

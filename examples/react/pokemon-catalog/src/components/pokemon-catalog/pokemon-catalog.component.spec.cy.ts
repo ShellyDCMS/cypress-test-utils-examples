@@ -1,11 +1,8 @@
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import React from "react";
-import {
-  PokemonCatalogComponent,
-  PokemonList
-} from "./pokemon-catalog.component";
+import { PokemonList } from "../../services/pokemon.service";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
+import { PokemonCatalog } from "./pokemon-catalog.container";
 
 describe("React PokemonCatalogComponent", () => {
   const chance = new Chance();
@@ -26,16 +23,10 @@ describe("React PokemonCatalogComponent", () => {
 
     beforeEach(() => {
       given.pokemon(pokemon);
+      given.image.mockImageResponse("default.png");
       given.onNextSpy();
       given.onPrevSpy();
-      when.render(
-        PokemonCatalogComponent,
-        {},
-        React.createElement("input", {
-          type: "text",
-          value: "And here is a child"
-        })
-      );
+      when.render(PokemonCatalog);
       when.wait(200);
     });
 
@@ -51,14 +42,34 @@ describe("React PokemonCatalogComponent", () => {
       expect(await get.countText()).to.eq("2 of 3");
     });
 
-    it("should emit onNext when next is click", () => {
-      when.clickNext();
-      expect(get.onNextSpy().should("have.been.calledOnce"));
+    describe("when clicking prev", () => {
+      beforeEach(() => {
+        when.waitForPrevToBeEnabled();
+        when.clickPrev();
+      });
+
+      it("should call onPrev", () => {
+        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      });
+
+      it("should call getPokemon with the prev pokemon's url", () => {
+        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
+      });
     });
 
-    it("should emit onPrev when prev is click", () => {
-      when.clickPrev();
-      expect(get.onPrevSpy().should("have.been.calledOnce"));
+    describe("when clicking next", () => {
+      beforeEach(() => {
+        when.waitForNextToBeEnabled();
+        when.clickNext();
+      });
+
+      it("should call onNext", () => {
+        expect(get.onNextSpy().should("have.been.calledOnce"));
+      });
+
+      it("should fetch next pokemon when next is click", () => {
+        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
+      });
     });
   });
 
@@ -71,7 +82,8 @@ describe("React PokemonCatalogComponent", () => {
 
     beforeEach(() => {
       given.pokemon(pokemon);
-      when.render(PokemonCatalogComponent);
+      given.image.mockImageResponse("default.png");
+      when.render(PokemonCatalog);
     });
 
     it("should show picture given pokemon provided as input", async () => {
