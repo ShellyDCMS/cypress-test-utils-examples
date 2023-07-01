@@ -1,4 +1,4 @@
 # sample regex patterns
 ignore:
   - "**/spec.**" # tests
-  - "**/deriver.**" # test drivers
+  - "**/driver.ts" # test drivers
