@@ -26,7 +26,14 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build:examples
-    - run: npm run test:examples    
+    - run: npm run test:examples
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      with:
+        files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json
+        verbose: true
     - run: npm run validate:examples
     - run: npm run e2e:examples
     - run: npm run merge-reports:examples
@@ -52,22 +59,9 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Lit Tests            # Name of the check run which will be created
-        path: examples/lit/pokemon-catalog/cypress/results/json/index.json   # Path to test results
+        path: examples/lit/pokemon-catalog/cypress/results/json/*.json   # Path to test results
         reporter: mochawesome-json        # Format of test results
     - name: Tests url
       run: |
-        echo "react tests url is ${{ steps.test-report-react.outputs.runHtmlUrl }}"
-        echo "angular tests url is ${{ steps.test-report-angular.outputs.runHtmlUrl }}"
-        echo "lit tests url is ${{ steps.test-report-lit.outputs.runHtmlUrl }}"
-
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      with:
-        files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/angular/pokemon-catalog/target/integration/coverage-final.json
-        verbose: true
-     - name: Workspace url
-      run: |
-        echo "workspace url is ${{ github.workspace }}"
+        echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
   
