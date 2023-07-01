@@ -26,21 +26,43 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build:examples
-    - run: npm run test:examples
+    - run: npm run test:examples    
+    - run: npm run validate:examples
+    - run: npm run e2e:examples
+    - run: npm run merge-reports:examples
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
-        files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json
+        files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/react/pokemon-catalog/target/integration/coverage-final.json
         verbose: true
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
+    - name: Angular Tests Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report-angular               # Set ID reference for step
+      if: success() || failure()    # run this step even if previous step failed
       with:
-        files: |
-          examples/angular/pokemon-catalog/target/surefire-reports/*.xml
-    - run: npm run validate:examples
-    - run: npm run e2e:examples
-
+        name: Angular Tests            # Name of the check run which will be created
+        path: examples/angular/pokemon-catalog/cypress/results/json/output.json  # Path to test results
+        reporter: mochawesome-json        # Format of test results
+    - name: React Tests Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report-react               # Set ID reference for step
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: React Tests            # Name of the check run which will be created
+        path: examples/react/pokemon-catalog/cypress/results/json/output.json # Path to test results
+        reporter: mochawesome-json        # Format of test results
+    - name: Lit Tests Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report-lit               # Set ID reference for step
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: Lit Tests            # Name of the check run which will be created
+        path: examples/lit/pokemon-catalog/cypress/results/json/output.json   # Path to test results
+        reporter: mochawesome-json        # Format of test results
+    - name: Tests url
+      run: |
+        echo "url is ${{ steps.test-report-react.outputs.runHtmlUrl }}"
+        echo "url is ${{ github.workspace }}"
   

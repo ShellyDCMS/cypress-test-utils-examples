@@ -1,14 +1,17 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  reporter: "mocha-junit-reporter",
-  reporterOptions: {
-    suiteTitleSeparatedBy: " > ",
-    testCaseSwitchClassnameAndName: false,
-    rootSuiteTitle: "React Component Tests",
-    mochaFile: "target/surefire-reports/cypress-report-[hash].xml",
-    toConsole: true,
-    jenkinsMode: true
+  reporter: "mochawesome",
+  reporterOptions: 
+   {
+      "reportDir": "cypress/results/json",
+      "overwrite": false,
+      "html": false,
+      "json": true,
+      suiteTitleSeparatedBy: " > ",
+      testCaseSwitchClassnameAndName: false,
+      rootSuiteTitle: "React Tests",
+      toConsole: true,
   },
   e2e: {
     setupNodeEvents(on, config) {

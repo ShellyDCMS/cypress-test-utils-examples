@@ -16,6 +16,9 @@ const resolvedAliases = Object.fromEntries(
 );
 
 export default defineConfig({
+  optimizeDeps: {
+    force: true,
+  },
   resolve: {
     alias: {
       ...resolvedAliases
