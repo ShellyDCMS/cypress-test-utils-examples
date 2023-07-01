@@ -34,7 +34,7 @@ jobs:
       uses: romeovs/lcov-reporter-action@v0.2.16
       with: 
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        lcov-file: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/lcov.info
+        lcov-file: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/component.json
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
