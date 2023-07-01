@@ -30,6 +30,10 @@ jobs:
     - run: npm run validate:examples
     - run: npm run e2e:examples
     - run: npm run merge-reports:examples
+    uses: romeovs/lcov-reporter-action@v0.2.16
+    with:
+      lcov-file: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/lcov.info
+      title: Angular Component Coverage
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
@@ -61,5 +65,5 @@ jobs:
         name: Lit Tests            # Name of the check run which will be created
         path: examples/lit/pokemon-catalog/cypress/results/json/output.json   # Path to test results
         reporter: mochawesome-json        # Format of test results
-        
+
   
