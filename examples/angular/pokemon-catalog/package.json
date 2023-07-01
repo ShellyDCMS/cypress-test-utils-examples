@@ -17,7 +17,8 @@
     "ci:cy-run-component": "npm i -D cypress && npm run cy-component:run && npm run ci:copy-component-reports",
     "ci:cy-run": "npm i -D cypress && ng run pokemon-catalog:cypress-run && npm run ci:cy-coverage && npm run ci:copy-integration-reports",
     "ci:cy-run-e2e": "npm i -D cypress && npm run cy-e2e:run",
-    "ci:cy-coverage": "nyc report --reporter=lcov --reporter=text-summary"
+    "ci:cy-coverage": "nyc report --reporter=lcov --reporter=text-summary",
+    "ci:merge-reports": "npx lcov --add-tracefile target/component/lcov.info -a target/integration/lcov.info -o target/merged.info"
   },
   "private": true,
   "dependencies": {

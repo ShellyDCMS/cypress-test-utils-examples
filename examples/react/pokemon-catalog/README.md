@@ -36,5 +36,5 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Integration Coverage Report
-[latest main build integration coverage report](https://dpadswci.cec.lab.emc.com/job/ecdm/job/ecdm/job/test-utils/job/main/lastBuild/React_20Cypress_20Integration_20Coverage/)
+## Component Coverage Report
+[main build coverage report](https://app.codecov.io/gh/ShellyDCMS/cypress-test-utils-examples/tree/main/examples)

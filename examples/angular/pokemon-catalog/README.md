@@ -27,7 +27,4 @@ Run `npm run cy:open` to execute the tests via Cypress.
 Run `npm run cy-e2e:open` to execute the end-to-end tests via Cypress
 
 ## Component Coverage Report
-[latest main build component tests coverage report](https://dpadswci.cec.lab.emc.com/job/ecdm/job/ecdm/job/test-utils/job/main/lastBuild/Angular_20Cypress_20Component_20Coverage/)
-
-## Integration Coverage Report
-[latest main build integration coverage report](https://dpadswci.cec.lab.emc.com/job/ecdm/job/ecdm/job/test-utils/job/main/lastBuild/Angular_20Cypress_20Integration_20Coverage/)
+[main build component tests coverage report](https://app.codecov.io/gh/ShellyDCMS/cypress-test-utils-examples/tree/main/examples)
