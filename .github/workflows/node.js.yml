@@ -34,6 +34,8 @@ jobs:
       with:
         files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json
         verbose: true
+    - run: npm run validate:examples
+    - run: npm run e2e:examples
     - name: Component Test Report
       uses: phoenix-actions/test-reporting@v8
       id: test-report               # Set ID reference for step
@@ -42,16 +44,7 @@ jobs:
         name: Component Tests            # Name of the check run which will be created
         path: examples/angular/pokemon-catalog/cypress/results/json/*.json, examples/react/pokemon-catalog/cypress/results/json/*.json, examples/lit/pokemon-catalog/cypress/results/json/*.json   # Path to test results
         reporter: mochawesome-json        # Format of test results
-    - name: Publish Component Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
-      with:
-        files: |
-          examples/angular/pokemon-catalog/cypress/results/json/*.json
-          examples/react/pokemon-catalog/cypress/results/json/*.json
-          examples/lit/pokemon-catalog/cypress/results/json/*.json
-
-    - run: npm run validate:examples
-    - run: npm run e2e:examples
-
+    - name: Read output variables
+      run: |
+        echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
   
