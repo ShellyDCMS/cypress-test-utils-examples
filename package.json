@@ -24,7 +24,7 @@
     "merge-reports:angular" : "cd examples/angular/pokemon-catalog && mochawesome-merge cypress/results/json/*.json > index.json",
     "merge-reports:react" : "cd examples/react/pokemon-catalog && mochawesome-merge cypress/results/json/*.json > index.json",
     "merge-reports:lit" : "cd examples/lit/pokemon-catalog && mochawesome-merge cypress/results/json/*.json > index.json",
-    "merge-reports:examples": "npm run merge-report:react && npm run merge-reprots:angular && npm run merg-reports:lit",
+    "merge-reports:examples": "npm run merge-reports:react && npm run merge-reprots:angular && npm run merge-reports:lit",
     "predeploy:react-example": "cd examples/react/pokemon-catalog && npm run build",
     "predeploy:angular-example": "cd examples/angular/pokemon-catalog && npm run build -- --base-href='./'",
     "predeploy:lit-example": "cd examples/lit/pokemon-catalog && npm run build",

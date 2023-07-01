@@ -37,15 +37,31 @@ jobs:
     - run: npm run validate:examples
     - run: npm run e2e:examples
     - run: npm run merge-reports:examples
-    - name: Test Report
+    - name: Angular Tests Report
       uses: phoenix-actions/test-reporting@v8
       id: test-report               # Set ID reference for step
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Tests            # Name of the check run which will be created
-        path: examples/angular/pokemon-catalog/cypress/results/json/*.json, examples/react/pokemon-catalog/cypress/results/json/*.json, examples/lit/pokemon-catalog/cypress/results/json/*.json   # Path to test results
+        path: examples/angular/pokemon-catalog/cypress/results/json/*.json  # Path to test results
         reporter: mochawesome-json        # Format of test results
-    - name: Read output variables
+    - name: React Tests Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report               # Set ID reference for step
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: Tests            # Name of the check run which will be created
+        path: examples/react/pokemon-catalog/cypress/results/json/*.json # Path to test results
+        reporter: mochawesome-json        # Format of test results
+    - name: Lit Tests Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report               # Set ID reference for step
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: Tests            # Name of the check run which will be created
+        path: examples/lit/pokemon-catalog/cypress/results/json/*.json   # Path to test results
+        reporter: mochawesome-json        # Format of test results
+    - name: Tests url
       run: |
         echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
   
