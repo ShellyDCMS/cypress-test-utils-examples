@@ -42,6 +42,11 @@ jobs:
       with:
         files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/react/pokemon-catalog/target/integration/coverage-final.json
         verbose: true
+
+    name: Code Coverage Summary Report
+    uses: irongut/CodeCoverageSummary@v1.3.0
+    with:
+      filename: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/clover.xml
     - name: Angular Tests Report
       uses: phoenix-actions/test-reporting@v8
       id: test-report-angular               # Set ID reference for step
