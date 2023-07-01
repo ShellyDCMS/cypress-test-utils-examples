@@ -79,7 +79,7 @@ export default defineConfig({
       "json": true,
       suiteTitleSeparatedBy: " > ",
       testCaseSwitchClassnameAndName: false,
-      rootSuiteTitle: "Angular Component Tests",
+      rootSuiteTitle: "Angular Tests",
       toConsole: true,
   },
   e2e: {

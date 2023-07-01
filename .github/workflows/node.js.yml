@@ -34,20 +34,23 @@ jobs:
       with:
         files: ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json
         verbose: true
-    - name: Test Report
+    - name: Component Test Report
       uses: phoenix-actions/test-reporting@v8
       id: test-report               # Set ID reference for step
       if: success() || failure()    # run this step even if previous step failed
       with:
-        name: JEST Tests            # Name of the check run which will be created
-        path: examples/angular/pokemon-catalog/cypress/results/json/*.json   # Path to test results
+        name: Component Tests            # Name of the check run which will be created
+        path: examples/angular/pokemon-catalog/cypress/results/json/*.json, examples/react/pokemon-catalog/cypress/results/json/*.json, examples/lit/pokemon-catalog/cypress/results/json/*.json   # Path to test results
         reporter: mochawesome-json        # Format of test results
-    - name: Publish Test Results
+    - name: Publish Component Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
         files: |
-          examples/angular/pokemon-catalog/target/surefire-reports/*.xml
+          examples/angular/pokemon-catalog/cypress/results/json/*.json
+          examples/react/pokemon-catalog/cypress/results/json/*.json
+          examples/lit/pokemon-catalog/cypress/results/json/*.json
+
     - run: npm run validate:examples
     - run: npm run e2e:examples
 

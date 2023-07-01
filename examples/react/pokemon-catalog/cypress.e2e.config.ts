@@ -5,11 +5,16 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   reporter: "mochawesome",
-  reporterOptions: {
-    suiteTitleSeparatedBy: " > ",
-    testCaseSwitchClassnameAndName: false,
-    rootSuiteTitle: "React Component Tests",
-    toConsole: true,
+  reporterOptions: 
+   {
+      "reportDir": "cypress/results/json",
+      "overwrite": false,
+      "html": false,
+      "json": true,
+      suiteTitleSeparatedBy: " > ",
+      testCaseSwitchClassnameAndName: false,
+      rootSuiteTitle: "React E2E Tests",
+      toConsole: true,
   },
   e2e: {
     baseUrl: "http://localhost:3000", // fix once we have github pages

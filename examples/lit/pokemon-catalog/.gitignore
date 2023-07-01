@@ -18,4 +18,4 @@
 /cypress/screenshots
 /instrumented
 .nyc_output
-mochawesome-report
+cypress/results
