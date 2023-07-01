@@ -61,12 +61,5 @@ jobs:
         name: Lit Tests            # Name of the check run which will be created
         path: examples/lit/pokemon-catalog/cypress/results/json/output.json   # Path to test results
         reporter: mochawesome-json        # Format of test results
-    - name: Report code coverage
-      uses: zgosalvez/github-actions-report-lcov@v3
-      with:
-        coverage-files: ${{ github.workspace }}/examples/*/pokemon-catalog/target/*/lcov.info
-        artifact-name: code-coverage-report
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        working-directory: examples
-        update-comment: true
+        
   
