@@ -1,5 +1,5 @@
-# test-utils
-Cypress helpers to control your UI components that work in all test levels. From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.
+# cypress-test-utils-examples
+Test Examples using Cypress helpers to control your UI components that work in all test levels. From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.
 Making TDD fun in the modular UI area.
 
 CypressHelper makes it saner to write UI testing. It enables creating component drivers that will work on all testing levels (component, integration, e2e).
@@ -21,5 +21,5 @@ For example, a user doesn't mouseUp, he/she hovers.
 
 ## Examples
 In the [examples](/examples) folder you can find 3 small apps; an angular app, a lit app and a react app.
-Each app contains a driver that uses helpers, component tests, integration tests and e2e tests.
+Each app contains drivers that use helpers, component tests, integration tests and e2e tests.
 As you can see, all test levels use the *same* driver, meaning that if the feature's implementation changes, you'll need to change the driver alone, not the tests.
