@@ -39,7 +39,7 @@ jobs:
     - run: npm run merge-reports:examples
     - name: Angular Tests Report
       uses: phoenix-actions/test-reporting@v8
-      id: test-report               # Set ID reference for step
+      id: test-report-angular               # Set ID reference for step
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Tests            # Name of the check run which will be created
@@ -47,7 +47,7 @@ jobs:
         reporter: mochawesome-json        # Format of test results
     - name: React Tests Report
       uses: phoenix-actions/test-reporting@v8
-      id: test-report               # Set ID reference for step
+      id: test-report-react               # Set ID reference for step
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Tests            # Name of the check run which will be created
@@ -55,7 +55,7 @@ jobs:
         reporter: mochawesome-json        # Format of test results
     - name: Lit Tests Report
       uses: phoenix-actions/test-reporting@v8
-      id: test-report               # Set ID reference for step
+      id: test-report-lit               # Set ID reference for step
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Tests            # Name of the check run which will be created
