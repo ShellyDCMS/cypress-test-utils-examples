@@ -22,6 +22,6 @@ describe("React PokemonImageComponent Tests", () => {
     given.pokemonIndex(pokemonIndex);
     given.missingImage();
     when.render(PokemonImageComponent);
-    expect(get.fallBackImage()).to.exist;
+    expect(get.fallBackImage()).to.exist();
   });
 });
