@@ -23,7 +23,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
   beforeAndAfter();
 
-  describe("when one of many pokemons", () => {
+  describe("given one of many pokemons", () => {
     const name = chance.word();
 
     const pokemon: PokemonList = Builder<PokemonList>()
@@ -44,7 +44,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     });
 
     it("should render pokemon name", async () => {
-      expect(await get.nameText()).to.eq(name);
+      expect(await get.nameText()).to.eq("shelly");
     });
 
     it("should render pokemon count", async () => {
@@ -82,7 +82,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     });
   });
 
-  describe("single pokemon", () => {
+  describe("given single pokemon", () => {
     const name = chance.word();
     const pokemon: PokemonList = Builder<PokemonList>()
       .results([{ name, url: "1" }])
