@@ -1,7 +1,7 @@
 import type { Type } from "@angular/core";
 import { MountConfig } from "cypress/angular";
-import { CypressHelper } from "dell-cypress-test-utils";
-import { CypressAngularComponentHelper } from "dell-cypress-test-utils/angular";
+import { CypressHelper } from "@shellygo/cypress-test-utils";
+import { CypressAngularComponentHelper } from "@shellygo/cypress-test-utils/angular";
 import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import type { PokemonCatalogComponent } from "./pokemon-catalog.component";

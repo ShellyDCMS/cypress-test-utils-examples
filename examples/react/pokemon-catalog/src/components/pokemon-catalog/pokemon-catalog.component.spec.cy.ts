@@ -95,11 +95,11 @@ describe("React PokemonCatalogComponent", () => {
     });
 
     it("next button should be disabled", async () => {
-      expect(await get.isNextButtonDisabled()).to.be.true;
+      expect(await get.isNextButtonDisabled()).to.be.true();
     });
 
     it("prev button should be disabled", async () => {
-      expect(await get.isPrevButtonDisabled()).to.be.true;
+      expect(await get.isPrevButtonDisabled()).to.be.true();
     });
   });
 });

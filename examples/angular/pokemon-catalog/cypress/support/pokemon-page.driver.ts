@@ -1,6 +1,6 @@
-import { CypressHelper } from "dell-cypress-test-utils";
-import { PokemonList } from "src/app/components/pokemon-catalog/pokemon-catalog.component";
+import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { PokemonCatalogComponentDriver } from "src/app/components/pokemon-catalog/pokemon-catalog.component.driver";
+import { PokemonList } from "src/app/services/pokemon.service";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper();
