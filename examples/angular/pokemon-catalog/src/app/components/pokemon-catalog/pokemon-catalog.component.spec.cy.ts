@@ -44,7 +44,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     });
 
     it("should render pokemon name", async () => {
-      expect(await get.nameText()).to.eq("shelly");
+      expect(await get.nameText()).to.eq(name);
     });
 
     it("should render pokemon count", async () => {
@@ -65,9 +65,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
         expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
       });
     });
-    it("bla bla bla", () =>{
-      expect(3).to.eq(5)
-    })
 
     describe("when clicking next", () => {
       beforeEach(() => {
@@ -83,10 +80,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
         expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
       });
     });
-
-    it("after", () =>{
-      expect(3).to.eq(5)
-    })
   });
 
   describe("given single pokemon", () => {
