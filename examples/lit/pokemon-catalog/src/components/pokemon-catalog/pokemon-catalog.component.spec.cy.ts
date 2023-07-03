@@ -10,7 +10,7 @@ describe("Lit PokemonCatalogComponent", () => {
     new PokemonCatalogComponentDriver();
   beforeAndAfter();
 
-  describe("single pokemon", () => {
+  describe("given single pokemon", () => {
     const name = chance.word();
     const pokemon: PokemonList = Builder<PokemonList>()
       .results([{ name, url: "1" }])
@@ -41,7 +41,7 @@ describe("Lit PokemonCatalogComponent", () => {
     });
   });
 
-  describe("when one of many pokemons", () => {
+  describe("given one of many pokemons", () => {
     const name = chance.word();
 
     const pokemon: PokemonList = Builder<PokemonList>()

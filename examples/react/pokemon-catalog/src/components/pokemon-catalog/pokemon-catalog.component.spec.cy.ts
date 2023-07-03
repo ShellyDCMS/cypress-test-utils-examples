@@ -11,7 +11,7 @@ describe("React PokemonCatalogComponent", () => {
     new PokemonCatalogComponentDriver();
   beforeAndAfter();
 
-  describe("when one of many pokemons", () => {
+  describe("given one of many pokemons", () => {
     const name = chance.word();
 
     const pokemon: PokemonList = Builder<PokemonList>()
@@ -42,21 +42,6 @@ describe("React PokemonCatalogComponent", () => {
       expect(await get.countText()).to.eq("2 of 3");
     });
 
-    describe("when clicking prev", () => {
-      beforeEach(() => {
-        when.waitForPrevToBeEnabled();
-        when.clickPrev();
-      });
-
-      it("should call onPrev", () => {
-        expect(get.onPrevSpy().should("have.been.calledOnce"));
-      });
-
-      it("should call getPokemon with the prev pokemon's url", () => {
-        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
-      });
-    });
-
     describe("when clicking next", () => {
       beforeEach(() => {
         when.waitForNextToBeEnabled();
@@ -71,9 +56,24 @@ describe("React PokemonCatalogComponent", () => {
         expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
       });
     });
+
+    describe("when clicking prev", () => {
+      beforeEach(() => {
+        when.waitForPrevToBeEnabled();
+        when.clickPrev();
+      });
+
+      it("should call onPrev", () => {
+        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      });
+
+      it("should call getPokemon with the prev pokemon's url", () => {
+        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
+      });
+    });
   });
 
-  describe("single pokemon", () => {
+  describe("given single pokemon", () => {
     const name = chance.word();
     const pokemon: PokemonList = Builder<PokemonList>()
       .results([{ name, url: "1" }])
