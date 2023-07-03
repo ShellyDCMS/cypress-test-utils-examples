@@ -27,6 +27,8 @@ jobs:
       - run: npm run test:examples
       - run: npm run validate:examples
       - run: npm run e2e:examples
+      - name: Merge Reports
+        if: success() || failure() # run this step even if previous step failed
       - run: npm run merge-reports:examples
 
       - name: Upload coverage reports to Codecov
