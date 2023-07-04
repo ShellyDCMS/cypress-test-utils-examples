@@ -6,6 +6,6 @@ describe("template spec", () => {
   it("should disable next button once showing last pokemon", () => {
     cy.visit("localhost:3000");
 
-    cy.contains("Next").should("be.disabled");
+    get.elementByText("Next").should("be.disabled");
   });
 });
