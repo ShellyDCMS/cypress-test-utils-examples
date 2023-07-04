@@ -1,7 +1,7 @@
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
 import { AppDriver } from "cypress/support/app.driver";
-import { PokemonList } from "src/app/components/pokemon-catalog/pokemon-catalog.component";
+import { PokemonList } from "src/app/services/pokemon.service";
 
 describe("Angular Pokemon Page integration Tests", () => {
   const chance = new Chance();

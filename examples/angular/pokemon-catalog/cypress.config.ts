@@ -69,18 +69,19 @@ export default defineConfig({
     // Default is 0
     openMode: 0
   },
-  
+
   reporter: "mochawesome",
-  reporterOptions: 
-   {
-      "reportDir": "cypress/results/json",
-      "overwrite": false,
-      "html": false,
-      "json": true,
-      suiteTitleSeparatedBy: " > ",
-      testCaseSwitchClassnameAndName: false,
-      rootSuiteTitle: "Angular Tests",
-      toConsole: true,
+  reporterOptions: {
+    reportDir: "cypress/results/json",
+    embeddedScreenshots: true,
+
+    overwrite: false,
+    html: false,
+    json: true,
+    suiteTitleSeparatedBy: " > ",
+    testCaseSwitchClassnameAndName: false,
+    rootSuiteTitle: "Angular Tests",
+    toConsole: true
   },
   e2e: {
     setupNodeEvents(on, config) {

@@ -17,7 +17,9 @@
     "ci:cy-run-component": "npx yarn add -D cypress && npm run cy-component:run && npm run ci:copy-component-reports",
     "ci:cy-run": "npx yarn add -D cypress && ng run pokemon-catalog:cypress-run && npm run ci:cy-coverage && npm run ci:copy-integration-reports",
     "ci:cy-run-e2e": "npx yarn add -D cypress && npm run cy-e2e:run",
-    "ci:cy-coverage": "nyc report --reporter=lcov --reporter=text-summary"
+    "ci:cy-coverage": "nyc report --reporter=lcov --reporter=text-summary",
+    "merge-reports": "npx mochawesome-merge cypress/results/json/*.json -o cypress/results/json/merged.json",
+    "generate-reports": "marge cypress/results/json/merged.json --charts true"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +48,7 @@
     "@shellygo/cypress-test-utils": "^1.0.6",
     "@types/chance": "^1.1.3",
     "@types/jasmine": "~4.0.0",
+    "@types/mochawesome": "^6.2.1",
     "builder-pattern": "^2.2.0",
     "chance": "^1.1.11",
     "cypress": "^12.16.0",
