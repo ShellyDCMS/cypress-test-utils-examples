@@ -19,7 +19,7 @@
     "ci:cy-run-e2e": "npx yarn add -D cypress && npm run cy-e2e:run",
     "ci:cy-coverage": "nyc report --reporter=lcov --reporter=text-summary",
     "merge-reports": "npx mochawesome-merge cypress/results/json/*.json -o cypress/results/json/merged.json",
-    "generate-reports": "marge cypress/results/json/merged.json --charts true"
+    "generate-reports": "marge cypress/results/json/merged.json --charts true -o cypress/results/json/ cypress/results/json/merged.json"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +52,7 @@
     "builder-pattern": "^2.2.0",
     "chance": "^1.1.11",
     "cypress": "^12.16.0",
+    "cypress-multi-reporters": "^1.6.3",
     "istanbul-lib-coverage": "^3.2.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
