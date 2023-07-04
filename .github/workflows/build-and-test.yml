@@ -25,21 +25,21 @@ jobs:
       - run: npx yarn install --frozen-lockfile
       - name: Build Angular
         if: always()
-      - run: npm run build:angular
+        run: npm run build:angular
       - run: npm run test:angular
       - run: npm run validate:angular
       - run: npm run e2e:angular
 
       - name: Build React
         if: always()
-      - run: npm run build:react
+        run: npm run build:react
       - run: npm run test:react
       - run: npm run validate:react
       - run: npm run e2e:react
 
       - name: Build Lit
         if: always()
-      - run: npm run build:lit
+        run: npm run build:lit
       - run: npm run test:lit
       - run: npm run validate:lit
       - run: npm run e2e:lit
