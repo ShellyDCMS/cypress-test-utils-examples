@@ -21,7 +21,7 @@
     "test:examples": "npm run test:react && npm run test:angular && npm run test:lit",
     "validate:examples": "npm run validate:react && npm run validate:angular  && npm run validate:lit",
     "e2e:examples": "npm run e2e:react && npm run e2e:angular && npm run e2e:lit",
-    "merge-reports:angular": "cd examples/angular/pokemon-catalog && npx mochawesome-merge cypress/results/json/*.json > cypress/results/json/merged.json",
+    "merge-reports:angular": "cd examples/angular/pokemon-catalog",
     "merge-reports:react": "cd examples/react/pokemon-catalog && npx mochawesome-merge cypress/results/json/*.json > cypress/results/json/merged.json",
     "merge-reports:lit": "cd examples/lit/pokemon-catalog && npx mochawesome-merge cypress/results/json/*.json > cypress/results/json/merged.json",
     "merge-reports:examples": "concurrently 'npm run merge-reports:react'  'npm run merge-reports:angular'  'npm run merge-reports:lit'",
