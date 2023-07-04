@@ -1665,7 +1665,7 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@shellygo/cypress-test-utils@^1.0.6":
+"@shellygo/cypress-test-utils@1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-1.0.6.tgz#25afddb5746ee2779e6447dc158841f22cf9ae13"
   integrity sha512-GI4eseDV7gXJ4yJoAoGbRbxJwD5gQgDaKF1dzRsfB9yp5d20IJqNwcJvxDpj9I4edcxPKZpEOBrVoLWTucP02w==
