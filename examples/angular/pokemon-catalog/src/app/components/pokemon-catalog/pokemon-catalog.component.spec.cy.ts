@@ -23,7 +23,7 @@ describe("shelly", () => {
 
   beforeAndAfter();
 
-  describe("given one of many pokemons", () => {
+  describe("amitai", () => {
     const name = chance.word();
 
     const pokemon: PokemonList = Builder<PokemonList>()
