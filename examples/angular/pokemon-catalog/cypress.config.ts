@@ -70,7 +70,7 @@ export default defineConfig({
     openMode: 0
   },
 
-  reporter: "mocha-json",
+  reporter: "json",
   reporterOptions: {
     reportDir: "cypress/results/json",
     embeddedScreenshots: true,
