@@ -90,7 +90,7 @@ jobs:
         if: always() # run this step even if previous step failed
         with:
           name: React Tests # Name of the check run which will be created
-          path: ${{ github.workspace }}/examples/react/pokemon-catalog/cypress/results/json/merged.json # Path to test results
+          path: ${{ github.workspace }}/examples/react/pokemon-catalog/cypress/results/json/*.json # Path to test results
           reporter: mochawesome-json # Format of test results
       - name: Lit Tests Report
         uses: phoenix-actions/test-reporting@v8
@@ -98,6 +98,6 @@ jobs:
         if: always() # run this step even if previous step failed
         with:
           name: Lit Tests # Name of the check run which will be created
-          path: ${{ github.workspace }}/examples/lit/pokemon-catalog/cypress/results/json/merged.json # Path to test results
+          path: ${{ github.workspace }}/examples/lit/pokemon-catalog/cypress/results/json/*.json # Path to test results
           reporter: mochawesome-json # Format of test results
 
