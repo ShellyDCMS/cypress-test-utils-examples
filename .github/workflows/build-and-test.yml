@@ -48,6 +48,27 @@ jobs:
         if: always() # run this step even if previous step failed
         run: npm run merge-reports:examples
 
+      - name: Angular Cypress report
+        uses: dmitry/cypress-report-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pathname: examples/angular/pokemon-catalog/cypress/results/json/merged.json
+        if: always()
+
+      - name: React Cypress report
+        uses: dmitry/cypress-report-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pathname: examples/react/pokemon-catalog/cypress/results/json/merged.json
+        if: always()
+
+      - name: Lit Cypress report
+        uses: dmitry/cypress-report-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pathname: examples/lit/pokemon-catalog/cypress/results/json/merged.json
+        if: always()
+
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
