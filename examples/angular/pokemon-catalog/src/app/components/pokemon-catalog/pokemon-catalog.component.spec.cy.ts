@@ -5,7 +5,7 @@ import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component"
 import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
-describe("Angular PokemonCatalogComponent Tests", () => {
+describe("shelly", () => {
   const { when, given, get, beforeAndAfter } =
     new PokemonCatalogComponentDriver();
 
@@ -66,7 +66,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       });
     });
 
-    describe("when clicking next", () => {
+    describe("belly", () => {
       beforeEach(() => {
         when.waitForNextToBeEnabled();
         when.clickNext();
