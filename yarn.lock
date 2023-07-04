@@ -1020,6 +1020,11 @@ lazy-ass@^1.6.0:
   resolved "https://registry.yarnpkg.com/lazy-ass/-/lazy-ass-1.6.0.tgz#7999655e8646c17f089fdd187d150d3324d54513"
   integrity sha512-cc8oEVoctTvsFZ/Oje/kGnHbpWHYBe8IAJe4C0QNc3t8uM/0Y8+erSz/7Y1ALuXTEZTMvxXwO6YbX1ey3ujiZw==
 
+lcov@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/lcov/-/lcov-1.16.0.tgz#db7d17a33a24744a58aae9daacb94d4539ae228d"
+  integrity sha512-pEUuvik5O5xPeB3z1z8cFWCGtugnPHwR5YhGd1Er6dJqHRb1X/Gvn2ZBbmWn9lVEAf1ivFsR/JGCsVrPBgPy+A==
+
 listr2@^3.8.3:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/listr2/-/listr2-3.14.0.tgz#23101cc62e1375fd5836b248276d1d2b51fdbe9e"

@@ -68,13 +68,13 @@ jobs:
             ${{ github.workspace }}/examples/react/pokemon-catalog/target/integration/coverage-final.json
           verbose: true
       - name: Angular Tests Report
-        uses: dorny/test-reporter@v1
+        uses: phoenix-actions/test-reporting@v8
         id: test-report-angular # Set ID reference for step
         if: success() || failure() # run this step even if previous step failed
         with:
           name: Angular Tests # Name of the check run which will be created
           path: examples/angular/pokemon-catalog/cypress/results/json/merged.json # Path to test results
-          reporter: mocha-json # Format of test results
+          reporter: mochawesome-json # Format of test results
       - name: React Tests Report
         uses: phoenix-actions/test-reporting@v8
         id: test-report-react # Set ID reference for step

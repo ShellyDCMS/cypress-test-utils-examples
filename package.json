@@ -51,6 +51,7 @@
     "@types/react": "^18.2.7",
     "concurrently": "^8.2.0",
     "gh-pages": "^5.0.0",
+    "lcov": "^1.16.0",
     "lit": "^2.7.4",
     "mochawesome-report-generator": "^6.2.0",
     "react": "^18.2.0",
