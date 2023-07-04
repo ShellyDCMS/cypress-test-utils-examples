@@ -1,6 +1,6 @@
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import { PokemonList } from "../../src/pokemon-catalog/pokemon-catalog.component";
+import { PokemonList } from "../../src/services/pokemon.service";
 import { AppDriver } from "../support/app.driver";
 
 describe("React Pokemon Page integration Tests", () => {
