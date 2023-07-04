@@ -51,9 +51,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       expect(await get.countText()).to.eq(" 2 of 3 ");
     });
 
-    it("before", () => {
-      expect(true).to.be.false;
-    });
     describe("when clicking prev", () => {
       beforeEach(() => {
         when.waitForPrevToBeEnabled();
@@ -81,10 +78,8 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
       it("should fetch next pokemon when next is click", () => {
         expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
+        expect(true).to.be.false;
       });
-    });
-    it("after", () => {
-      expect(false).to.be.false;
     });
   });
 
