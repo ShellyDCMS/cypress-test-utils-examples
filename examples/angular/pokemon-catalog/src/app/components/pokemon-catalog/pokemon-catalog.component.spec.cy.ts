@@ -52,7 +52,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     });
 
     it("before", () => {
-      expect(true).to.be.true;
+      expect(true).to.be.false;
     });
     describe("when clicking prev", () => {
       beforeEach(() => {
