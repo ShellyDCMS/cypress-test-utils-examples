@@ -5,7 +5,7 @@
   "private": false,
   "license": "MIT",
   "scripts": {
-    "build:angular-example": "cd examples/angular/pokemon-catalog && npm i && npm run build",
+    "build:angular-example": "cd examples/angular/pokemon-catalog && npx yarn && npm run build",
     "test:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run-component",
     "validate:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run",
     "e2e:angular-example": "cd examples/angular/pokemon-catalog && npm run ci:cy-run-e2e",

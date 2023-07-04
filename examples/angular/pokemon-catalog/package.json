@@ -14,9 +14,9 @@
     "cy-e2e:run": "ng run pokemon-catalog:cypress-run --config-file cypress.e2e.config.ts",
     "ci:copy-component-reports": "mkdir -p target/reports && mv .nyc_output/out.json target/reports/component.json && mv coverage target/component",
     "ci:copy-integration-reports": "mkdir -p target/reports && mv .nyc_output/out.json target/reports/integration.json && mv coverage target/integration",
-    "ci:cy-run-component": "npm i -D cypress && npm run cy-component:run && npm run ci:copy-component-reports",
-    "ci:cy-run": "npm i -D cypress && ng run pokemon-catalog:cypress-run && npm run ci:cy-coverage && npm run ci:copy-integration-reports",
-    "ci:cy-run-e2e": "npm i -D cypress && npm run cy-e2e:run",
+    "ci:cy-run-component": "npx yarn add -D cypress && npm run cy-component:run && npm run ci:copy-component-reports",
+    "ci:cy-run": "npx yarn add -D cypress && ng run pokemon-catalog:cypress-run && npm run ci:cy-coverage && npm run ci:copy-integration-reports",
+    "ci:cy-run-e2e": "npx yarn add -D cypress && npm run cy-e2e:run",
     "ci:cy-coverage": "nyc report --reporter=lcov --reporter=text-summary"
   },
   "private": true,
