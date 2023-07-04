@@ -23,10 +23,27 @@ jobs:
           node-version: 16.15
           cache: "npm"
       - run: npx yarn install --frozen-lockfile
-      - run: npm run build:examples
-      - run: npm run test:examples
-      - run: npm run validate:examples
-      - run: npm run e2e:examples
+      - name: Build Angular
+        if: always()
+      - run: npm run build:angular
+      - run: npm run test:angular
+      - run: npm run validate:angular
+      - run: npm run e2e:angular
+
+      - name: Build React
+        if: always()
+      - run: npm run build:react
+      - run: npm run test:react
+      - run: npm run validate:react
+      - run: npm run e2e:react
+
+      - name: Build Lit
+        if: always()
+      - run: npm run build:lit
+      - run: npm run test:lit
+      - run: npm run validate:lit
+      - run: npm run e2e:lit
+
       - name: Merge Reports
         if: success() || failure() # run this step even if previous step failed
         run: npm run merge-reports:examples
