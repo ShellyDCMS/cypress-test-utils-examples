@@ -5,7 +5,7 @@ name: Build and Test CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
 
 permissions:
@@ -14,52 +14,73 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 16.15
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.15
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build:examples
-    - run: npm run test:examples    
-    - run: npm run validate:examples
-    - run: npm run e2e:examples
-    - run: npm run merge-reports:examples
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.15
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.15
+          cache: "npm"
+      - run: npx yarn install --frozen-lockfile
+      - name: Build Angular
+        if: always()
+        run: npm run build:angular
+      - run: npm run test:angular
+      - run: npm run validate:angular
+      - run: npm run e2e:angular
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      with:
-        files: ${{ github.workspace }}/examples/lit/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, ${{ github.workspace }}/examples/react/pokemon-catalog/target/integration/coverage-final.json
-        verbose: true
-    - name: Angular Tests Report
-      uses: phoenix-actions/test-reporting@v8
-      id: test-report-angular               # Set ID reference for step
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: Angular Tests            # Name of the check run which will be created
-        path: examples/angular/pokemon-catalog/cypress/results/json/output.json  # Path to test results
-        reporter: mochawesome-json        # Format of test results
-    - name: React Tests Report
-      uses: phoenix-actions/test-reporting@v8
-      id: test-report-react               # Set ID reference for step
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: React Tests            # Name of the check run which will be created
-        path: examples/react/pokemon-catalog/cypress/results/json/output.json # Path to test results
-        reporter: mochawesome-json        # Format of test results
-    - name: Lit Tests Report
-      uses: phoenix-actions/test-reporting@v8
-      id: test-report-lit               # Set ID reference for step
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: Lit Tests            # Name of the check run which will be created
-        path: examples/lit/pokemon-catalog/cypress/results/json/output.json   # Path to test results
-        reporter: mochawesome-json        # Format of test results
+      - name: Build React
+        if: always()
+        run: npm run build:react
+      - run: npm run test:react
+      - run: npm run validate:react
+      - run: npm run e2e:react
 
-  
+      - name: Build Lit
+        if: always()
+        run: npm run build:lit
+      - run: npm run test:lit
+      - run: npm run validate:lit
+      - run: npm run e2e:lit
+
+      - name: Merge Reports
+        if: success() || failure() # run this step even if previous step failed
+        run: npm run merge-reports:examples
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          files: |
+            ${{ github.workspace }}/examples/lit/pokemon-catalog/target/component/coverage-final.json, 
+            ${{ github.workspace }}/examples/angular/pokemon-catalog/target/component/coverage-final.json, 
+            ${{ github.workspace }}/examples/angular/pokemon-catalog/target/integration/coverage-final.json, 
+            ${{ github.workspace }}/examples/react/pokemon-catalog/target/integration/coverage-final.json
+          verbose: true
+      - name: Angular Tests Report
+        uses: phoenix-actions/test-reporting@v8
+        id: test-report-angular # Set ID reference for step
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: Angular Tests # Name of the check run which will be created
+          path: examples/angular/pokemon-catalog/cypress/results/json/merged.json # Path to test results
+          reporter: mochawesome-json # Format of test results
+      - name: React Tests Report
+        uses: phoenix-actions/test-reporting@v8
+        id: test-report-react # Set ID reference for step
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: React Tests # Name of the check run which will be created
+          path: examples/react/pokemon-catalog/cypress/results/json/merged.json # Path to test results
+          reporter: mochawesome-json # Format of test results
+      - name: Lit Tests Report
+        uses: phoenix-actions/test-reporting@v8
+        id: test-report-lit # Set ID reference for step
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: Lit Tests # Name of the check run which will be created
+          path: examples/lit/pokemon-catalog/cypress/results/json/merged.json # Path to test results
+          reporter: mochawesome-json # Format of test results
+

@@ -1,5 +1,5 @@
-import { CypressHelper } from "dell-cypress-test-utils";
-import { CypressLitComponentHelper } from "dell-cypress-test-utils/lit";
+import { CypressHelper } from "@shellygo/cypress-test-utils";
+import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { html } from "lit";
 import { PokemonImageComponent } from "./pokemon-image.component";
 

@@ -6,7 +6,7 @@ describe("Angular Pokemon e2e", () => {
 
   beforeEach(function () {
     when.visit("/");
-    when.waitUntil(() => cy.contains("bulbasaur"));
+    when.waitUntil(() => get.elementByText("bulbasaur"));
   });
 
   it("should render prev button disabled", async () => {
@@ -22,17 +22,18 @@ describe("Angular Pokemon e2e", () => {
   });
 
   it("should render pokemon name", () => {
-    expect(cy.contains("bulbasaur")).to.exist;
+    expect(get.elementByText("bulbasaur")).to.exist;
   });
 
   describe("when clicking next twice", () => {
     beforeEach(() => {
       when.visit("/");
-      when.waitUntil(() => cy.contains("bulbasaur"));
+      when.waitUntil(() => get.elementByText("bulbasaur"));
       when.pokemon.clickNext();
-      when.waitUntil(() => cy.contains("ivysaur"));
+      when.waitUntil(() => get.elementByText("ivysaur"));
       when.pokemon.clickNext();
-      when.waitUntil(() => cy.contains("venusaur"));
+      when.waitUntil(() => get.elementByText("venusaur"));
+      when.wait(200);
     });
 
     it("should update index", async () => {
@@ -48,13 +49,13 @@ describe("Angular Pokemon e2e", () => {
     });
 
     it("should render pokemon name", () => {
-      expect(cy.contains("venusaur")).to.exist;
+      expect(get.elementByText("venusaur")).to.exist;
     });
 
     describe("when clicking prev", () => {
       beforeEach(() => {
         when.pokemon.clickPrev();
-        when.waitUntil(() => cy.contains("ivysaur"));
+        when.waitUntil(() => get.elementByText("ivysaur"));
       });
 
       it("should update index", async () => {
@@ -70,7 +71,7 @@ describe("Angular Pokemon e2e", () => {
       });
 
       it("should render pokemon name", () => {
-        expect(cy.contains("ivysaur")).to.exist;
+        expect(get.elementByText("ivysaur")).to.exist;
       });
     });
   });

@@ -40,6 +40,6 @@ describe("React Pokemon Page integration Tests", () => {
 //   });
 
 //   it("should disable next button once showing last pokemon", () => {
-//     cy.contains("Next").should("be.disabled");
+//     get.elementByText("Next").should("be.disabled");
 //   });
 // });

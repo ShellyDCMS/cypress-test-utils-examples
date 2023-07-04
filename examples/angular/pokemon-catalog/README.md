@@ -3,7 +3,7 @@
 ## [Live Demo](https://shellydcms.github.io/cypress-test-utils-examples/angular/)
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/19dff905-0cdd-4038-8fc4-e94d118e77b6)
 
-This is an example app to demonstrate the use of dell-cypress-test-utils test helpers to test an angular application in all levels:
+This is an example app to demonstrate the use of @shellygo/cypress-test-utils test helpers to test an angular application in all levels:
 - Component (Testing a component in  the browser)
 - Integration (Testing the entire Front End while intercepting http requests and mocking Back End responses)
 - E2E

@@ -1,7 +1,7 @@
 import type { Type } from "@angular/core";
 import { MountConfig } from "cypress/angular";
-import { CypressHelper } from "dell-cypress-test-utils";
-import { CypressAngularComponentHelper } from "dell-cypress-test-utils/angular";
+import { CypressHelper } from "@shellygo/cypress-test-utils";
+import { CypressAngularComponentHelper } from "@shellygo/cypress-test-utils/angular";
 import type { PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {

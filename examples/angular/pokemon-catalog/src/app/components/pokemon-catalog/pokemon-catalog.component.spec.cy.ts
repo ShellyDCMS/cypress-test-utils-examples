@@ -23,7 +23,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
   beforeAndAfter();
 
-  describe("when one of many pokemons", () => {
+  describe("given one of many pokemons", () => {
     const name = chance.word();
 
     const pokemon: PokemonList = Builder<PokemonList>()
@@ -51,6 +51,9 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       expect(await get.countText()).to.eq(" 2 of 3 ");
     });
 
+    it("before", () => {
+      expect(true).to.be.true;
+    });
     describe("when clicking prev", () => {
       beforeEach(() => {
         when.waitForPrevToBeEnabled();
@@ -80,9 +83,12 @@ describe("Angular PokemonCatalogComponent Tests", () => {
         expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
       });
     });
+    it("after", () => {
+      expect(false).to.be.false;
+    });
   });
 
-  describe("single pokemon", () => {
+  describe("given single pokemon", () => {
     const name = chance.word();
     const pokemon: PokemonList = Builder<PokemonList>()
       .results([{ name, url: "1" }])
