@@ -23,14 +23,6 @@ export class PokemonCatalogComponentDriver {
     service: new PokemonService()
   };
 
-  // private mount = (
-  //   type: typeof PokemonServiceProvider,
-  //   props: Attributes & IServiceProviderPros,
-  //   ...children: ReactNode[]
-  // ) => {
-  //   this.reactComponentHelper.when.mount(type, props, children);
-  // };
-
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();
     this.pokemonImageDriver.beforeAndAfter();
