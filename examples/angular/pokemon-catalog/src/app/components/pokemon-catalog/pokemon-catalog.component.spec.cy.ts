@@ -39,21 +39,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       when.render(PokemonCatalogComponent, testConfig);
     });
 
-    it("should show picture given pokemon provided as input", async () => {
-      expect(await get.image.pictureSrc()).to.include("2.gif");
-    });
-
-    it("should render pokemon name", async () => {
-      expect(await get.nameText()).to.eq(name);
-    });
-
-    it("should render pokemon count", async () => {
-      expect(await get.countText()).to.eq(" 2 of 3 ");
-    });
-
-    it("before", () => {
-      expect(true).to.be.true;
-    });
     describe("when clicking prev", () => {
       beforeEach(() => {
         when.waitForPrevToBeEnabled();
@@ -83,8 +68,17 @@ describe("Angular PokemonCatalogComponent Tests", () => {
         expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
       });
     });
-    it("after", () => {
-      expect(false).to.be.false;
+
+    it("should show picture given pokemon provided as input", async () => {
+      expect(await get.image.pictureSrc()).to.include("2.gif");
+    });
+
+    it("should render pokemon name", async () => {
+      expect(await get.nameText()).to.eq(name);
+    });
+
+    it("should render pokemon count", async () => {
+      expect(await get.countText()).to.eq(" 2 of 3 ");
     });
   });
 
