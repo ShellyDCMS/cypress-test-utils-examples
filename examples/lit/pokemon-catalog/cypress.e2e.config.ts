@@ -6,19 +6,18 @@ import { defineConfig } from "cypress";
 export default defineConfig({
   includeShadowDom: true,
   reporter: "mochawesome",
-  reporterOptions: 
-   {
-      "reportDir": "cypress/results/json",
-      "overwrite": false,
-      "html": false,
-      "json": true,
-      suiteTitleSeparatedBy: " > ",
-      testCaseSwitchClassnameAndName: false,
-      rootSuiteTitle: "Lit E2E Tests",
-      toConsole: true,
+  reporterOptions: {
+    reportDir: "cypress/results/json",
+    overwrite: false,
+    html: false,
+    json: true,
+    suiteTitleSeparatedBy: " > ",
+    testCaseSwitchClassnameAndName: false,
+    rootSuiteTitle: "Lit E2E Tests",
+    toConsole: true
   },
   e2e: {
-    baseUrl: "http://localhost:4300", // fix once we have github pages
+    baseUrl: "https://shellydcms.github.io/cypress-test-utils-examples/lit/",
     supportFile: false,
     specPattern: "cypress/e2e/**/*.spec.cy.{js,jsx,ts,tsx}",
     excludeSpecPattern: "cypress/**/*.driver.{js,jsx,ts,tsx}",
