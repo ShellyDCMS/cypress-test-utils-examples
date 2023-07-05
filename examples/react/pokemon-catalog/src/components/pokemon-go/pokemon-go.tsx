@@ -1,7 +1,7 @@
 // Kindacode.com
 import React, { useState } from "react";
 
-interface IProps {
+export interface IProps {
   onSubmit: (searchedPokemon: string) => void;
 }
 export const PokemonGo = ({ onSubmit }: IProps) => {
@@ -24,9 +24,15 @@ export const PokemonGo = ({ onSubmit }: IProps) => {
         setValue("");
       }}
     >
-      <input value={value} onChange={onChange} placeholder="Search Pokemon" />
-
-      <button type="submit">Go</button>
+      <input
+        data-cy="pokemon-index"
+        value={value}
+        onChange={onChange}
+        placeholder="Pokemon"
+      />
+      <button type="submit" data-cy="go">
+        Go
+      </button>
     </form>
   );
 };
