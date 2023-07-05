@@ -8,9 +8,12 @@ export const PokemonGo = ({ onSubmit }: IProps) => {
   const [searchedPokemon, setSearchedPokemon] = useState("");
   const [value, setValue] = useState("");
 
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchedPokemon(event.target.value);
-    setValue(event.target.value);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const digitsRegex = /^[0-9\b]+$/;
+    if (event.target.value === "" || digitsRegex.test(event.target.value)) {
+      setSearchedPokemon(event.target.value);
+      setValue(event.target.value);
+    }
   };
 
   return (
@@ -21,11 +24,7 @@ export const PokemonGo = ({ onSubmit }: IProps) => {
         setValue("");
       }}
     >
-      <input
-        value={value}
-        onChange={inputHandler}
-        placeholder="Search Pokemon"
-      />
+      <input value={value} onChange={onChange} placeholder="Search Pokemon" />
 
       <button type="submit">Go</button>
     </form>
