@@ -4,7 +4,7 @@ import React, { useState } from "react";
 export interface IProps {
   onSubmit: (searchedPokemon: string) => void;
 }
-export const PokemonGo = ({ onSubmit }: IProps) => {
+export const PokemonGoComponent = ({ onSubmit }: IProps) => {
   const [searchedPokemon, setSearchedPokemon] = useState("");
   const [value, setValue] = useState("");
 

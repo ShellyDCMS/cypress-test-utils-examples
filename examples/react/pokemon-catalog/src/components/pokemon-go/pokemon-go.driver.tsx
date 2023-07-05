@@ -1,9 +1,9 @@
 import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressReactComponentHelper } from "@shellygo/cypress-test-utils/react";
 import type { Attributes, ReactNode } from "react";
-import { IProps, PokemonGo } from "./pokemon-go";
+import { IProps, PokemonGoComponent } from "./pokemon-go";
 
-export class PokemonImageComponentDriver {
+export class PokemonGoComponentDriver {
   private helper = new CypressHelper();
   private reactComponentHelper = new CypressReactComponentHelper();
 
@@ -23,20 +23,21 @@ export class PokemonImageComponentDriver {
   when = {
     ...this.helper.when,
     render: (
-      type: typeof PokemonGo,
+      type: typeof PokemonGoComponent,
       props?: (Attributes & Partial<IProps>) | null,
       ...children: ReactNode[]
     ) => {
       const mergedProps: Attributes & IProps = { ...this.props, ...props };
       this.reactComponentHelper.when.mount(type, mergedProps, children);
     },
-    typeIndex: (input: string) => this.helper.when.type("pokemon-index", input),
+    typePokemonIndex: (input: string) =>
+      this.helper.when.type("pokemon-index", input),
     clickGo: () => this.when.click("go")
   };
 
   get = {
     ...this.helper.get,
     onSubmitSpy: () => this.helper.get.spy("onSubmit"),
-    getIndex: () => this.helper.get.inputValue("pokemon-index")
+    indexValue: () => this.helper.get.inputValue("pokemon-index")
   };
 }
