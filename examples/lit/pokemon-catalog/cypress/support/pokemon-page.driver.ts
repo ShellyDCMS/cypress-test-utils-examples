@@ -1,6 +1,6 @@
 import { PokemonCatalogComponentDriver } from "@components/pokemon-catalog/pokemon-catalog.component.driver";
-import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { PokemonList } from "@services/pokemon.service";
+import { CypressHelper } from "@shellygo/cypress-test-utils";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper();
@@ -14,7 +14,7 @@ export class PokemonPageDriver {
   given = {
     fetchPokemonResponse: (response: PokemonList) =>
       this.helper.given.interceptAndMockResponse({
-        url: "/**/pokemon/*",
+        url: "/**/pokemon**",
         response,
         alias: "pokemon"
       })
