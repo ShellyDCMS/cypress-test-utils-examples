@@ -39,6 +39,21 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       when.render(PokemonCatalogComponent, testConfig);
     });
 
+    describe("when clicking prev", () => {
+      beforeEach(() => {
+        when.waitForPrevToBeEnabled();
+        when.clickPrev();
+      });
+
+      it("should emit onPrev", () => {
+        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      });
+
+      it("should call getPokemon with the prev pokemon's url", () => {
+        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
+      });
+    });
+
     describe("when clicking next", () => {
       beforeEach(() => {
         when.waitForNextToBeEnabled();
@@ -64,21 +79,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
     it("should render pokemon count", async () => {
       expect(await get.countText()).to.eq(" 2 of 3 ");
-    });
-
-    describe("bla bla", () => {
-      beforeEach(() => {
-        when.waitForPrevToBeEnabled();
-        when.clickPrev();
-      });
-
-      it("should emit onPrev", () => {
-        expect(get.onPrevSpy().should("have.been.calledOnce"));
-      });
-
-      it("should call getPokemon with the prev pokemon's url", () => {
-        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
-      });
     });
   });
 
