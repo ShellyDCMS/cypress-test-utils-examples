@@ -35,7 +35,7 @@ export const PokemonCatalogComponent = (
 
   useEffect(() => {
     const getFirstPokemon = async () =>
-      setPokemon(await pokemonService?.getPokemon());
+      setPokemon(await pokemonService?.getPokemonByOffset());
     getFirstPokemon();
   }, [pokemonService]);
 
@@ -53,12 +53,11 @@ export const PokemonCatalogComponent = (
       <header>
         {pokemon && (
           <>
+            <PokemonImageComponent pokemonIndex={getPokemonIndex()} />
+            <h2 data-cy="pokemon-name">{getPokemonName()}</h2>
             <div data-cy="count">{`${getPokemonIndex()} of ${
               pokemon.count
             }`}</div>
-
-            <PokemonImageComponent pokemonIndex={getPokemonIndex()} />
-
             <div>
               <button
                 data-cy="prev"
@@ -75,7 +74,6 @@ export const PokemonCatalogComponent = (
                 Next
               </button>
             </div>
-            <div data-cy="pokemon-name">{getPokemonName()}</div>
           </>
         )}
       </header>

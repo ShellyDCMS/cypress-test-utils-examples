@@ -25,7 +25,7 @@ export class PokemonCatalogComponent {
   }
 
   private getFirstPokemon = async () => {
-    this.pokemon = await this.pokemonService.getPokemon();
+    this.pokemon = await this.pokemonService.getPokemonByOffset();
   };
 
   getPokemonName = () => this.pokemon?.results[0]?.name;
