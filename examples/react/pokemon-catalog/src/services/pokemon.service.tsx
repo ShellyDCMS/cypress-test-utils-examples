@@ -11,22 +11,16 @@ export interface PokemonList {
   previous: string | null;
   results: Pokemon[];
 }
-
-export interface FetchPokemonOptions {
-  url?: string;
-  offset?: string;
-}
 export class PokemonService {
   private baseUrl = "https://pokeapi.co/api/v2/pokemon";
-  getPokemon = async ({
-    url = this.baseUrl,
-    offset
-  }: FetchPokemonOptions): Promise<PokemonList> => {
-    const params = new URLSearchParams({ limit: "1" });
-    const fetchUrl = new URL(url);
-    offset && params.append("offset", offset);
+  getPokemon = async (url: string | URL): Promise<PokemonList> =>
+    await (await fetch(url)).json();
+
+  getPokemonByOffset = async (offset: string): Promise<PokemonList> => {
+    const params = new URLSearchParams({ limit: "1", offset });
+    const fetchUrl = new URL(this.baseUrl);
     fetchUrl.search = params.toString();
-    return await (await fetch(fetchUrl)).json();
+    return this.getPokemon(fetchUrl);
   };
 }
 
