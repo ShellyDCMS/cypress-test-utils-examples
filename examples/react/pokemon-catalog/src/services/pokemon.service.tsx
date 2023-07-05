@@ -16,7 +16,7 @@ export class PokemonService {
   getPokemon = async (url: string | URL): Promise<PokemonList> =>
     await (await fetch(url)).json();
 
-  getPokemonByOffset = async (offset: string): Promise<PokemonList> => {
+  getPokemonByOffset = async (offset: string = "0"): Promise<PokemonList> => {
     const params = new URLSearchParams({ limit: "1", offset });
     const fetchUrl = new URL(this.baseUrl);
     fetchUrl.search = params.toString();

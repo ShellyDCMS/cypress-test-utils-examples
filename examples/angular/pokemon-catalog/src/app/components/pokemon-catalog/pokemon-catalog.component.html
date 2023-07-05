@@ -1,6 +1,7 @@
 <div class="catalog">
-  <h1 *ngIf="pokemon" data-cy="pokemon-name">{{ getPokemonName() }}</h1>
   <pokemon-image [pokemonIndex]="getPokemonIndex()"></pokemon-image>
+  <h1 *ngIf="pokemon" data-cy="pokemon-name">{{ getPokemonName() }}</h1>
+
   <p data-cy="count" *ngIf="pokemon">
     {{ getPokemonIndex() }} of {{ pokemon.count }}
   </p>
