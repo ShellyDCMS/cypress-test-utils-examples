@@ -35,8 +35,7 @@ export class PokemonImageComponentDriver {
     render: (element: PokemonImageComponent) => {
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-image pokemonIndex="${this.props.pokemonIndex}"
-          >shelly</pokemon-image
+        html`<pokemon-image pokemonIndex="${this.props.pokemonIndex}"></pokemon-image
         >`
       );
     }

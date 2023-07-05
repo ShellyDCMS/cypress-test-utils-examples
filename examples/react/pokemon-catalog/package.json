@@ -69,6 +69,7 @@
   },
   "resolutions": {
     "babel-loader": "8.1.0",
-    "webpack": "4.44.2"
+    "webpack": "4.44.2",
+    "react-error-overlay": "6.0.9"
   }
 }
