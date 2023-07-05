@@ -28,7 +28,7 @@ export class PokemonPageDriver {
   get = {
     ...this.pokemonDriver.get,
     fetchPokemonOffset: () => {
-      this.helper.waitForLastCall("pokemon");
+      this.helper.when.waitForLastCall("pokemon");
       return this.helper.get.requestQueryParam("pokemon", "offset");
     }
   };
