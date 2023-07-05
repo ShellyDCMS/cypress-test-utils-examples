@@ -25,4 +25,10 @@ describe("React Pokemon Page integration Tests", () => {
   it("should disable prev button once showing first pokemon", async () => {
     expect(await get.pokemon.isPrevButtonDisabled()).to.be.true;
   });
+
+  it.only("should fetch correct pokemon index", async () => {
+    when.pokemon.pokemonGo.typePokemonIndex("50");
+    when.pokemon.pokemonGo.clickGo();
+    expect(await get.pokemon.fetchPokemonOffset()).to.eq("49");
+  });
 });
