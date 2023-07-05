@@ -14,21 +14,20 @@ export const PokemonGo = ({ onSubmit }: IProps) => {
   };
 
   return (
-    <div>
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        onSubmit(searchedPokemon);
+        setValue("");
+      }}
+    >
       <input
         value={value}
         onChange={inputHandler}
         placeholder="Search Pokemon"
       />
 
-      <button
-        onClick={() => {
-          onSubmit(searchedPokemon);
-          setValue("");
-        }}
-      >
-        Go
-      </button>
-    </div>
+      <button type="submit">Go</button>
+    </form>
   );
 };

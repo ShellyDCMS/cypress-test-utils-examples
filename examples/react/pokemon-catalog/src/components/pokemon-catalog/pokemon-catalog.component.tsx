@@ -20,17 +20,19 @@ export const PokemonCatalogComponent = (
   const pokemonService: PokemonService | undefined = useContext(
     PokemonServiceContext
   );
-  const fetchNext = async () =>
+  const fetchNext = async () => {
     pokemon &&
-    pokemon.next &&
-    setPokemon(await pokemonService?.getPokemon({ url: pokemon.next }));
-  onNext && onNext();
+      pokemon.next &&
+      setPokemon(await pokemonService?.getPokemon({ url: pokemon.next }));
+    onNext && onNext();
+  };
 
-  const fetchPrev = async () =>
+  const fetchPrev = async () => {
     pokemon &&
-    pokemon.previous &&
-    setPokemon(await pokemonService?.getPokemon({ url: pokemon.previous }));
-  onPrev && onPrev();
+      pokemon.previous &&
+      setPokemon(await pokemonService?.getPokemon({ url: pokemon.previous }));
+    onPrev && onPrev();
+  };
 
   const fetchByOffset = async (offset: string) => {
     try {
