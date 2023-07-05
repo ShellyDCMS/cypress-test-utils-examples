@@ -26,20 +26,3 @@ describe("React Pokemon Page integration Tests", () => {
     expect(await get.pokemon.isPrevButtonDisabled()).to.be.true;
   });
 });
-// describe("integration", () => {
-//   const pokemonList: PokemonList = {
-//     next: null,
-//     previous: null,
-//     results: [{ name: "name", url: "1" }],
-//     count: 1
-//   };
-
-//   beforeEach(() => {
-//     cy.intercept("/**/pokemon/*", pokemonList);
-//     cy.visit("/");
-//   });
-
-//   it("should disable next button once showing last pokemon", () => {
-//     get.elementByText("Next").should("be.disabled");
-//   });
-// });
