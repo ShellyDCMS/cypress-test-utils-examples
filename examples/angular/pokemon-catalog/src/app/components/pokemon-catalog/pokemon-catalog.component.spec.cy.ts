@@ -66,7 +66,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       expect(await get.countText()).to.eq(" 2 of 3 ");
     });
 
-    describe("when clicking prev", () => {
+    describe("bla bla", () => {
       beforeEach(() => {
         when.waitForPrevToBeEnabled();
         when.clickPrev();
