@@ -5,6 +5,7 @@ import {
   PokemonService,
   PokemonServiceContext
 } from "../../services/pokemon.service";
+import { PokemonGo } from "../pokemon-go/pokemon-go";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
 export interface IPokemonCatalogComponentsProps {
   onPrev?: () => void;
@@ -19,23 +20,26 @@ export const PokemonCatalogComponent = (
   const pokemonService: PokemonService | undefined = useContext(
     PokemonServiceContext
   );
-  const fetchNext = async () => {
+  const fetchNext = async () =>
     pokemon &&
-      pokemon.next &&
-      setPokemon(await pokemonService?.getPokemon(pokemon.next));
-    onNext && onNext();
-  };
+    pokemon.next &&
+    setPokemon(await pokemonService?.getPokemon({ url: pokemon.next }));
+  onNext && onNext();
 
-  const fetchPrev = async () => {
+  const fetchPrev = async () =>
     pokemon &&
-      pokemon.previous &&
-      setPokemon(await pokemonService?.getPokemon(pokemon.previous));
-    onPrev && onPrev();
-  };
+    pokemon.previous &&
+    setPokemon(await pokemonService?.getPokemon({ url: pokemon.previous }));
+  onPrev && onPrev();
 
+  const fetchByOffset = async (offset: string) => {
+    try {
+      setPokemon(await pokemonService?.getPokemon({ offset }));
+    } catch {}
+  };
   useEffect(() => {
     const getFirstPokemon = async () =>
-      setPokemon(await pokemonService?.getPokemon());
+      setPokemon(await pokemonService?.getPokemon({}));
     getFirstPokemon();
   }, [pokemonService]);
 
@@ -58,7 +62,7 @@ export const PokemonCatalogComponent = (
             }`}</div>
 
             <PokemonImageComponent pokemonIndex={getPokemonIndex()} />
-
+            <PokemonGo onSubmit={value => fetchByOffset(value)} />
             <div>
               <button
                 data-cy="prev"
