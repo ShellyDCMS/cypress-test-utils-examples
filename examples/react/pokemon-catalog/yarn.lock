@@ -1665,19 +1665,18 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@shellygo/cypress-test-utils@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-1.0.6.tgz#25afddb5746ee2779e6447dc158841f22cf9ae13"
-  integrity sha512-GI4eseDV7gXJ4yJoAoGbRbxJwD5gQgDaKF1dzRsfB9yp5d20IJqNwcJvxDpj9I4edcxPKZpEOBrVoLWTucP02w==
+"@shellygo/cypress-test-utils@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-1.0.8.tgz#475ab009676096a043599b14174962cb84f18bb8"
+  integrity sha512-INzJmPZZ3Onv0JHYjTmnM1K5zPGaT6Y0IZ3YXERL5MKOKKaVU4hYVDAJ3Vt8BomkoZkszjmjgwcu1U5mo2/1Uw==
   dependencies:
     "@cypress/mount-utils" "^4.0.0"
     "@types/chai-subset" "^1.3.3"
-    "@types/dirty-chai" "^2.0.2"
     chai-subset "^1.6.0"
     cypress "^12.5.1"
     cypress-real-events "^1.7.6"
+    cypress-wait-if-happens "^1.3.3"
     cypress-wait-until "^1.7.2"
-    dirty-chai "^2.0.1"
 
 "@sideway/address@^4.1.3":
   version "4.1.4"
@@ -1859,13 +1858,6 @@
   dependencies:
     "@babel/types" "^7.20.7"
 
-"@types/chai-as-promised@*":
-  version "7.1.5"
-  resolved "https://registry.npmjs.org/@types/chai-as-promised/-/chai-as-promised-7.1.5.tgz"
-  integrity sha512-jStwss93SITGBwt/niYrkf2C+/1KTeZCZl1LaeezTlqppAKeoQC7jxyqYuP72sxBGKCIbw7oHgbYssIRzT5FCQ==
-  dependencies:
-    "@types/chai" "*"
-
 "@types/chai-subset@^1.3.3":
   version "1.3.3"
   resolved "https://registry.npmjs.org/@types/chai-subset/-/chai-subset-1.3.3.tgz"
@@ -1882,14 +1874,6 @@
   version "1.1.3"
   resolved "https://registry.npmjs.org/@types/chance/-/chance-1.1.3.tgz"
   integrity sha512-X6c6ghhe4/sQh4XzcZWSFaTAUOda38GQHmq9BUanYkOE/EO7ZrkazwKmtsj3xzTjkLWmwULE++23g3d3CCWaWw==
-
-"@types/dirty-chai@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@types/dirty-chai/-/dirty-chai-2.0.2.tgz"
-  integrity sha512-BruwIN/UQEU0ePghxEX+OyjngpOfOUKJQh3cmfeq2h2Su/g001iljVi3+Y2y2EFp3IPgjf4sMrRU33Hxv1FUqw==
-  dependencies:
-    "@types/chai" "*"
-    "@types/chai-as-promised" "*"
 
 "@types/eslint@^7.29.0":
   version "7.29.0"
@@ -4290,6 +4274,11 @@ cypress-real-events@^1.7.6:
   resolved "https://registry.npmjs.org/cypress-real-events/-/cypress-real-events-1.8.1.tgz"
   integrity sha512-8fFnA8EzS3EVbAmpSEUf3A8yZCmfU3IPOSGUDVFCdE1ke1gYL1A+gvXXV6HKUbTPRuvKKt2vpaMbUwYLpDRswQ==
 
+cypress-wait-if-happens@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/cypress-wait-if-happens/-/cypress-wait-if-happens-1.3.3.tgz#609803d8bc264f1e29e20144f37f13e33b523847"
+  integrity sha512-1+fxadD2UFlJWZMzs2/1OA9ZUqMQ+I1Z86Gc2ifZrDZ6GmYihzTbixNAzt++t46to6qHsiXeYQ48gBg1UjYhyQ==
+
 cypress-wait-until@^1.7.2:
   version "1.7.2"
   resolved "https://registry.npmjs.org/cypress-wait-until/-/cypress-wait-until-1.7.2.tgz"
@@ -4586,11 +4575,6 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
-
-dirty-chai@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/dirty-chai/-/dirty-chai-2.0.1.tgz#6b2162ef17f7943589da840abc96e75bda01aff3"
-  integrity sha512-ys79pWKvDMowIDEPC6Fig8d5THiC0DJ2gmTeGzVAoEH18J8OzLud0Jh7I9IWg3NSk8x2UocznUuFmfHCXYZx9w==
 
 dns-equal@^1.0.0:
   version "1.0.0"

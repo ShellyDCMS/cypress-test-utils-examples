@@ -1678,16 +1678,17 @@
     "@angular-devkit/schematics" "14.2.12"
     jsonc-parser "3.1.0"
 
-"@shellygo/cypress-test-utils@^1.0.6":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-1.0.7.tgz#8d4b68279a072c2137d659b08c906b913d4ff116"
-  integrity sha512-YKZHgQvNkBp+6Tl3qAiLwjlnmi31c5j0wG6wACHBo9VXgb96BEgF3jo6x0H65Q0uVhIzV+52/m2H/j+vGk8CRQ==
+"@shellygo/cypress-test-utils@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-1.0.8.tgz#475ab009676096a043599b14174962cb84f18bb8"
+  integrity sha512-INzJmPZZ3Onv0JHYjTmnM1K5zPGaT6Y0IZ3YXERL5MKOKKaVU4hYVDAJ3Vt8BomkoZkszjmjgwcu1U5mo2/1Uw==
   dependencies:
     "@cypress/mount-utils" "^4.0.0"
     "@types/chai-subset" "^1.3.3"
     chai-subset "^1.6.0"
     cypress "^12.5.1"
     cypress-real-events "^1.7.6"
+    cypress-wait-if-happens "^1.3.3"
     cypress-wait-until "^1.7.2"
 
 "@socket.io/component-emitter@~3.1.0":
@@ -3379,6 +3380,11 @@ cypress-real-events@^1.7.6:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.8.1.tgz#d00c7fe93124bbe7c0f27296684838614d24a840"
   integrity sha512-8fFnA8EzS3EVbAmpSEUf3A8yZCmfU3IPOSGUDVFCdE1ke1gYL1A+gvXXV6HKUbTPRuvKKt2vpaMbUwYLpDRswQ==
+
+cypress-wait-if-happens@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/cypress-wait-if-happens/-/cypress-wait-if-happens-1.3.3.tgz#609803d8bc264f1e29e20144f37f13e33b523847"
+  integrity sha512-1+fxadD2UFlJWZMzs2/1OA9ZUqMQ+I1Z86Gc2ifZrDZ6GmYihzTbixNAzt++t46to6qHsiXeYQ48gBg1UjYhyQ==
 
 cypress-wait-until@^1.7.2:
   version "1.7.2"
