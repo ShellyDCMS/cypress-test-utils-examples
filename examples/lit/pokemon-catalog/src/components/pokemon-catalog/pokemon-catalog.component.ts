@@ -9,7 +9,6 @@ import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import styles from "./pokemon-catalog.component.scss";
 
-// customElements.define("pokemon-kuku", PokemonImageComponent);
 @customElement("pokemon-catalog")
 export class PokemonCatalogComponent extends LitElement {
   @state()
@@ -43,7 +42,7 @@ export class PokemonCatalogComponent extends LitElement {
   isPrevDisabled = () => !this.pokemon.previous || !this.pokemonService;
 
   loadPokemon = async () =>
-    (this.pokemon = await this.pokemonService.getPokemon());
+    (this.pokemon = await this.pokemonService.getPokemonByOffset());
 
   loadNext = async () =>
     (this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next));
@@ -67,10 +66,10 @@ export class PokemonCatalogComponent extends LitElement {
       ? ""
       : html`
           <div class="catalog">
-            <h2 data-cy="pokemon-name">${this.pokemon.results[0].name}</h2>
             <pokemon-image
               pokemonIndex="${this.getPokemonIndex()}"
             ></pokemon-image>
+            <h2 data-cy="pokemon-name">${this.pokemon.results[0].name}</h2>
             <p data-cy="count">
               ${this.getPokemonIndex()} of ${this.pokemon.count}
             </p>
