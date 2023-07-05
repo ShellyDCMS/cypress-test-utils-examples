@@ -5,7 +5,7 @@ import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component"
 import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
-describe("shelly", () => {
+describe("Angular PokemonCatalogComponent Tests", () => {
   const { when, given, get, beforeAndAfter } =
     new PokemonCatalogComponentDriver();
 
@@ -23,7 +23,7 @@ describe("shelly", () => {
 
   beforeAndAfter();
 
-  describe("amitai", () => {
+  describe("given one of many pokemons", () => {
     const name = chance.word();
 
     const pokemon: PokemonList = Builder<PokemonList>()
@@ -37,6 +37,21 @@ describe("shelly", () => {
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
       when.render(PokemonCatalogComponent, testConfig);
+    });
+
+    describe("when clicking next", () => {
+      beforeEach(() => {
+        when.waitForNextToBeEnabled();
+        when.clickNext();
+      });
+
+      it("should emit onNext", () => {
+        expect(get.onNextSpy().should("have.been.calledOnce"));
+      });
+
+      it("should fetch next pokemon when next is click", () => {
+        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
+      });
     });
 
     it("should show picture given pokemon provided as input", async () => {
@@ -63,21 +78,6 @@ describe("shelly", () => {
 
       it("should call getPokemon with the prev pokemon's url", () => {
         expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
-      });
-    });
-
-    describe("belly", () => {
-      beforeEach(() => {
-        when.waitForNextToBeEnabled();
-        when.clickNext();
-      });
-
-      it("should emit onNext", () => {
-        expect(get.onNextSpy().should("have.been.calledOnce"));
-      });
-
-      it("should fetch next pokemon when next is click", () => {
-        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
       });
     });
   });
