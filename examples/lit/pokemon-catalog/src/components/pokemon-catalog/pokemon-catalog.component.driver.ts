@@ -66,8 +66,7 @@ export class PokemonCatalogComponentDriver {
         ><pokemon-catalog></pokemon-catalog></pokemon-catalog></pokemon-service-provider>`
       );
       this.helper.when.waitUntil(() =>
-      this.helper.when.waitUntil(() =>
-      this.helper.get.elementByTestId("next").should("be.visible")
+        this.helper.get.elementByTestId("next").should("be.visible")
       );
     },
     clickNext: () => this.helper.when.click("next"),
