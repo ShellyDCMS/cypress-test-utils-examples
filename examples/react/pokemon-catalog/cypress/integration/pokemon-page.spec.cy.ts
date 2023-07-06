@@ -27,9 +27,9 @@ describe("React Pokemon Page integration Tests", () => {
     expect(await get.pokemon.isPrevButtonDisabled()).to.be.true;
   });
 
-  it.only("should fetch correct pokemon index", async () => {
-    when.pokemon.pokemonGo.typePokemonIndex("50");
+  it("should fetch pokemon by index", async () => {
+    when.pokemon.pokemonGo.typePokemonIndex("78");
     when.pokemon.pokemonGo.clickGo();
-    expect(await get.pokemon.fetchPokemonOffset()).to.eq("49");
+    expect(await get.pokemon.fetchPokemonOffset()).to.eq("77");
   });
 });

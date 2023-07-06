@@ -16,12 +16,10 @@ export class PokemonGoComponentDriver {
   };
 
   given = {
-    ...this.helper.given,
     onSubmitSpy: () => (this.props.onSubmit = this.helper.given.spy("onSubmit"))
   };
 
   when = {
-    ...this.helper.when,
     render: (
       type: typeof PokemonGoComponent,
       props?: (Attributes & Partial<IProps>) | null,
@@ -32,7 +30,7 @@ export class PokemonGoComponentDriver {
     },
     typePokemonIndex: (input: string) =>
       this.helper.when.type("pokemon-index", input),
-    clickGo: () => this.when.click("go")
+    clickGo: () => this.helper.when.click("go")
   };
 
   get = {
