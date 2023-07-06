@@ -1,4 +1,3 @@
-import { Chance } from "chance";
 import { PokemonGoComponent } from "./pokemon-go.component";
 import { PokemonGoComponentDriver } from "./pokemon-go.component.driver";
 
@@ -7,16 +6,20 @@ describe("Angular PokemonGoComponent Tests", () => {
     declarations: [PokemonGoComponent]
   };
 
-  const chance = new Chance();
-
-  const { when, given, get, beforeAndAfter } =
+  const { when, get, beforeAndAfter } =
     new PokemonGoComponentDriver();
   beforeAndAfter();
 
-  it("given Go clicked should emit the value", async () => {
+  it("given input filled should have input value", async () => {
     when.render(PokemonGoComponent, testConfig);
     when.typePokemonIndex("42");
-    when.clickGo();
     expect(await get.selectedPokemon()).to.eq("42");
+  });
+
+  it("given input and clicked go should get event value", () => {
+    when.render(PokemonGoComponent, testConfig);
+    when.typePokemonIndex("12");
+    when.clickGo();
+    expect(get.selectedPokemonSpy().should("have.been.called"));
   });
 });
