@@ -21,7 +21,7 @@ describe("React Pokemon e2e", () => {
     expect(await get.pokemon.image.pictureSrc()).to.include("1.gif");
   });
 
-  it("should render pokemon name", () => {
+  it("should render pokemon name", async () => {
     expect(await get.pokemon.nameText()).to.eq("bulbasaur");
   });
 
