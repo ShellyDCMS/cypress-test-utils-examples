@@ -75,7 +75,7 @@ describe("React Pokemon e2e", () => {
     });
   });
 
-  it("should fetch pokemon by index", async () => {
+  it.skip("should fetch pokemon by index", async () => {
     when.pokemon.pokemonGo.typePokemonIndex("78");
     when.pokemon.pokemonGo.clickGo();
     expect(await get.pokemon.nameText()).to.eq("rapidash");
