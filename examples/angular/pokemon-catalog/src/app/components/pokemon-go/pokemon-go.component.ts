@@ -14,5 +14,4 @@ export class PokemonGoComponent {
     public onSumbit = () => {
         this.selectedPokemon.emit(this.searchTerm);
     }
-
 }
