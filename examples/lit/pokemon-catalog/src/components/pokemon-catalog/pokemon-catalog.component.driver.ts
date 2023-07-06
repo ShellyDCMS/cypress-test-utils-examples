@@ -42,8 +42,7 @@ export class PokemonCatalogComponentDriver {
   };
 
   given = {
-    ...this.helper.given,
-    image: { ...this.pokemonImageDriver.given },
+    image: this.pokemonImageDriver.given,
     pokemon: (value: PokemonList) => {
       this.pokemonServiceMock = new PokemonInternalService();
       this.getPokemonStub = this.helper.given.stub();
@@ -57,8 +56,7 @@ export class PokemonCatalogComponentDriver {
   };
 
   when = {
-    ...this.helper.when,
-    image: { ...this.pokemonImageDriver.when },
+    image: this.pokemonImageDriver.when,
     render: (element: PokemonCatalogComponent) => {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
@@ -67,8 +65,8 @@ export class PokemonCatalogComponentDriver {
           .pokemonService="${this.pokemonServiceMock}"
         ><pokemon-catalog></pokemon-catalog></pokemon-catalog></pokemon-service-provider>`
       );
-      this.when.waitUntil(() =>
-        this.get.elementByTestId("next").should("be.visible")
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("next").should("be.visible")
       );
     },
     clickNext: () => this.helper.when.click("next"),
@@ -76,8 +74,7 @@ export class PokemonCatalogComponentDriver {
   };
 
   get = {
-    ...this.helper.get,
-    image: { ...this.pokemonImageDriver.get },
+    image: this.pokemonImageDriver.get,
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),

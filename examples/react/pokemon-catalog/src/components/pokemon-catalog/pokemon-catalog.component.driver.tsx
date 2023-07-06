@@ -29,7 +29,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   given = {
-    ...this.helper.given,
     image: this.pokemonImageDriver.given,
     onNextSpy: () => (this.props.onNext = this.helper.given.spy("onNext")),
     onPrevSpy: () => (this.props.onPrev = this.helper.given.spy("onPrev")),
@@ -45,7 +44,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   when = {
-    ...this.helper.when,
     image: this.pokemonImageDriver.when,
     render: (
       type: typeof PokemonCatalog,
@@ -59,19 +57,18 @@ export class PokemonCatalogComponentDriver {
       this.reactComponentHelper.when.mount(type, mergedProps, children);
     },
     waitForNextToBeEnabled: () =>
-      this.when.waitUntil(() =>
-        this.get.elementByTestId("next").should("be.enabled")
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("next").should("be.enabled")
       ),
     waitForPrevToBeEnabled: () =>
-      this.when.waitUntil(() =>
-        this.get.elementByTestId("prev").should("be.enabled")
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("prev").should("be.enabled")
       ),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
   };
 
   get = {
-    ...this.helper.get,
     image: this.pokemonImageDriver.get,
     onNextSpy: () => this.helper.get.spy("onNext"),
     onPrevSpy: () => this.helper.get.spy("onPrev"),

@@ -1,4 +1,4 @@
-import { AppDriver } from "../support/app.driver";
+import { AppDriver } from "../drivers/app.driver";
 
 describe("Lit Pokemon e2e", () => {
   const { when, get, beforeAndAfter } = new AppDriver();

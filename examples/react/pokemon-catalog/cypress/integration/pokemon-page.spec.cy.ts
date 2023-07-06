@@ -1,7 +1,7 @@
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
 import { PokemonList } from "../../src/services/pokemon.service";
-import { AppDriver } from "../support/app.driver";
+import { AppDriver } from "../drivers/app.driver";
 
 describe("React Pokemon Page integration Tests", () => {
   const chance = new Chance();
@@ -15,6 +15,7 @@ describe("React Pokemon Page integration Tests", () => {
 
   beforeEach(() => {
     given.pokemon.fetchPokemonResponse(pokemonList);
+    given.pokemon.fetchImageResponse("default.png");
     when.visit("/");
   });
 

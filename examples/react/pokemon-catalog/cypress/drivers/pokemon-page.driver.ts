@@ -1,6 +1,6 @@
 import { CypressHelper } from "@shellygo/cypress-test-utils";
-import { PokemonCatalogComponentDriver } from "src/app/components/pokemon-catalog/pokemon-catalog.component.driver";
-import { PokemonList } from "src/app/services/pokemon.service";
+import { PokemonCatalogComponentDriver } from "../../src/components/pokemon-catalog/pokemon-catalog.component.driver";
+import { PokemonList } from "../../src/services/pokemon.service";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper();
@@ -14,8 +14,15 @@ export class PokemonPageDriver {
   given = {
     fetchPokemonResponse: (response: PokemonList) =>
       this.helper.given.interceptAndMockResponse({
-        url: "/**/pokemon**",
+        url: "https://pokeapi.co/api/v2/pokemon**",
         response,
+        alias: "pokemon"
+      }),
+
+    fetchImageResponse: (fileName: string) =>
+      this.helper.given.interceptAndMockResponse({
+        url: "/**/PokeAPI/sprites/**",
+        response: { fixture: fileName },
         alias: "pokemon"
       })
   };
