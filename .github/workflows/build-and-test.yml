@@ -10,8 +10,8 @@ on:
   pull_request:
 
 permissions:
-  checks: write
-  pull-requests: write
+  checks: write-all
+  pull-requests: write-all
 
 jobs:
   print-token:
