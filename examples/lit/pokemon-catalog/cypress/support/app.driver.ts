@@ -11,17 +11,14 @@ export class AppDriver {
     this.pokemonDriver.beforeAndAfter();
   };
   given = {
-    ...this.helper.given,
     pokemon: this.pokemonDriver.given
   };
 
   when = {
-    ...this.helper.when,
     pokemon: this.pokemonDriver.when
   };
 
   get = {
-    ...this.helper.get,
     pokemon: this.pokemonDriver.get
   };
 }

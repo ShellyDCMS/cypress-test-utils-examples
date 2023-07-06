@@ -16,7 +16,6 @@ export class PokemonImageComponentDriver {
   };
 
   given = {
-    ...this.helper.given,
     pokemonIndex: (value: number) => (this.props.pokemonIndex = value),
     mockImageResponse: (fileName: string) =>
       this.helper.given.interceptAndMockResponse({
@@ -31,7 +30,6 @@ export class PokemonImageComponentDriver {
   };
 
   when = {
-    ...this.helper.when,
     render: (
       type: typeof PokemonImageComponent,
       props?: (Attributes & Partial<IProps>) | null,
@@ -43,7 +41,6 @@ export class PokemonImageComponentDriver {
   };
 
   get = {
-    ...this.helper.get,
     pictureSrc: () => this.helper.get.elementsAttribute("pokemon-image", "src"),
     pokemonImage: () => this.helper.get.elementByTestId("pokemon-image"),
     fallBackImage: () =>
