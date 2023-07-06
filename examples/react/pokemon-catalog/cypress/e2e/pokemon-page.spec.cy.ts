@@ -22,7 +22,7 @@ describe("React Pokemon e2e", () => {
   });
 
   it("should render pokemon name", () => {
-    expect(get.elementByText("bulbasaur")).to.exist;
+    expect(await get.pokemon.nameText()).to.eq("bulbasaur");
   });
 
   describe("when clicking next twice", () => {
