@@ -14,10 +14,9 @@ describe("Angular PokemonGoComponent Tests", () => {
   beforeAndAfter();
 
   it("given Go clicked should emit the value", async () => {
-    const pokemonIndex: number = chance.integer({ min: 1, max: 500 });
-    given.pokemonInput(pokemonIndex);
     when.render(PokemonGoComponent, testConfig);
-    when.clickGo()
-    expect(await get.selectedPokemon()).to.eq(pokemonIndex);
+    when.typePokemonIndex("42");
+    when.clickGo();
+    expect(await get.selectedPokemon()).to.eq("42");
   });
 });

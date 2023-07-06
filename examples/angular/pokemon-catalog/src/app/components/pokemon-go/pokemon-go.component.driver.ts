@@ -16,8 +16,7 @@ export class PokemonGoComponentDriver {
   };
 
   given = {
-    pokemonInput: (value: number) =>
-      (this.componentProperties.searchTerm = value),
+    
   };
 
   when = {
@@ -29,12 +28,13 @@ export class PokemonGoComponentDriver {
         ...this.componentProperties
       });
     },
+    typePokemonIndex: (value: string) => this.helper.when.type("search-input", value),
     clickGo: () => {
         this.helper.when.click("go")
     }
   };
 
   get = {
-    selectedPokemon: () => this.helper.get.elementsText("search-input"),
+    selectedPokemon: () => this.helper.get.inputValue("search-input"),
   };
 }
