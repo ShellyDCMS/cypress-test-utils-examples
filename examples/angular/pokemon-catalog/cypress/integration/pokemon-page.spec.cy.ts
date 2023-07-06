@@ -1,6 +1,6 @@
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import { AppDriver } from "cypress/support/app.driver";
+import { AppDriver } from "cypress/drivers/app.driver";
 import { PokemonList } from "src/app/services/pokemon.service";
 
 describe("Angular Pokemon Page integration Tests", () => {
@@ -15,6 +15,7 @@ describe("Angular Pokemon Page integration Tests", () => {
 
   beforeEach(() => {
     given.pokemon.fetchPokemonResponse(pokemonList);
+    given.pokemon.fetchImageResponse("default.png");
     when.visit("/");
   });
 

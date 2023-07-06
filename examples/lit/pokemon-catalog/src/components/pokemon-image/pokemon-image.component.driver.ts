@@ -14,7 +14,6 @@ export class PokemonImageComponentDriver {
   };
 
   given = {
-    ...this.helper.given,
     pokemonIndex: (value: number) => {
       this.props.pokemonIndex = value;
     },
@@ -31,18 +30,17 @@ export class PokemonImageComponentDriver {
   };
 
   when = {
-    ...this.helper.when,
     render: (element: PokemonImageComponent) => {
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-image pokemonIndex="${this.props.pokemonIndex}"></pokemon-image
-        >`
+        html`<pokemon-image
+          pokemonIndex="${this.props.pokemonIndex}"
+        ></pokemon-image>`
       );
     }
   };
 
   get = {
-    ...this.helper.get,
     pokemonImage: () => this.helper.get.elementByTestId("pokemon-image"),
     fallBackImage: () =>
       this.helper.get.elementByTestId("pokemon-fallback-image"),

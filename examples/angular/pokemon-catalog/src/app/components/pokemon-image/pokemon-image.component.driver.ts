@@ -1,7 +1,7 @@
 import type { Type } from "@angular/core";
-import { MountConfig } from "cypress/angular";
 import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressAngularComponentHelper } from "@shellygo/cypress-test-utils/angular";
+import { MountConfig } from "cypress/angular";
 import type { PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {
@@ -16,7 +16,6 @@ export class PokemonImageComponentDriver {
   };
 
   given = {
-    ...this.helper.given,
     pokemonIndex: (value: number) =>
       (this.componentProperties.pokemonIndex = value),
     mockImageResponse: (fileName: string) =>
@@ -32,7 +31,6 @@ export class PokemonImageComponentDriver {
   };
 
   when = {
-    ...this.helper.when,
     render: (
       type: Type<PokemonImageComponent>,
       config: MountConfig<PokemonImageComponent>
@@ -44,7 +42,6 @@ export class PokemonImageComponentDriver {
   };
 
   get = {
-    ...this.helper.get,
     pokemonImage: () => this.helper.get.elementByTestId("pokemon-image"),
     fallBackImage: () =>
       this.helper.get.elementByTestId("pokemon-fallback-image"),

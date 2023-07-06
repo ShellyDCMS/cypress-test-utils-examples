@@ -1,7 +1,6 @@
+import { PokemonCatalogComponentDriver } from "@components/pokemon-catalog/pokemon-catalog.component.driver";
+import { PokemonList } from "@services/pokemon.service";
 import { CypressHelper } from "@shellygo/cypress-test-utils";
-import "cypress-wait-if-happens";
-import { PokemonCatalogComponentDriver } from "../../src/components/pokemon-catalog/pokemon-catalog.component.driver";
-import { PokemonList } from "../../src/services/pokemon.service";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper();
@@ -15,8 +14,15 @@ export class PokemonPageDriver {
   given = {
     fetchPokemonResponse: (response: PokemonList) =>
       this.helper.given.interceptAndMockResponse({
-        url: "/**/pokemon**",
+        url: "https://pokeapi.co/api/v2/pokemon**",
         response,
+        alias: "pokemon"
+      }),
+
+    fetchImageResponse: (fileName: string) =>
+      this.helper.given.interceptAndMockResponse({
+        url: "/**/PokeAPI/sprites/**",
+        response: { fixture: fileName },
         alias: "pokemon"
       })
   };
@@ -26,10 +32,6 @@ export class PokemonPageDriver {
   };
 
   get = {
-    ...this.pokemonDriver.get,
-    fetchPokemonOffset: () => {
-      this.helper.when.waitForLastCall("pokemon");
-      return this.helper.get.requestQueryParam("pokemon", "offset");
-    }
+    ...this.pokemonDriver.get
   };
 }

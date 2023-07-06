@@ -32,7 +32,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   given = {
-    ...this.helper.given,
     image: this.pokemonImageDriver.given,
     pokemonGo: this.pokemonGoDriver.given,
     onNextSpy: () => (this.props.onNext = this.helper.given.spy("onNext")),
@@ -49,7 +48,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   when = {
-    ...this.helper.when,
     image: this.pokemonImageDriver.when,
     pokemonGo: this.pokemonGoDriver.when,
     render: (
@@ -64,19 +62,18 @@ export class PokemonCatalogComponentDriver {
       this.reactComponentHelper.when.mount(type, mergedProps, children);
     },
     waitForNextToBeEnabled: () =>
-      this.when.waitUntil(() =>
-        this.get.elementByTestId("next").should("be.enabled")
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("next").should("be.enabled")
       ),
     waitForPrevToBeEnabled: () =>
-      this.when.waitUntil(() =>
-        this.get.elementByTestId("prev").should("be.enabled")
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("prev").should("be.enabled")
       ),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
   };
 
   get = {
-    ...this.helper.get,
     image: this.pokemonImageDriver.get,
     pokemonGo: this.pokemonGoDriver.get,
     onNextSpy: () => this.helper.get.spy("onNext"),

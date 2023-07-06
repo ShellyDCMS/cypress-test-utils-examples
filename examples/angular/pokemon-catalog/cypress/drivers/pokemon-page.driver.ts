@@ -14,8 +14,15 @@ export class PokemonPageDriver {
   given = {
     fetchPokemonResponse: (response: PokemonList) =>
       this.helper.given.interceptAndMockResponse({
-        url: "/**/pokemon**",
+        url: "https://pokeapi.co/api/v2/pokemon**",
         response,
+        alias: "pokemon"
+      }),
+
+    fetchImageResponse: (fileName: string) =>
+      this.helper.given.interceptAndMockResponse({
+        url: "/**/PokeAPI/sprites/**",
+        response: { fixture: fileName },
         alias: "pokemon"
       })
   };
