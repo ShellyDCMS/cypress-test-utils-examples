@@ -57,7 +57,7 @@ export class PokemonCatalogComponent {
         .pop()
     );
   
-  async selectPokemon(index: number) {
+  selectPokemon = async (index: number) => {
     this.pokemon = await this.pokemonService.getPokemonByOffset("" + index);
   }
 }

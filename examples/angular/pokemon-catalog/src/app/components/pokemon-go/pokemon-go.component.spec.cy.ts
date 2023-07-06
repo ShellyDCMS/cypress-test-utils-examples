@@ -10,13 +10,13 @@ describe("Angular PokemonGoComponent Tests", () => {
     new PokemonGoComponentDriver();
   beforeAndAfter();
 
-  it("given input filled should have input value", async () => {
+  it("When input filled should have input value", async () => {
     when.render(PokemonGoComponent, testConfig);
     when.typePokemonIndex("42");
     expect(await get.selectedPokemon()).to.eq("42");
   });
 
-  it("given input and clicked go should get event value", () => {
+  it("When input and clicked go should get event value", () => {
     when.render(PokemonGoComponent, testConfig);
     when.typePokemonIndex("12");
     when.clickGo();

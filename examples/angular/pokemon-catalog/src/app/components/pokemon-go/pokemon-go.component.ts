@@ -11,7 +11,7 @@ export class PokemonGoComponent {
 
     public searchTerm: number | undefined = undefined;
 
-    public onSumbit() {
+    public onSumbit = () => {
         this.selectedPokemon.emit(this.searchTerm);
     }
 
