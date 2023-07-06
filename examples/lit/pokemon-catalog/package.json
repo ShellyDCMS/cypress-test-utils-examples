@@ -12,8 +12,8 @@
     "cy-e2e:open": "cypress open --config-file cypress.e2e.config.ts",
     "cy-e2e:run": "cypress run --config-file cypress.e2e.config.ts",
     "ci:cy-run-component": "npm run cy-component:run",
-    "ci:cy-run": "npm i -D cypress && npm run cy:run",
-    "ci:cy-run-e2e": "npm i -D cypress && npm run cy-e2e:run"
+    "ci:cy-run": "npm run cy:run",
+    "ci:cy-run-e2e": "npm run cy-e2e:run"
   },
   "author": "",
   "license": "ISC",
