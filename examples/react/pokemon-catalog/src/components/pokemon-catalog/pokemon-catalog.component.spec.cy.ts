@@ -27,7 +27,7 @@ describe("React PokemonCatalogComponent", () => {
       given.onNextSpy();
       given.onPrevSpy();
       when.render(PokemonCatalog);
-      when.wait(200);
+      when.waitForNextToBeEnabled();
     });
 
     it("should show picture given pokemon provided as input", async () => {

@@ -57,12 +57,12 @@ export class PokemonCatalogComponentDriver {
       this.reactComponentHelper.when.mount(type, mergedProps, children);
     },
     waitForNextToBeEnabled: () =>
-      this.when.waitUntil(() =>
-        this.get.elementByTestId("next").should("be.enabled")
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("next").should("be.enabled")
       ),
     waitForPrevToBeEnabled: () =>
-      this.when.waitUntil(() =>
-        this.get.elementByTestId("prev").should("be.enabled")
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("prev").should("be.enabled")
       ),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
