@@ -1,4 +1,3 @@
-// Kindacode.com
 import React, { useState } from "react";
 
 export interface IProps {
