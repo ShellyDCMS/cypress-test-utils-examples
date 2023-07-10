@@ -1,17 +1,32 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
-    selector: "pokemon-go",
-    templateUrl: "./pokemon-go.component.html"
+  selector: "pokemon-go",
+  template: `<div>
+    <input
+      data-cy="pokemon-index"
+      [(ngModel)]="pokemonIndex"
+      (keypress)="numericOnly($event)"
+    />
+    <button type="submit" type="submit" data-cy="go" (click)="onSubmit()">
+      Go
+    </button>
+  </div>`
 })
 export class PokemonGoComponent {
+  @Output()
+  selectedPokemon: EventEmitter<string> = new EventEmitter<string>();
 
-    @Output()
-    selectedPokemon: EventEmitter<number> = new EventEmitter<number>();
+  public pokemonIndex: string = "";
 
-    public searchTerm: number | undefined = undefined;
+  public onSubmit = () => {
+    this.selectedPokemon.emit(this.pokemonIndex);
+    this.pokemonIndex = "";
+  };
 
-    public onSumbit = () => {
-        this.selectedPokemon.emit(this.searchTerm);
-    }
+  numericOnly = (event: KeyboardEvent): boolean => {
+    let digitsRegex = /^([0-9])$/;
+    let result = digitsRegex.test(event.key);
+    return result;
+  };
 }

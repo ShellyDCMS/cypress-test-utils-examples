@@ -6,7 +6,7 @@ export interface IProps {
 }
 export const PokemonGoComponent = ({ onSubmit }: IProps) => {
   const [searchedPokemon, setSearchedPokemon] = useState("");
-  const [value, setValue] = useState("");
+  const [pokemonIndex, setValue] = useState("");
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const digitsRegex = /^[0-9\b]+$/;
@@ -26,7 +26,7 @@ export const PokemonGoComponent = ({ onSubmit }: IProps) => {
     >
       <input
         data-cy="pokemon-index"
-        value={value}
+        value={pokemonIndex}
         onChange={onChange}
         placeholder="Pokemon"
       />

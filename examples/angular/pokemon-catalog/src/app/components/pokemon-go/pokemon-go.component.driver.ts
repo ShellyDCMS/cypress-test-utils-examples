@@ -3,7 +3,6 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressAngularComponentHelper } from "@shellygo/cypress-test-utils/angular";
 import { MountConfig } from "cypress/angular";
 import { PokemonGoComponent } from "./pokemon-go.component";
-import { Subscription } from "rxjs";
 
 export class PokemonGoComponentDriver {
   private helper = new CypressHelper();
@@ -16,9 +15,7 @@ export class PokemonGoComponentDriver {
     this.helper.beforeAndAfter();
   };
 
-  given = {
-
-  }
+  given = {};
 
   when = {
     render: (
@@ -29,12 +26,13 @@ export class PokemonGoComponentDriver {
         ...this.componentProperties
       });
     },
-    typePokemonIndex: (value: string) => this.helper.when.type("search-input", value),
+    typePokemonIndex: (value: string) =>
+      this.helper.when.type("pokemon-index", value),
     clickGo: () => this.helper.when.click("go")
   };
 
   get = {
-    selectedPokemon: () => this.helper.get.inputValue("search-input"),
+    selectedPokemon: () => this.helper.get.inputValue("pokemon-index"),
     selectedPokemonSpy: () => this.helper.get.spy("selectedPokemon")
   };
 }
