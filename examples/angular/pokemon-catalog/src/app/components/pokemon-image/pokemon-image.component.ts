@@ -2,7 +2,25 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "pokemon-image",
-  templateUrl: "./pokemon-image.component.html",
+  template: `<div *ngIf="pokemonIndex">
+    <div>
+      <img
+        *ngIf="!showFallbackImage"
+        class="pokemon"
+        data-cy="pokemon-image"
+        src="{{ getPokemonImage() }}"
+        alt="pokemon"
+        (error)="onImageError($event)"
+      />
+      <img
+        *ngIf="showFallbackImage"
+        class="pokemon-fallback"
+        data-cy="pokemon-fallback-image"
+        src="{{ getFallbackImage() }}"
+        alt="pokemon"
+      />
+    </div>
+  </div> `,
   styleUrls: ["./pokemon-image.component.scss"]
 })
 
