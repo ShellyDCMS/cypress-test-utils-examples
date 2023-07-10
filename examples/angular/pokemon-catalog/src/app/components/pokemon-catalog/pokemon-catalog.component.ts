@@ -3,7 +3,22 @@ import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 
 @Component({
   selector: "pokemon-catalog",
-  templateUrl: "./pokemon-catalog.component.html",
+  template: `<div class="catalog">
+    <pokemon-image [pokemonIndex]="getPokemonIndex()"></pokemon-image>
+    <h1 *ngIf="pokemon" data-cy="pokemon-name">{{ getPokemonName() }}</h1>
+
+    <p data-cy="count" *ngIf="pokemon">
+      {{ getPokemonIndex() }} of {{ pokemon.count }}
+    </p>
+    <div>
+      <button data-cy="prev" (click)="fetchPrev()" [disabled]="prevDisabled()">
+        Prev
+      </button>
+      <button data-cy="next" (click)="fetchNext()" [disabled]="nextDisabled()">
+        Next
+      </button>
+    </div>
+  </div> `,
   styleUrls: ["./pokemon-catalog.component.scss"]
 })
 

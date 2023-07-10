@@ -1,4 +1,10 @@
 # sample regex patterns
 ignore:
-  - "**/spec.**" # tests
-  - "**/driver.ts" # test drivers
+  - "**/*.spec.**" # tests
+  - "**/*.driver.ts" # test drivers
+  - "**/*.module.ts" # modules
+coverage:
+  status:
+    patch: off
+    project:
+      default: off

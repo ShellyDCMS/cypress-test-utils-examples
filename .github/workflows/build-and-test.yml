@@ -13,7 +13,7 @@ permissions:
   checks: write
   pull-requests: write
 
-jobs: 
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -48,13 +48,6 @@ jobs:
       - name: Merge Reports
         if: success() || failure() # run this step even if previous step failed
         run: npm run merge-reports:examples
-
-      - name: Cypress report
-        uses: dmitry/cypress-report-action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pathname: ${{ github.workspace }}/examples/*/pokemon-catalog/cypress/results/json/merged.json
-        if: always()
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
