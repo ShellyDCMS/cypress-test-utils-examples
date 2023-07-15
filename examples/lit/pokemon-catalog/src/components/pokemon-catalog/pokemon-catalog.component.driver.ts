@@ -1,3 +1,4 @@
+import { PokemonGoComponentDriver } from "@components/pokemon-go/pokemon-go.component.driver";
 import { PokemonImageComponentDriver } from "@components/pokemon-image/pokemon-image.component.driver";
 import { ContextProvider } from "@lit-labs/context";
 import { CypressHelper } from "@shellygo/cypress-test-utils";
@@ -35,6 +36,8 @@ export class PokemonCatalogComponentDriver {
   private getPokemonStub: Cypress.Agent<sinon.SinonStub<any[], any>>;
   private pokemonImageDriver: PokemonImageComponentDriver =
     new PokemonImageComponentDriver();
+  private pokemonGoDriver: PokemonGoComponentDriver =
+    new PokemonGoComponentDriver();
 
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();
@@ -43,6 +46,7 @@ export class PokemonCatalogComponentDriver {
 
   given = {
     image: this.pokemonImageDriver.given,
+    pokemonGo: this.pokemonGoDriver.given,
     pokemon: (value: PokemonList) => {
       this.pokemonServiceMock = new PokemonInternalService();
       this.getPokemonStub = this.helper.given.stub();
@@ -57,6 +61,7 @@ export class PokemonCatalogComponentDriver {
 
   when = {
     image: this.pokemonImageDriver.when,
+    pokemonGo: this.pokemonGoDriver.when,
     render: (element: PokemonCatalogComponent) => {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
@@ -75,6 +80,7 @@ export class PokemonCatalogComponentDriver {
 
   get = {
     image: this.pokemonImageDriver.get,
+    pokemonGo: this.pokemonGoDriver.get,
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
