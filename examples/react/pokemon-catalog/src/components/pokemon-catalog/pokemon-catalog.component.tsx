@@ -22,37 +22,34 @@ export const PokemonCatalogComponent = (
   const fetchNext = async () => {
     if (pokemon && pokemon.next) {
       const nextPokemon = await pokemonService?.getPokemon(pokemon.next);
-      setPokemonIfValid(nextPokemon);
+      setPokemon(nextPokemon);
     }
     onNext && onNext();
   };
 
-  const setPokemonIfValid = (pokemon?: PokemonList) => {
-    if (pokemon?.results.length) {
-      setPokemon(pokemon);
-    } else {
-      alert(`pokemon not found`);
-    }
-  };
   const fetchPrev = async () => {
     if (pokemon && pokemon.previous) {
       const prevPokemon = await pokemonService?.getPokemon(pokemon.previous);
-      setPokemonIfValid(prevPokemon);
+      setPokemon(prevPokemon);
     }
     onPrev && onPrev();
   };
 
   const getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
-  const fetchByOffset = async (index: string = "1") => {
+  const fetchByOffset = async (index: string) => {
     const offset: string = getOffsetFromIndex(index);
     const pokemon = await pokemonService?.getPokemonByOffset(offset);
-    setPokemonIfValid(pokemon);
+    if (pokemon?.results.length) {
+      setPokemon(pokemon);
+    } else {
+      alert(`pokemon ${index} not found`);
+    }
   };
 
   useEffect(() => {
-    const getFirstPokemon = async () => fetchByOffset();
+    const getFirstPokemon = async () => fetchByOffset("1");
     getFirstPokemon();
-  });
+  }, [fetchByOffset]);
 
   const getPokemonIndex = () =>
     Number(
