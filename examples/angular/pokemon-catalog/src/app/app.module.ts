@@ -10,7 +10,12 @@ import { PokemonImageComponent } from "./components/pokemon-image/pokemon-image.
 import { PokemonService } from "./services/pokemon.service";
 
 @NgModule({
-  declarations: [AppComponent, PokemonCatalogComponent, PokemonImageComponent],
+  declarations: [
+    AppComponent,
+    PokemonCatalogComponent,
+    PokemonImageComponent,
+    PokemonGoComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [PokemonService],
   bootstrap: [AppComponent]
