@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import "../../App.scss";
 import {
   PokemonList,
@@ -36,6 +36,7 @@ export const PokemonCatalogComponent = (
   };
 
   const getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
+
   const fetchByOffset = async (index: string) => {
     const offset: string = getOffsetFromIndex(index);
     const pokemon = await pokemonService?.getPokemonByOffset(offset);
@@ -46,10 +47,13 @@ export const PokemonCatalogComponent = (
     }
   };
 
+  const getFirstPokemon = useCallback(
+    async () => fetchByOffset("1"),
+    [fetchByOffset]
+  );
   useEffect(() => {
-    const getFirstPokemon = async () => fetchByOffset("1");
     getFirstPokemon();
-  }, [fetchByOffset]);
+  }, []);
 
   const getPokemonIndex = () =>
     Number(
