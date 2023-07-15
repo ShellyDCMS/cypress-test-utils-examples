@@ -29,3 +29,9 @@ For example, a user doesn't mouseUp, he/she hovers.
 In the [examples](/examples) folder you can find 3 small apps; an angular app, a lit app and a react app.
 Each app contains drivers that use helpers, component tests, integration tests and e2e tests.
 As you can see, all test levels use the _same_ driver, meaning that if the feature's implementation changes, you'll need to change the driver alone, not the tests.
+
+## Getting started
+npx yarn
+cd examples/<framework>/pokemon-catalog
+npx yarn
+
