@@ -5,7 +5,6 @@ import { MountConfig } from "cypress/angular";
 import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import type { PokemonCatalogComponent } from "./pokemon-catalog.component";
-import { PokemonGoComponentDriver } from "../pokemon-go/pokemon-go.component.driver";
 
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
@@ -14,9 +13,6 @@ export class PokemonCatalogComponentDriver {
 
   private pokemonImageDriver: PokemonImageComponentDriver =
     new PokemonImageComponentDriver();
-
-  private pokemonGoDriver: PokemonGoComponentDriver =
-    new PokemonGoComponentDriver();
 
   private componentProperties: Partial<PokemonCatalogComponent> = {};
   // @ts-ignore
@@ -29,7 +25,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   given = {
-    pokemonGo: this.pokemonGoDriver.given,
     image: this.pokemonImageDriver.given,
     pokemon: (value: PokemonList) => {
       this.getPokemonStub = this.helper.given.stub();
@@ -43,7 +38,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   when = {
-    pokemonGo: this.pokemonGoDriver.when,
     image: this.pokemonImageDriver.when,
     render: (
       type: Type<PokemonCatalogComponent>,
@@ -66,7 +60,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   get = {
-    pokemonGo: this.pokemonGoDriver.get,
     image: this.pokemonImageDriver.get,
     onNextSpy: () => this.helper.get.spy("onNext"),
     onPrevSpy: () => this.helper.get.spy("onPrev"),
