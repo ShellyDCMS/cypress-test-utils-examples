@@ -104,7 +104,7 @@ export class PokemonCatalogComponent extends LitElement {
               </button>
             </div>
             <div>
-              <pokemon-go onSubmit="fetchPokemonByOffset"></pokemon-go>
+              <pokemon-go .onSubmit="${this.fetchPokemonByOffset}"></pokemon-go>
             </div>
           </div>
         `;
