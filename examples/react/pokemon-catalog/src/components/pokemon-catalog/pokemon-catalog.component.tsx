@@ -52,7 +52,7 @@ export const PokemonCatalogComponent = (
   useEffect(() => {
     const getFirstPokemon = async () => fetchByOffset();
     getFirstPokemon();
-  }, [pokemonService]);
+  }, []);
 
   const getPokemonIndex = () =>
     Number(
