@@ -1,3 +1,4 @@
+import { PokemonGoComponent } from "@components/pokemon-go/pokemon-go.component";
 import { PokemonImageComponent } from "@components/pokemon-image/pokemon-image.component";
 import { ContextConsumer } from "@lit-labs/context";
 import {
@@ -22,7 +23,8 @@ export class PokemonCatalogComponent extends LitElement {
   }
   constructor() {
     super();
-    new PokemonImageComponent();
+    const image = new PokemonImageComponent(); // TODO: find out how to remove this
+    new PokemonGoComponent();
   }
 
   override connectedCallback() {
