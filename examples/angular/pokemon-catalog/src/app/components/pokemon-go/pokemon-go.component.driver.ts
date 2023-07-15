@@ -25,6 +25,7 @@ export class PokemonGoComponentDriver {
       this.angularComponentHelper.when.mount(type, config, {
         ...this.componentProperties
       });
+      this.helper.when.wait(200);
     },
     typePokemonIndex: (value: string) =>
       this.helper.when.type("pokemon-index", value),
