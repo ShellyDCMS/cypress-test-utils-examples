@@ -5,6 +5,7 @@ import {
   PokemonService,
   PokemonServiceContext
 } from "../../services/pokemon.service";
+import { PokemonGoComponent } from "../pokemon-go/pokemon-go";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
 export interface IPokemonCatalogComponentsProps {
   onPrev?: () => void;
@@ -92,6 +93,9 @@ export const PokemonCatalogComponent = (
               >
                 Next
               </button>
+            </div>
+            <div>
+              <PokemonGoComponent onSubmit={fetchByOffset}></PokemonGoComponent>
             </div>
           </>
         )}
