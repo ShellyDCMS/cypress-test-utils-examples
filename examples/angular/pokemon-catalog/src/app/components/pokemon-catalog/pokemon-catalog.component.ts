@@ -82,7 +82,6 @@ export class PokemonCatalogComponent {
     if (pokemon?.results.length) {
       this.pokemon = pokemon;
     } else {
-      debugger;
       alert(`pokemon ${index} not found`);
     }
   };
