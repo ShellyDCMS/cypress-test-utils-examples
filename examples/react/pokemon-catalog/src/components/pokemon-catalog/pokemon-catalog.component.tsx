@@ -35,17 +35,20 @@ export const PokemonCatalogComponent = (
     onPrev && onPrev();
   };
 
-  const fetchByOffset = useCallback(async (index: string) => {
-    const getOffsetFromIndex = (index: string) =>
-      (Number(index) - 1).toString();
-    const offset: string = getOffsetFromIndex(index);
-    const pokemon = await pokemonService?.getPokemonByOffset(offset);
-    if (pokemon?.results.length) {
-      setPokemon(pokemon);
-    } else {
-      alert(`pokemon ${index} not found`);
-    }
-  }, []);
+  const fetchByOffset = useCallback(
+    async (index: string) => {
+      const getOffsetFromIndex = (index: string) =>
+        (Number(index) - 1).toString();
+      const offset: string = getOffsetFromIndex(index);
+      const pokemon = await pokemonService?.getPokemonByOffset(offset);
+      if (pokemon?.results.length) {
+        setPokemon(pokemon);
+      } else {
+        alert(`pokemon ${index} not found`);
+      }
+    },
+    [pokemonService]
+  );
 
   const getFirstPokemon = useCallback(
     async () => fetchByOffset("1"),
