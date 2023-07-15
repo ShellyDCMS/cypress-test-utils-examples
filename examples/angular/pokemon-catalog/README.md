@@ -26,5 +26,5 @@ Run `npm run cy:open` to execute the tests via Cypress.
 
 Run `npm run cy-e2e:open` to execute the end-to-end tests via Cypress
 
-## Component Coverage Report
-[main build component tests coverage report](https://app.codecov.io/gh/ShellyDCMS/cypress-test-utils-examples/tree/main/examples)
+## Coverage Report
+[main build tests coverage report](https://app.codecov.io/gh/ShellyDCMS/cypress-test-utils-examples/tree/main/examples)
