@@ -26,4 +26,9 @@ describe("Lit Pokemon Page integration Tests", () => {
   it("should disable prev button once showing first pokemon", async () => {
     expect(await get.pokemon.isPrevButtonDisabled()).to.be.true;
   });
+  it("should fetch pokemon by index", async () => {
+    when.pokemon.pokemonGo.typePokemonIndex("78");
+    when.pokemon.pokemonGo.clickGo();
+    expect(await get.pokemon.fetchPokemonOffset()).to.eq("77");
+  });
 });
