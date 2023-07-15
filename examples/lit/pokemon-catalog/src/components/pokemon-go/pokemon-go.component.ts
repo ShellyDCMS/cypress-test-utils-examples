@@ -1,17 +1,12 @@
-import { LitElement, css, html } from "lit";
+import { LitElement, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
+import styles from "./pokemon-go.component.scss";
 
 @customElement("pokemon-go")
 export class PokemonGoComponent extends LitElement {
-  static override styles = css`
-    .go {
-      padding-top: 10px;
-    }
-    input[type="text"] {
-      padding: 5px;
-      margin-right: 10px;
-    }
-  `;
+  static override get styles() {
+    return styles;
+  }
 
   @state()
   inputValue = "";
@@ -45,13 +40,16 @@ export class PokemonGoComponent extends LitElement {
     return html`
       <form class="go" @submit=${this.handleFormSubmit}>
         <input
+          data-cy="pokemon-index"
           type="text"
           .value=${this.inputValue}
           @input=${this.handleInputChange}
           @keydown=${this.handleKeyDown}
           placeholder="Pokemon"
         />
-        <button type="submit" .disabled=${this.inputValue === ""}>Go</button>
+        <button type="submit" .disabled=${this.inputValue === ""} data-cy="go">
+          Go
+        </button>
       </form>
     `;
   }

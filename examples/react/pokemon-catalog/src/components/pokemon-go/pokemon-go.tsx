@@ -29,7 +29,7 @@ export const PokemonGoComponent = ({ onSubmit }: IProps) => {
         onChange={onChange}
         placeholder="Pokemon"
       />
-      <button type="submit" data-cy="go">
+      <button type="submit" data-cy="go" disabled={pokemonIndex === ""}>
         Go
       </button>
     </form>

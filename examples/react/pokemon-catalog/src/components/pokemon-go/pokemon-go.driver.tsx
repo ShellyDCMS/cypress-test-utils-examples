@@ -34,7 +34,6 @@ export class PokemonGoComponentDriver {
   };
 
   get = {
-    ...this.helper.get,
     onSubmitSpy: () => this.helper.get.spy("onSubmit"),
     indexValue: () => this.helper.get.inputValue("pokemon-index")
   };
