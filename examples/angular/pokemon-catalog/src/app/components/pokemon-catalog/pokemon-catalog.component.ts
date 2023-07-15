@@ -20,7 +20,6 @@ import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
     </div>
     <div>
       <br />
-      <pokemon-go (selectedPokemon)="fetchPokemonByOffset($event)"></pokemon-go>
     </div>
   </div> `,
   styleUrls: ["./pokemon-catalog.component.scss"]

@@ -1,1 +1,0 @@
-describe("React PokemonImageComponent Tests", () => {});
