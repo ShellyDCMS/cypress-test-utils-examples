@@ -43,15 +43,14 @@ export const PokemonCatalogComponent = (
   };
 
   const getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
-  const fetchByOffset = async (index: string) => {
+  const fetchByOffset = async (index: string = "1") => {
     const offset: string = getOffsetFromIndex(index);
     const pokemon = await pokemonService?.getPokemonByOffset(offset);
     setPokemonIfValid(pokemon);
   };
 
   useEffect(() => {
-    const getFirstPokemon = async () =>
-      setPokemon(await pokemonService?.getPokemonByOffset());
+    const getFirstPokemon = async () => fetchByOffset();
     getFirstPokemon();
   }, [pokemonService]);
 
