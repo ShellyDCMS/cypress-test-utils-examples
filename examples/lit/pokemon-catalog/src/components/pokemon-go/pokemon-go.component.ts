@@ -1,59 +1,60 @@
-import { html, css, LitElement } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { LitElement, html } from "lit";
+import { customElement, property, state } from "lit/decorators.js";
+import styles from "./pokemon-go.component.scss";
 
-@customElement('pokemon-go')
+@customElement("pokemon-go")
 export class PokemonGoComponent extends LitElement {
-  static override styles = css`
-    .go {
-      padding-top: 10px;
-    }
-    input[type='text'] {
-      padding: 5px;
-      margin-right: 10px;
-    }
-  `;
-
-  @state()
-  inputValue = '';
-
-  handleInputChange(event) {
-    const numericValue = event.target.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
-    this.inputValue = numericValue;
+  static override get styles() {
+    return styles;
   }
 
-  handleKeyDown(event) {
-    // Allow only numeric characters, backspace, and delete
+  @state()
+  inputValue = "";
+
+  @property()
+  onSubmit!: (index: string) => void;
+
+  handleInputChange = (event: InputEvent) =>
+    (this.inputValue = (event.target as HTMLInputElement).value);
+
+  handleKeyDown = (event: KeyboardEvent) => {
     if (
-      event.key &&
-      !/[\d\\b]|Delete/i.test(event.key) &&
-      event.key !== 'ArrowLeft' &&
-      event.key !== 'ArrowRight'
+      !event.ctrlKey &&
+      ![
+        "Delete",
+        "Backspace",
+        "ArrowLeft",
+        "ArrowRight",
+        "Enter",
+        "Control"
+      ].includes(event.key) &&
+      /[^0-9]/g.test(event.key)
     ) {
       event.preventDefault();
     }
-  }
+  };
 
-  handleFormSubmit(event) {
-    event.preventDefault(); // Prevent form submission and page refresh
-    if (this.inputValue !== '') {
-      const inputEvent = new CustomEvent('input-number-event', { detail: this.inputValue });
-      this.dispatchEvent(inputEvent);
-      this.inputValue = ''
-    }
-  }
+  handleFormSubmit = (event: Event) => {
+    event.preventDefault();
+    this.onSubmit(this.inputValue);
+    this.inputValue = "";
+  };
 
   override render() {
     return html`
-    <form class="go" @submit=${this.handleFormSubmit}>
-      <input
-        type="text"
-        .value=${this.inputValue}
-        @input=${this.handleInputChange}
-        @keydown=${this.handleKeyDown}
-        placeholder="Pokemon"
-      />
-      <button type="submit">Go</button>
-    </form>
+      <form class="go" @submit=${this.handleFormSubmit}>
+        <input
+          data-cy="pokemon-index"
+          type="text"
+          .value=${this.inputValue}
+          @input=${this.handleInputChange}
+          @keydown=${this.handleKeyDown}
+          placeholder="Pokemon"
+        />
+        <button type="submit" .disabled=${this.inputValue === ""} data-cy="go">
+          Go
+        </button>
+      </form>
     `;
   }
 }

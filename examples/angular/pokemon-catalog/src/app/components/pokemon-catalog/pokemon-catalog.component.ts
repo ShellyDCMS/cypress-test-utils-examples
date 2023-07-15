@@ -20,7 +20,7 @@ import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
     </div>
     <div>
       <br />
-      <pokemon-go (selectedPokemon)="selectPokemon($event)"></pokemon-go>
+      <pokemon-go (selectedPokemon)="fetchPokemonByOffset($event)"></pokemon-go>
     </div>
   </div> `,
   styleUrls: ["./pokemon-catalog.component.scss"]
@@ -76,14 +76,15 @@ export class PokemonCatalogComponent {
         .pop()
     );
 
-  selectPokemon = async (index: string) => {
+  fetchPokemonByOffset = async (index: string) => {
     const pokemon = await this.pokemonService.getPokemonByOffset(
       `${Number(index) - 1}`
     );
     if (pokemon?.results.length) {
       this.pokemon = pokemon;
     } else {
-      alert(`pokemon not found`);
+      debugger;
+      alert(`pokemon ${index} not found`);
     }
   };
 }

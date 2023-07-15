@@ -25,6 +25,7 @@ export class PokemonGoComponentDriver {
       this.angularComponentHelper.when.mount(type, config, {
         ...this.componentProperties
       });
+      this.helper.when.wait(200);
     },
     typePokemonIndex: (value: string) =>
       this.helper.when.type("pokemon-index", value),
@@ -33,6 +34,7 @@ export class PokemonGoComponentDriver {
 
   get = {
     selectedPokemon: () => this.helper.get.inputValue("pokemon-index"),
-    selectedPokemonSpy: () => this.helper.get.spy("selectedPokemon")
+    selectedPokemonSpy: () => this.helper.get.spy("selectedPokemon"),
+    isGoButtonDisabled: () => this.helper.get.isElementDisabled("go")
   };
 }

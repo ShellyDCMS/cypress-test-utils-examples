@@ -1,3 +1,4 @@
+import { PokemonGoComponent } from "@components/pokemon-go/pokemon-go.component";
 import { PokemonImageComponent } from "@components/pokemon-image/pokemon-image.component";
 import { PokemonGoComponent } from "@components/pokemon-go/pokemon-go.component";
 import { ContextConsumer } from "@lit-labs/context";
@@ -24,7 +25,7 @@ export class PokemonCatalogComponent extends LitElement {
   constructor() {
     super();
     const image = new PokemonImageComponent(); // TODO: find out how to remove this
-    new PokemonGoComponent(); 
+    new PokemonGoComponent();
   }
 
   override connectedCallback() {
@@ -62,6 +63,18 @@ export class PokemonCatalogComponent extends LitElement {
         .pop()
     );
   getPokemonName = () => this.pokemon?.results[0].name;
+  getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
+
+  fetchPokemonByOffset = async (index: string) => {
+    const pokemon = await this.pokemonService?.getPokemonByOffset(
+      this.getOffsetFromIndex(index)
+    );
+    if (pokemon?.results.length) {
+      this.pokemon = pokemon;
+    } else {
+      alert(`pokemon ${index} not found`);
+    }
+  };
 
   getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
 
@@ -112,7 +125,9 @@ export class PokemonCatalogComponent extends LitElement {
                 Next
               </button>
             </div>
-            <pokemon-go @input-number-event=${this.getInputEvent}></pokemon-go>
+            <div>
+              <pokemon-go .onSubmit=${this.fetchPokemonByOffset}></pokemon-go>
+            </div>
           </div>
         `;
   }

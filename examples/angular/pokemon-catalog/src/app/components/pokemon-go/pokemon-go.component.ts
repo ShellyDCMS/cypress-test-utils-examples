@@ -2,16 +2,23 @@ import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
   selector: "pokemon-go",
-  template: `<div>
+  template: `<form>
     <input
       data-cy="pokemon-index"
       [(ngModel)]="pokemonIndex"
       (keypress)="numericOnly($event)"
+      name="pokemon-index"
     />
-    <button type="submit" type="submit" data-cy="go" (click)="onSubmit()">
+    <button
+      type="submit"
+      data-cy="go"
+      (click)="onSubmit()"
+      (keydown.enter)="onSubmit()"
+      [disabled]="pokemonIndex === ''"
+    >
       Go
     </button>
-  </div>`
+  </form>`
 })
 export class PokemonGoComponent {
   @Output()
@@ -25,6 +32,7 @@ export class PokemonGoComponent {
   };
 
   numericOnly = (event: KeyboardEvent): boolean => {
+    if (event.key === "Enter") return true;
     let digitsRegex = /^([0-9])$/;
     let result = digitsRegex.test(event.key);
     return result;
