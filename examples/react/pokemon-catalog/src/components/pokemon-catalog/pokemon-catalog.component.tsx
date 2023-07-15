@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import "../../App.scss";
 import {
   PokemonList,
@@ -22,37 +22,41 @@ export const PokemonCatalogComponent = (
   const fetchNext = async () => {
     if (pokemon && pokemon.next) {
       const nextPokemon = await pokemonService?.getPokemon(pokemon.next);
-      setPokemonIfValid(nextPokemon);
+      setPokemon(nextPokemon);
     }
     onNext && onNext();
   };
 
-  const setPokemonIfValid = (pokemon?: PokemonList) => {
-    if (pokemon?.results.length) {
-      setPokemon(pokemon);
-    } else {
-      alert(`pokemon not found`);
-    }
-  };
   const fetchPrev = async () => {
     if (pokemon && pokemon.previous) {
       const prevPokemon = await pokemonService?.getPokemon(pokemon.previous);
-      setPokemonIfValid(prevPokemon);
+      setPokemon(prevPokemon);
     }
     onPrev && onPrev();
   };
 
-  const getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
-  const fetchByOffset = async (index: string = "1") => {
-    const offset: string = getOffsetFromIndex(index);
-    const pokemon = await pokemonService?.getPokemonByOffset(offset);
-    setPokemonIfValid(pokemon);
-  };
+  const fetchByOffset = useCallback(
+    async (index: string) => {
+      const getOffsetFromIndex = (index: string) =>
+        (Number(index) - 1).toString();
+      const offset: string = getOffsetFromIndex(index);
+      const pokemon = await pokemonService?.getPokemonByOffset(offset);
+      if (pokemon?.results.length) {
+        setPokemon(pokemon);
+      } else {
+        alert(`pokemon ${index} not found`);
+      }
+    },
+    [pokemonService]
+  );
 
+  const getFirstPokemon = useCallback(
+    async () => fetchByOffset("1"),
+    [fetchByOffset]
+  );
   useEffect(() => {
-    const getFirstPokemon = async () => fetchByOffset();
     getFirstPokemon();
-  });
+  }, [getFirstPokemon]);
 
   const getPokemonIndex = () =>
     Number(
