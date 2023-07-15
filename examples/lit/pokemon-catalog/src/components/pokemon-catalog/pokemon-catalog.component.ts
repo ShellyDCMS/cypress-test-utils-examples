@@ -64,17 +64,14 @@ export class PokemonCatalogComponent extends LitElement {
   getPokemonName = () => this.pokemon?.results[0].name;
   getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
 
-  fetchByOffset = async (index: string) => {
-    const offset: string = this.getOffsetFromIndex(index);
-    const pokemon = await this.pokemonService?.getPokemonByOffset(offset);
-    this.setPokemonIfValid(pokemon);
-  };
-
-  setPokemonIfValid = (pokemon?: PokemonList) => {
+  fetchPokemonByOffset = async (index: string) => {
+    const pokemon = await this.pokemonService?.getPokemonByOffset(
+      this.getOffsetFromIndex(index)
+    );
     if (pokemon?.results.length) {
       this.pokemon = pokemon;
     } else {
-      alert(`pokemon not found`);
+      alert(`pokemon ${index} not found`);
     }
   };
 
@@ -107,7 +104,7 @@ export class PokemonCatalogComponent extends LitElement {
               </button>
             </div>
             <div>
-              <pokemon-go .onSubmit=${this.fetchByOffset}></pokemon-go>
+              <pokemon-go .onSubmit=${this.fetchPokemonByOffset}></pokemon-go>
             </div>
           </div>
         `;
