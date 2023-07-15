@@ -14,23 +14,27 @@ export class PokemonGoComponent extends LitElement {
   @property()
   onSubmit!: (index: string) => void;
 
-  handleInputChange = event =>
-    (this.inputValue = event.target.value.replace(/[^0-9]/g, ""));
+  handleInputChange = (event: InputEvent) =>
+    (this.inputValue = (event.target as HTMLInputElement).value);
 
-  handleKeyDown = event => {
-    // Allow only numeric characters, backspace, and delete
+  handleKeyDown = (event: KeyboardEvent) => {
     if (
-      event.key &&
-      !/[\d\\b]|Delete/i.test(event.key) &&
-      event.key !== "ArrowLeft" &&
-      event.key !== "ArrowRight" &&
-      event.key !== "Enter"
+      !event.ctrlKey &&
+      ![
+        "Delete",
+        "Backspace",
+        "ArrowLeft",
+        "ArrowRight",
+        "Enter",
+        "Control"
+      ].includes(event.key) &&
+      /[^0-9]/g.test(event.key)
     ) {
       event.preventDefault();
     }
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event: Event) => {
     event.preventDefault();
     this.onSubmit(this.inputValue);
     this.inputValue = "";

@@ -5,7 +5,19 @@ describe("Lit PokemonImageComponent", () => {
   const { when, given, get, beforeAndAfter } = new PokemonGoComponentDriver();
   beforeAndAfter();
 
-  it("when typing index and submiting should call onSubmit", () => {
+  it("Go button should be disabled", async () => {
+    when.render(new PokemonGoComponent());
+    expect(await get.isGoButtonDisabled()).to.be.true;
+  });
+
+  it("when typing index Go button should be enabled", async () => {
+    given.onSubmitSpy();
+    when.render(new PokemonGoComponent());
+    when.typePokemonIndex("33");
+    expect(await get.isGoButtonDisabled()).to.be.false;
+  });
+
+  it("when typing index and submitting should call onSubmit", () => {
     given.onSubmitSpy();
     when.render(new PokemonGoComponent());
     when.typePokemonIndex("33");

@@ -24,9 +24,10 @@ export class PokemonGoComponentDriver {
 
   when = {
     render: (element: PokemonGoComponent) => {
+      this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-go onSubmit="${this.props.onSubmit}"></pokemon-go>`
+        html`<pokemon-go .onSubmit="${this.props.onSubmit}"></pokemon-go>`
       );
     },
     typePokemonIndex: (input: string) =>
@@ -36,6 +37,7 @@ export class PokemonGoComponentDriver {
 
   get = {
     onSubmitSpy: () => this.helper.get.spy("onSubmit"),
-    indexValue: () => this.helper.get.inputValue("pokemon-index")
+    indexValue: () => this.helper.get.inputValue("pokemon-index"),
+    isGoButtonDisabled: () => this.helper.get.isElementDisabled("go")
   };
 }

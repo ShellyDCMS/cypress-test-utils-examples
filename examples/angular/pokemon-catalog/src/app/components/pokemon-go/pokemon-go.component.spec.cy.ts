@@ -8,8 +8,18 @@ describe("Angular PokemonGoComponent Tests", () => {
     imports: [FormsModule]
   };
 
-  const { when, get, beforeAndAfter } = new PokemonGoComponentDriver();
+  const { when, get, given, beforeAndAfter } = new PokemonGoComponentDriver();
   beforeAndAfter();
+  it("Go button should be disabled", async () => {
+    when.render(PokemonGoComponent, testConfig);
+    expect(await get.isGoButtonDisabled()).to.be.true;
+  });
+
+  it("when typing index Go button should be enabled", async () => {
+    when.render(PokemonGoComponent, testConfig);
+    when.typePokemonIndex("33");
+    expect(await get.isGoButtonDisabled()).to.be.false;
+  });
 
   it("When input filled should have input value", async () => {
     when.render(PokemonGoComponent, testConfig);
