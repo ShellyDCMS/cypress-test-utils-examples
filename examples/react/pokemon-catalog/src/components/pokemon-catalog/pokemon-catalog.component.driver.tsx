@@ -69,6 +69,10 @@ export class PokemonCatalogComponentDriver {
       this.helper.when.waitUntil(() =>
         this.helper.get.elementByTestId("prev").should("be.enabled")
       ),
+    waitForGoToBeEnabled: () =>
+      this.helper.when.waitUntil(() =>
+        this.helper.get.elementByTestId("go").should("be.enabled")
+      ),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
   };
