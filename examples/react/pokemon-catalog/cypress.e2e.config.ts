@@ -16,7 +16,7 @@ export default defineConfig({
     toConsole: true
   },
   e2e: {
-    baseUrl: "https://shellydcms.github.io/cypress-test-utils-examples/react/",
+    baseUrl: "http://localhost:3000",
     supportFile: false,
     specPattern: "cypress/e2e/**/*.spec.cy.{js,jsx,ts,tsx}",
     excludeSpecPattern: "cypress/**/*.driver.{js,jsx,ts,tsx}",
