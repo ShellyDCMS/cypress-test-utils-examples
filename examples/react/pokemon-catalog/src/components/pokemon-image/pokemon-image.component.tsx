@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import "./pokemon-image.scss";
 
 export interface IProps {
@@ -8,7 +8,6 @@ export interface IProps {
 export const PokemonImageComponent = (props: IProps) => {
   const { pokemonIndex } = props;
   const [showFallbackImage, setShowFallbackImage] = useState(false);
-  useEffect(() => setShowFallbackImage(false), [pokemonIndex]);
 
   const onImageError = (event: SyntheticEvent<HTMLImageElement, Event>) => {
     setShowFallbackImage(true);
