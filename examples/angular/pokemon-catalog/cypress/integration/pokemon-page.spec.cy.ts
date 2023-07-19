@@ -27,6 +27,10 @@ describe("Angular Pokemon Page integration Tests", () => {
     expect(await get.pokemon.isPrevButtonDisabled()).to.be.true;
   });
 
+  it("should render correct image", async () => {
+    expect(await get.pokemon.image.pictureSrc()).to.include("1.gif");
+  });
+
   it("should fetch pokemon by index", async () => {
     when.pokemon.pokemonGo.typePokemonIndex("78");
     when.pokemon.pokemonGo.clickGo();
