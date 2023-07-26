@@ -33,7 +33,6 @@ describe("React Pokemon Page integration Tests", () => {
 
   it("should fetch pokemon by index", async () => {
     when.pokemon.pokemonGo.typePokemonIndex("78");
-    when.pokemon.waitForGoToBeEnabled();
     when.pokemon.pokemonGo.clickGo();
     expect(await get.pokemon.fetchPokemonOffset()).to.eq("77");
   });
