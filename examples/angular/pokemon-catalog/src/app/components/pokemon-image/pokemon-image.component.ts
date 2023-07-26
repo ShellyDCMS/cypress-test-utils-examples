@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnChanges } from "@angular/core";
 
 @Component({
   selector: "pokemon-image",
@@ -25,7 +25,7 @@ import { Component, Input } from "@angular/core";
 })
 
 //
-export class PokemonImageComponent {
+export class PokemonImageComponent implements OnChanges {
   @Input() pokemonIndex: number = 1;
   showFallbackImage: boolean = false;
 
@@ -33,6 +33,9 @@ export class PokemonImageComponent {
     this.showFallbackImage = true;
   }
 
+  ngOnChanges() {
+    this.showFallbackImage = false;
+  }
   getPokemonImage = () => {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${this.pokemonIndex}.gif`;
   };

@@ -75,4 +75,19 @@ describe("Angular Pokemon e2e", () => {
       });
     });
   });
+
+  describe("when changing from pokemon without gif to pokemon with gif", () => {
+    beforeEach(() => {});
+    it("should render pokemon gif", async () => {
+      when.pokemon.pokemonGo.typePokemonIndex("888");
+      when.wait(400);
+      when.pokemon.pokemonGo.clickGo();
+      when.pokemon.pokemonGo.typePokemonIndex("33");
+      when.wait(400);
+
+      when.pokemon.pokemonGo.clickGo();
+      when.wait(400);
+      expect(await get.pokemon.image.pictureSrc()).to.include("/33.gif");
+    });
+  });
 });

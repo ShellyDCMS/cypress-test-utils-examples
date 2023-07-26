@@ -69,10 +69,6 @@ export class PokemonCatalogComponentDriver {
       this.helper.when.waitUntil(() =>
         this.helper.get.elementByTestId("prev").should("be.enabled")
       ),
-    waitForGoToBeEnabled: () =>
-      this.helper.when.waitUntil(() =>
-        this.helper.get.elementByTestId("go").should("be.enabled")
-      ),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
   };
@@ -85,6 +81,7 @@ export class PokemonCatalogComponentDriver {
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
+    isGoButtonDisabled: () => this.helper.get.isElementDisabled("go"),
     isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
     getPokemonSpy: () => this.getPokemonStub,
     pokemonServiceMock: () => this.props.service
