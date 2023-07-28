@@ -31,7 +31,9 @@ Each app contains drivers that use helpers, component tests, integration tests a
 As you can see, all test levels use the _same_ driver, meaning that if the feature's implementation changes, you'll need to change the driver alone, not the tests.
 
 ## Getting started
-npx yarn
-cd examples/<framework>/pokemon-catalog
-npx yarn
+`npx yarn`
+
+`cd examples/<framework>/pokemon-catalog`
+
+`npx yarn`
 
