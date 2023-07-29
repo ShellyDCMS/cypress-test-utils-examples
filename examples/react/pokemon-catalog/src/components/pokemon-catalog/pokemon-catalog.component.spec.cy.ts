@@ -7,7 +7,7 @@ import { PokemonCatalog } from "./pokemon-catalog.container";
 describe("React PokemonCatalogComponent", () => {
   const chance = new Chance();
 
-  const { when, given, get, beforeAndAfter } =
+  let { beforeAndAfter, given, when, get } =
     new PokemonCatalogComponentDriver();
   beforeAndAfter();
 
@@ -22,6 +22,7 @@ describe("React PokemonCatalogComponent", () => {
       .build();
 
     beforeEach(() => {
+      ({ given, when, get } = new PokemonCatalogComponentDriver());
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
       given.onNextSpy();
@@ -81,6 +82,7 @@ describe("React PokemonCatalogComponent", () => {
       .build();
 
     beforeEach(() => {
+      ({ given, when, get } = new PokemonCatalogComponentDriver());
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
       when.render(PokemonCatalog);

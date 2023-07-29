@@ -6,7 +6,7 @@ import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.drive
 
 describe("Lit PokemonCatalogComponent", () => {
   const chance = new Chance();
-  const { when, given, get, beforeAndAfter } =
+  let { beforeAndAfter, given, when, get } =
     new PokemonCatalogComponentDriver();
   beforeAndAfter();
 
@@ -18,6 +18,7 @@ describe("Lit PokemonCatalogComponent", () => {
       .build();
 
     beforeEach(() => {
+      ({ given, when, get } = new PokemonCatalogComponentDriver());
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
       when.render(new PokemonCatalogComponent());
@@ -52,6 +53,7 @@ describe("Lit PokemonCatalogComponent", () => {
       .build();
 
     beforeEach(() => {
+      ({ given, when, get } = new PokemonCatalogComponentDriver());
       given.pokemon(pokemon);
       when.render(new PokemonCatalogComponent());
     });

@@ -6,7 +6,7 @@ import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
 describe("Angular PokemonCatalogComponent Tests", () => {
-  const { when, given, get, beforeAndAfter } =
+  let { beforeAndAfter, given, when, get } =
     new PokemonCatalogComponentDriver();
 
   const testConfig = {
@@ -34,6 +34,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       .build();
 
     beforeEach(() => {
+      ({ given, when, get } = new PokemonCatalogComponentDriver());
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
       when.render(PokemonCatalogComponent, testConfig);
@@ -90,6 +91,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       .build();
 
     beforeEach(() => {
+      ({ given, when, get } = new PokemonCatalogComponentDriver());
       given.pokemon(pokemon);
       when.render(PokemonCatalogComponent, testConfig);
     });
