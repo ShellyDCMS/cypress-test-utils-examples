@@ -19,6 +19,20 @@ If you wish to get "hands-on", you can practice adding the pokemon-go component 
 
 `npm run cy:open`
 
+## Test Drivers
+The driver pattern basically means that we have an additional class which is responsible of “bridging the gap” between our test file and our component.
+It will help our tests be unaware of the inner works of a component. 
+In addition, if we change something in the component which causes the test to fail, we will just have to amend the driver and the tests will just pass again when the same logic works.
+
+### Structure
+Every Driver exposes the following public properties
+#### given
+The given property will hold methods which will allow us to set pre-conditions before something takes place.
+This is a classic place to have methods which will set the inputs which are going to be passed down to our component.
+#### when
+The when property will hold methods of “events” which will take place like render, click, hover, etc.
+#### get
+The get property will hold methods which will give our tests access to the “output” of the component in a “black box” fashion
 
 ## Let's Go!
 
@@ -31,6 +45,7 @@ You can eaither practice TDD - adding another failing test every time and then m
 Or you can add tests only to the already implemented pokemon-go component; In that case, switch to `add-tests-workshop-starter` branch.
 
 ### Add your first integration test
+
 
 
 
