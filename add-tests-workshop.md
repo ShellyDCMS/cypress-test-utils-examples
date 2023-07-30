@@ -20,9 +20,9 @@ If you wish to get "hands-on", you can practice adding the pokemon-go component 
 `npm run cy:open`
 
 ## Test Drivers 
-The *driver pattern* basically means that we have an additional class which is responsible of “bridging the gap” between our test file and our component.
-It will help our tests be unaware of the inner works of a component. 
-In addition, if we change something in the component which causes the test to fail, we will just have to amend the driver and the tests will just pass again when the same logic works.
+The **driver pattern** basically means that we have an additional class which is responsible of “bridging the gap” between our test file and our component.
+It will help our tests be **unaware** of the inner works of a component. 
+In addition, if we **change** something in the component which causes the test to fail, we will just have to amend the driver and the tests will just pass again when the same logic works.
 
 ### Structure
 Every Driver exposes the following public properties
@@ -53,17 +53,20 @@ Runing the front end application while mocking the backend server
 Using cypress as a helper robot that behaves like a user to click around the app and verify it functions correctly
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/acc535db-5dee-4fb5-a2fc-99e3b4a6ad33)
 
-
-## Let's Go!
-
+## Starting Point
 Main branch contains the following components
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/5edf6f5d-3b28-486e-b236-d6b1b5f2de70)
 Let's add a "pokeomon-go" component, to fetch a pokemon by index.
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/003cf40f-d32a-43c0-9d0f-5377a6fa1235)
 
+### Files Structure
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/ac287165-5844-4364-92c5-56d9e10f41ac)
+### Cypress Files Structure
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/c64b1b45-3874-4736-bb98-88d6bc4c7c41)
+
 You can eaither practice TDD - adding another failing test every time and then making it work by adding functionnallity
 Or you can add tests only to the already implemented pokemon-go component; In that case, switch to `add-tests-workshop-starter` branch.
-
+## Let's Go!
 ### Add your first integration test
 
 
