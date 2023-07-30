@@ -68,6 +68,23 @@ You can eaither practice TDD - adding another failing test every time and then m
 Or you can add tests only to the already implemented pokemon-go component; In that case, switch to `add-tests-workshop-starter` branch.
 ## Let's Go!
 ### Add your first integration test
+Add the following Integration test (it is an image on purpose to avoid copy&paste so you develop some "Muscle Memory") 
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/58aedb75-b0fc-417e-a87b-2f8f4025fbfa)
+Run the test:
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/ec34919d-caf2-4f46-ad3c-df05ec7050b5)
+
+### Add Pokemon Go Component Tests and Driver
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/9efdf901-bc8c-4cec-aadd-2feab92bc660)
+If you get stuck, you can always take a pik at the `add-tests-workshop-solution` branch
+
+## Build a Bug Trap
+Jump to Pokemon #33
+Then to #888And then back to #33
+Can you spot the difference?
+Let's add a test to "trap" the defect befroe we fix it
+
+
+
 
 
 
