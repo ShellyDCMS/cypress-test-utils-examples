@@ -75,13 +75,19 @@ Run the test:
 
 ### Add Pokemon Go Component Tests and Driver
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/9efdf901-bc8c-4cec-aadd-2feab92bc660)
-If you get stuck, you can always take a pik at the `add-tests-workshop-solution` branch
+If you get stuck, you can always take a peek at the `add-tests-workshop-solution` branch
 
 ## Build a Bug Trap
 Jump to Pokemon #33
 Then to #888And then back to #33
 Can you spot the difference?
 Let's add a test to "trap" the defect befroe we fix it
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/b0f58bf2-463f-4cd5-8042-7a0fa7d0d4d4)
+Now, fix the defect!
+
+## Take aways
+1. Note how appart of renderning components, the tests and drivers look practically the same, regardless of weather this is a react, angular or a lit application.
+2. Note how using test drivers impacts tests readability and maintainability
 
 
 
