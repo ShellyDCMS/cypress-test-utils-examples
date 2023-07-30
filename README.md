@@ -1,5 +1,7 @@
 # cypress-test-utils-examples
-<img src="./pokemon-catalog.gif?raw=true" width="200px">
+
+![ezgif com-video-to-gif (3)](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/9764ff15-2fc1-4527-9865-51696529ddce)
+
 Test Examples using Cypress helpers to control your UI components that work in all test levels. From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.
 Making TDD fun in the modular UI area.
 
