@@ -5,6 +5,8 @@
 Test Examples using Cypress helpers to control your UI components that work in all test levels. From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.
 Making TDD fun in the modular UI area.
 
+You can follow the [workshop instruction](https://github.com/ShellyDCMS/cypress-test-utils-examples/blob/main/add-tests-workshop.md) if you wish to get "hands-on"
+
 [![codecov](https://codecov.io/gh/ShellyDCMS/cypress-test-utils-examples/branch/more-covreage/graph/badge.svg?token=D9TQE3K9UE)](https://codecov.io/gh/ShellyDCMS/cypress-test-utils-examples)
 
 CypressHelper makes it saner to write UI testing. It enables creating component drivers that will work on all testing levels (component, integration, e2e).
