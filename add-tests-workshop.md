@@ -82,7 +82,8 @@ Jump to Pokemon #33
 Then to #888And then back to #33
 Can you spot the difference?
 Let's add a test to "trap" the defect befroe we fix it
-![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/b0f58bf2-463f-4cd5-8042-7a0fa7d0d4d4)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/b5d6876e-9e86-4403-b669-cc59879ee34a)
+
 Now, fix the defect!
 
 ## Take aways
