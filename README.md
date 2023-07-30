@@ -1,4 +1,5 @@
 # cypress-test-utils-examples
+![](https://github.com/ShellyDCMS/cypress-test-utils-examples/blob/main/pokemon-catalog.gif)
 
 Test Examples using Cypress helpers to control your UI components that work in all test levels. From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.
 Making TDD fun in the modular UI area.
