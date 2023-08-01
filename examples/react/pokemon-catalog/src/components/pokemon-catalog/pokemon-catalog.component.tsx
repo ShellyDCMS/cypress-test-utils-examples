@@ -1,8 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import "../../App.scss";
 import {
+  IPokemonService,
   PokemonList,
-  PokemonService,
   PokemonServiceContext
 } from "../../services/pokemon.service";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
@@ -16,7 +16,7 @@ export const PokemonCatalogComponent = (
 ) => {
   const { onNext, onPrev } = props;
   const [pokemon, setPokemon] = useState<PokemonList>();
-  const pokemonService: PokemonService | undefined = useContext(
+  const pokemonService: IPokemonService | undefined = useContext(
     PokemonServiceContext
   );
   const fetchNext = async () => {
