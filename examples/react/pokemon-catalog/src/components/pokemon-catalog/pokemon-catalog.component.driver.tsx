@@ -1,7 +1,7 @@
 import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressReactComponentHelper } from "@shellygo/cypress-test-utils/react";
 import { Attributes, ReactNode } from "react";
-import { PokemonList, PokemonService } from "../../services/pokemon.service";
+import { IPokemonService, PokemonList } from "../../services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import {
   IPokemonCatalogPros,
@@ -13,7 +13,7 @@ export class PokemonCatalogComponentDriver {
   private pokemonImageDriver: PokemonImageComponentDriver =
     new PokemonImageComponentDriver();
 
-  private pokemonServiceMock: Partial<PokemonService> = {
+  private pokemonServiceMock: IPokemonService = {
     getPokemon: url => Promise.reject(),
     getPokemonByOffset: offset => Promise.reject()
   };
