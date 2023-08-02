@@ -23,8 +23,6 @@ import { Component, Input } from "@angular/core";
   </div> `,
   styleUrls: ["./pokemon-image.component.scss"]
 })
-
-//
 export class PokemonImageComponent {
   @Input() pokemonIndex: number = 1;
   showFallbackImage: boolean = false;

@@ -53,7 +53,9 @@ describe("React PokemonCatalogComponent", () => {
       });
 
       it("should fetch next pokemon when next is click", () => {
-        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
+        expect(
+          get.getPokemonSpy().should("have.been.calledWith", pokemon.next)
+        );
       });
     });
 
@@ -68,7 +70,9 @@ describe("React PokemonCatalogComponent", () => {
       });
 
       it("should call getPokemon with the prev pokemon's url", () => {
-        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
+        expect(
+          get.getPokemonSpy().should("have.been.calledWith", pokemon.previous)
+        );
       });
     });
   });

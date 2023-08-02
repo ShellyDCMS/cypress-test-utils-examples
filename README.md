@@ -1,7 +1,11 @@
 # cypress-test-utils-examples
 
+![ezgif com-video-to-gif (3)](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/9764ff15-2fc1-4527-9865-51696529ddce)
+
 Test Examples using Cypress helpers to control your UI components that work in all test levels. From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.
 Making TDD fun in the modular UI area.
+
+You can follow the [workshop instruction](https://github.com/ShellyDCMS/cypress-test-utils-examples/blob/main/add-tests-workshop.md) if you wish to get "hands-on"
 
 [![codecov](https://codecov.io/gh/ShellyDCMS/cypress-test-utils-examples/branch/more-covreage/graph/badge.svg?token=D9TQE3K9UE)](https://codecov.io/gh/ShellyDCMS/cypress-test-utils-examples)
 
@@ -31,7 +35,9 @@ Each app contains drivers that use helpers, component tests, integration tests a
 As you can see, all test levels use the _same_ driver, meaning that if the feature's implementation changes, you'll need to change the driver alone, not the tests.
 
 ## Getting started
-npx yarn
-cd examples/<framework>/pokemon-catalog
-npx yarn
+`npx yarn`
+
+`cd examples/<framework>/pokemon-catalog`
+
+`npx yarn`
 
