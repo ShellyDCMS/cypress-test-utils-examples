@@ -28,7 +28,7 @@ describe("Lit PokemonCatalogComponent", () => {
     });
 
     it("should render pokemon count", async () => {
-      expect(await get.countText()).to.include("1 of 1\n");
+      expect(await get.countText()).to.include("1 of 1");
     });
 
     it("next button should be disabled", async () => {
@@ -67,7 +67,7 @@ describe("Lit PokemonCatalogComponent", () => {
     it("should render pokemon count", async () => {
       given.pokemon(pokemon);
       when.render(new PokemonCatalogComponent());
-      expect(await get.countText()).to.include("2 of 3\n");
+      expect(await get.countText()).to.include("2 of 3");
     });
 
     describe("when clicking prev", () => {
