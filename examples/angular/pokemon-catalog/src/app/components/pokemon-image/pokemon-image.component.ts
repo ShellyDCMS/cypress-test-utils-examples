@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "pokemon-image",
@@ -23,9 +23,7 @@ import { Component, Input, OnChanges } from "@angular/core";
   </div> `,
   styleUrls: ["./pokemon-image.component.scss"]
 })
-
-//
-export class PokemonImageComponent implements OnChanges {
+export class PokemonImageComponent {
   @Input() pokemonIndex: number = 1;
   showFallbackImage: boolean = false;
 

@@ -1,7 +1,7 @@
 import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressReactComponentHelper } from "@shellygo/cypress-test-utils/react";
 import { Attributes, ReactNode } from "react";
-import { PokemonList, PokemonService } from "../../services/pokemon.service";
+import { IPokemonService, PokemonList } from "../../services/pokemon.service";
 import { PokemonGoComponentDriver } from "../pokemon-go/pokemon-go.driver";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import {
@@ -16,14 +16,15 @@ export class PokemonCatalogComponentDriver {
   private pokemonGoDriver: PokemonGoComponentDriver =
     new PokemonGoComponentDriver();
 
-  // @ts-ignore
-  private getPokemonStub: Cypress.Agent<sinon.SinonStub<any[], any>>;
-  private pokemonServiceMock: PokemonService = new PokemonService();
+  private pokemonServiceMock: IPokemonService = {
+    getPokemon: url => Promise.reject(),
+    getPokemonByOffset: offset => Promise.reject()
+  };
 
   private props: IPokemonCatalogPros = {
     onNext: () => {},
     onPrev: () => {},
-    service: new PokemonService()
+    service: this.pokemonServiceMock
   };
 
   beforeAndAfter = () => {
@@ -37,14 +38,16 @@ export class PokemonCatalogComponentDriver {
     onNextSpy: () => (this.props.onNext = this.helper.given.spy("onNext")),
     onPrevSpy: () => (this.props.onPrev = this.helper.given.spy("onPrev")),
     pokemon: (value: PokemonList) => {
-      this.getPokemonStub = this.helper.given.stub();
-      this.props.service!.getPokemon = this.getPokemonStub;
-      this.getPokemonStub.callsFake(() => {
-        return value;
-      });
-    },
-    getPokemonSpy: () =>
-      this.helper.given.spyOnObject(this.pokemonServiceMock, "getPokemon")
+      this.pokemonServiceMock.getPokemon = this.helper.given
+        .stub()
+        .as(this.pokemonServiceMock.getPokemon!.name)
+        .returns(value);
+
+      this.pokemonServiceMock.getPokemonByOffset = this.helper.given
+        .stub()
+        .as(this.pokemonServiceMock.getPokemonByOffset!.name)
+        .returns(value);
+    }
   };
 
   when = {
@@ -83,7 +86,12 @@ export class PokemonCatalogComponentDriver {
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
     isGoButtonDisabled: () => this.helper.get.isElementDisabled("go"),
     isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
-    getPokemonSpy: () => this.getPokemonStub,
+    getPokemonSpy: () =>
+      this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
+    getPokemonByOffsetSpy: () =>
+      this.helper.get.spyFromFunction(
+        this.pokemonServiceMock.getPokemonByOffset!
+      ),
     pokemonServiceMock: () => this.props.service
   };
 }

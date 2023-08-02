@@ -11,7 +11,6 @@ export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
   private angularComponentHelper =
     new CypressAngularComponentHelper<PokemonCatalogComponent>();
-
   private pokemonImageDriver: PokemonImageComponentDriver =
     new PokemonImageComponentDriver();
 
@@ -19,9 +18,10 @@ export class PokemonCatalogComponentDriver {
     new PokemonGoComponentDriver();
 
   private componentProperties: Partial<PokemonCatalogComponent> = {};
-  // @ts-ignore
-  private getPokemonStub: Cypress.Agent<sinon.SinonStub<any[], any>>;
-  private pokemonServiceMock: PokemonService = new PokemonService();
+  private pokemonServiceMock: Partial<PokemonService> = {
+    getPokemon: url => Promise.reject(),
+    getPokemonByOffset: offset => Promise.reject()
+  };
 
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();
@@ -32,14 +32,16 @@ export class PokemonCatalogComponentDriver {
     pokemonGo: this.pokemonGoDriver.given,
     image: this.pokemonImageDriver.given,
     pokemon: (value: PokemonList) => {
-      this.getPokemonStub = this.helper.given.stub();
-      this.pokemonServiceMock.getPokemon = this.getPokemonStub;
-      this.getPokemonStub.callsFake(() => {
-        return value;
-      });
-    },
-    getPokemonSpy: () =>
-      this.helper.given.spyOnObject(this.pokemonServiceMock, "getPokemon")
+      this.pokemonServiceMock.getPokemon = this.helper.given
+        .stub()
+        .as(this.pokemonServiceMock.getPokemon!.name)
+        .returns(value);
+
+      this.pokemonServiceMock.getPokemonByOffset = this.helper.given
+        .stub()
+        .as(this.pokemonServiceMock.getPokemonByOffset!.name)
+        .returns(value);
+    }
   };
 
   when = {
@@ -74,7 +76,12 @@ export class PokemonCatalogComponentDriver {
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
     isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
-    getPokemonSpy: () => this.getPokemonStub,
+    getPokemonSpy: () =>
+      this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
+    getPokemonByOffsetSpy: () =>
+      this.helper.get.spyFromFunction(
+        this.pokemonServiceMock.getPokemonByOffset!
+      ),
     pokemonServiceMock: () => this.pokemonServiceMock
   };
 }
