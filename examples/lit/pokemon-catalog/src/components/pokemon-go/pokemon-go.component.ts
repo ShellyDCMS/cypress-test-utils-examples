@@ -14,20 +14,12 @@ export class PokemonGoComponent extends LitElement {
   @property()
   onSubmit!: (index: string) => void;
 
-  handleInputChange = (event: InputEvent) =>
-    (this.inputValue = (event.target as HTMLInputElement).value);
+  handleInputChange = (event: InputEvent) => (this.inputValue = (event.target as HTMLInputElement).value);
 
   handleKeyDown = (event: KeyboardEvent) => {
     if (
       !event.ctrlKey &&
-      ![
-        "Delete",
-        "Backspace",
-        "ArrowLeft",
-        "ArrowRight",
-        "Enter",
-        "Control"
-      ].includes(event.key) &&
+      !["Delete", "Backspace", "ArrowLeft", "ArrowRight", "Enter", "Control"].includes(event.key) &&
       /[^0-9]/g.test(event.key)
     ) {
       event.preventDefault();
@@ -51,9 +43,7 @@ export class PokemonGoComponent extends LitElement {
           @keydown=${this.handleKeyDown}
           placeholder="Pokemon"
         />
-        <button type="submit" .disabled=${this.inputValue === ""} data-cy="go">
-          Go
-        </button>
+        <button type="submit" .disabled=${this.inputValue === ""} data-cy="go">Go</button>
       </form>
     `;
   }
