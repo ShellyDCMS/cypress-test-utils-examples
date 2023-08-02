@@ -77,7 +77,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     });
 
     it("should render pokemon count", async () => {
-      expect(await get.countText()).to.eq(" 2 of 3 ");
+      expect(await get.countText()).to.eq("2 of 3");
     });
   });
 
@@ -98,7 +98,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     });
 
     it("should render pokemon count", async () => {
-      expect(await get.countText()).to.eq(" 1 of 1 ");
+      expect(await get.countText()).to.eq("1 of 1");
     });
 
     it("next button should be disabled", async () => {

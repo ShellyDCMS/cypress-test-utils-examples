@@ -43,9 +43,7 @@ export class PokemonImageComponentDriver {
   get = {
     pictureSrc: () => this.helper.get.elementsAttribute("pokemon-image", "src"),
     pokemonImage: () => this.helper.get.elementByTestId("pokemon-image"),
-    fallBackImage: () =>
-      this.helper.get.elementByTestId("pokemon-fallback-image"),
-    fallbackPictureSrc: () =>
-      this.helper.get.elementsAttribute("pokemon-fallback-image", "src")
+    fallBackImage: () => this.helper.get.elementByTestId("pokemon-fallback-image"),
+    fallbackPictureSrc: () => this.helper.get.elementsAttribute("pokemon-fallback-image", "src")
   };
 }
