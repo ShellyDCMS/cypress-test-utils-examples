@@ -6,8 +6,7 @@ import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
 describe("Angular PokemonCatalogComponent Tests", () => {
-  const { when, given, get, beforeAndAfter } =
-    new PokemonCatalogComponentDriver();
+  const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
 
   const testConfig = {
     declarations: [PokemonCatalogComponent, PokemonImageComponent],
@@ -50,9 +49,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       });
 
       it("should call getPokemon with the prev pokemon's url", () => {
-        expect(
-          get.getPokemonSpy().should("have.been.calledWith", pokemon.previous)
-        );
+        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
       });
     });
 
@@ -67,9 +64,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       });
 
       it("should fetch next pokemon when next is click", () => {
-        expect(
-          get.getPokemonSpy().should("have.been.calledWith", pokemon.next)
-        );
+        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
       });
     });
 

@@ -7,16 +7,10 @@ import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
     <pokemon-image [pokemonIndex]="getPokemonIndex()"></pokemon-image>
     <h1 *ngIf="pokemon" data-cy="pokemon-name">{{ getPokemonName() }}</h1>
 
-    <p data-cy="count" *ngIf="pokemon">
-      {{ getPokemonIndex() }} of {{ pokemon.count }}
-    </p>
+    <p data-cy="count" *ngIf="pokemon">{{ getPokemonIndex() }} of {{ pokemon.count }}</p>
     <div>
-      <button data-cy="prev" (click)="fetchPrev()" [disabled]="prevDisabled()">
-        Prev
-      </button>
-      <button data-cy="next" (click)="fetchNext()" [disabled]="nextDisabled()">
-        Next
-      </button>
+      <button data-cy="prev" (click)="fetchPrev()" [disabled]="prevDisabled()">Prev</button>
+      <button data-cy="next" (click)="fetchNext()" [disabled]="nextDisabled()">Next</button>
     </div>
     <div>
       <br />
@@ -63,9 +57,7 @@ export class PokemonCatalogComponent {
 
   fetchPrev = async () => {
     if (this.pokemon && this.pokemon.previous) {
-      this.pokemon = await this.pokemonService.getPokemon(
-        this.pokemon.previous
-      );
+      this.pokemon = await this.pokemonService.getPokemon(this.pokemon.previous);
     }
     this.onPrev.emit();
   };
@@ -79,9 +71,7 @@ export class PokemonCatalogComponent {
     );
 
   fetchPokemonByOffset = async (index: string) => {
-    const pokemon = await this.pokemonService.getPokemonByOffset(
-      `${Number(index) - 1}`
-    );
+    const pokemon = await this.pokemonService.getPokemonByOffset(`${Number(index) - 1}`);
     if (pokemon?.results.length) {
       this.pokemon = pokemon;
     } else {
