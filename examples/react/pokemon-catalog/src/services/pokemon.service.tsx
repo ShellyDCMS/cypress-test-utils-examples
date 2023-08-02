@@ -11,7 +11,11 @@ export interface PokemonList {
   previous: string | null;
   results: Pokemon[];
 }
-export class PokemonService {
+export interface IPokemonService {
+  getPokemon: (url: string | URL) => Promise<PokemonList>;
+  getPokemonByOffset: (offset: string) => Promise<PokemonList>;
+}
+export class PokemonService implements IPokemonService {
   private baseUrl = "https://pokeapi.co/api/v2/pokemon";
   getPokemon = async (url: string | URL): Promise<PokemonList> =>
     await (await fetch(url)).json();
@@ -24,6 +28,6 @@ export class PokemonService {
   };
 }
 
-export const PokemonServiceContext = createContext<PokemonService | undefined>(
+export const PokemonServiceContext = createContext<IPokemonService | undefined>(
   undefined
 );

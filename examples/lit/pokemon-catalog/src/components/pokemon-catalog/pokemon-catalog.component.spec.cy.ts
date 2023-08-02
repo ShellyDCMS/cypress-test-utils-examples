@@ -76,7 +76,9 @@ describe("Lit PokemonCatalogComponent", () => {
         when.clickPrev();
       });
       it("should call getPokemon with the prev pokemon's url", () => {
-        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.previous);
+        expect(
+          get.getPokemonSpy().should("have.been.calledWith", pokemon.previous)
+        );
       });
     });
 
@@ -85,7 +87,9 @@ describe("Lit PokemonCatalogComponent", () => {
         when.clickNext();
       });
       it("should call getPokemon with the next pokemon's url", () => {
-        expect(get.getPokemonSpy()).to.have.been.calledWith(pokemon.next);
+        expect(
+          get.getPokemonSpy().should("have.been.calledWith", pokemon.next)
+        );
       });
     });
   });

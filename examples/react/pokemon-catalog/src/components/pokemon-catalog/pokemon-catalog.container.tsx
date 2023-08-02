@@ -1,4 +1,5 @@
 import {
+  IPokemonService,
   PokemonService,
   PokemonServiceContext
 } from "../../services/pokemon.service";
@@ -8,7 +9,7 @@ import {
 } from "./pokemon-catalog.component";
 
 export interface IPokemonCatalogPros extends IPokemonCatalogComponentsProps {
-  service?: PokemonService;
+  service?: IPokemonService;
 }
 
 export const PokemonCatalog = ({
