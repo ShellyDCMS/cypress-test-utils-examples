@@ -6,8 +6,7 @@ import { PokemonGoComponent } from "./pokemon-go.component";
 
 export class PokemonGoComponentDriver {
   private helper = new CypressHelper();
-  private angularComponentHelper =
-    new CypressAngularComponentHelper<PokemonGoComponent>();
+  private angularComponentHelper = new CypressAngularComponentHelper<PokemonGoComponent>();
 
   private componentProperties: Partial<PokemonGoComponent> = {};
 
@@ -18,17 +17,13 @@ export class PokemonGoComponentDriver {
   given = {};
 
   when = {
-    render: (
-      type: Type<PokemonGoComponent>,
-      config: MountConfig<PokemonGoComponent>
-    ) => {
+    render: (type: Type<PokemonGoComponent>, config: MountConfig<PokemonGoComponent>) => {
       this.angularComponentHelper.when.mount(type, config, {
         ...this.componentProperties
       });
       this.helper.when.wait(200);
     },
-    typePokemonIndex: (value: string) =>
-      this.helper.when.type("pokemon-index", value),
+    typePokemonIndex: (value: string) => this.helper.when.type("pokemon-index", value),
     clickGo: () => this.helper.when.click("go")
   };
 

@@ -15,23 +15,16 @@ export class PokemonGoComponentDriver {
 
   given = {
     onSubmitSpy: () => {
-      this.props.onSubmit = this.helper.given.spyOnObject(
-        this.props,
-        "onSubmit"
-      );
+      this.props.onSubmit = this.helper.given.spyOnObject(this.props, "onSubmit");
     }
   };
 
   when = {
     render: (element: PokemonGoComponent) => {
       this.litComponentHelper.when.unmount(element);
-      this.litComponentHelper.when.mount(
-        element,
-        html`<pokemon-go .onSubmit="${this.props.onSubmit}"></pokemon-go>`
-      );
+      this.litComponentHelper.when.mount(element, html`<pokemon-go .onSubmit="${this.props.onSubmit}"></pokemon-go>`);
     },
-    typePokemonIndex: (input: string) =>
-      this.helper.when.type("pokemon-index", input),
+    typePokemonIndex: (input: string) => this.helper.when.type("pokemon-index", input),
     clickGo: () => this.helper.when.click("go")
   };
 

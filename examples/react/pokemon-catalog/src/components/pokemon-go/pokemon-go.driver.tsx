@@ -28,8 +28,7 @@ export class PokemonGoComponentDriver {
       const mergedProps: Attributes & IProps = { ...this.props, ...props };
       this.reactComponentHelper.when.mount(type, mergedProps, children);
     },
-    typePokemonIndex: (input: string) =>
-      this.helper.when.type("pokemon-index", input),
+    typePokemonIndex: (input: string) => this.helper.when.type("pokemon-index", input),
     clickGo: () => this.helper.when.click("go")
   };
 
