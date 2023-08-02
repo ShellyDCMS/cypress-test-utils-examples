@@ -9,8 +9,7 @@ describe("Angular PokemonImageComponent Tests", () => {
 
   const chance = new Chance();
 
-  const { when, given, get, beforeAndAfter } =
-    new PokemonImageComponentDriver();
+  const { when, given, get, beforeAndAfter } = new PokemonImageComponentDriver();
   beforeAndAfter();
 
   it("given valid pokemon index  should show picture", async () => {

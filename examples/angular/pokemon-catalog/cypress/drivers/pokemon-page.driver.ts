@@ -4,8 +4,7 @@ import { PokemonList } from "src/app/services/pokemon.service";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper();
-  private pokemonDriver: PokemonCatalogComponentDriver =
-    new PokemonCatalogComponentDriver();
+  private pokemonDriver: PokemonCatalogComponentDriver = new PokemonCatalogComponentDriver();
 
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();

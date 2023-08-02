@@ -1,24 +1,16 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import "../../App.scss";
-import {
-  IPokemonService,
-  PokemonList,
-  PokemonServiceContext
-} from "../../services/pokemon.service";
+import { IPokemonService, PokemonList, PokemonServiceContext } from "../../services/pokemon.service";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
 export interface IPokemonCatalogComponentsProps {
   onPrev?: () => void;
   onNext?: () => void;
 }
 
-export const PokemonCatalogComponent = (
-  props: IPokemonCatalogComponentsProps
-) => {
+export const PokemonCatalogComponent = (props: IPokemonCatalogComponentsProps) => {
   const { onNext, onPrev } = props;
   const [pokemon, setPokemon] = useState<PokemonList>();
-  const pokemonService: IPokemonService | undefined = useContext(
-    PokemonServiceContext
-  );
+  const pokemonService: IPokemonService | undefined = useContext(PokemonServiceContext);
   const fetchNext = async () => {
     if (pokemon && pokemon.next) {
       const nextPokemon = await pokemonService?.getPokemon(pokemon.next);
@@ -37,8 +29,7 @@ export const PokemonCatalogComponent = (
 
   const fetchByOffset = useCallback(
     async (index: string) => {
-      const getOffsetFromIndex = (index: string) =>
-        (Number(index) - 1).toString();
+      const getOffsetFromIndex = (index: string) => (Number(index) - 1).toString();
       const offset: string = getOffsetFromIndex(index);
       const pokemon = await pokemonService?.getPokemonByOffset(offset);
       if (pokemon?.results.length) {
@@ -50,10 +41,7 @@ export const PokemonCatalogComponent = (
     [pokemonService]
   );
 
-  const getFirstPokemon = useCallback(
-    async () => fetchByOffset("1"),
-    [fetchByOffset]
-  );
+  const getFirstPokemon = useCallback(async () => fetchByOffset("1"), [fetchByOffset]);
   useEffect(() => {
     getFirstPokemon();
   }, [getFirstPokemon]);
@@ -74,22 +62,12 @@ export const PokemonCatalogComponent = (
           <>
             <PokemonImageComponent pokemonIndex={getPokemonIndex()} />
             <h2 data-cy="pokemon-name">{getPokemonName()}</h2>
-            <div data-cy="count">{`${getPokemonIndex()} of ${
-              pokemon.count
-            }`}</div>
+            <div data-cy="count">{`${getPokemonIndex()} of ${pokemon.count}`}</div>
             <div>
-              <button
-                data-cy="prev"
-                onClick={fetchPrev}
-                disabled={!(pokemon && pokemon.previous)}
-              >
+              <button data-cy="prev" onClick={fetchPrev} disabled={!(pokemon && pokemon.previous)}>
                 Prev
               </button>
-              <button
-                data-cy="next"
-                onClick={fetchNext}
-                disabled={!(pokemon && pokemon.next)}
-              >
+              <button data-cy="next" onClick={fetchNext} disabled={!(pokemon && pokemon.next)}>
                 Next
               </button>
             </div>

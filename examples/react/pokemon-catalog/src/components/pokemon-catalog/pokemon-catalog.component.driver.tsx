@@ -3,15 +3,11 @@ import { CypressReactComponentHelper } from "@shellygo/cypress-test-utils/react"
 import { Attributes, ReactNode } from "react";
 import { IPokemonService, PokemonList } from "../../services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
-import {
-  IPokemonCatalogPros,
-  PokemonCatalog
-} from "./pokemon-catalog.container";
+import { IPokemonCatalogPros, PokemonCatalog } from "./pokemon-catalog.container";
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
   private reactComponentHelper = new CypressReactComponentHelper();
-  private pokemonImageDriver: PokemonImageComponentDriver =
-    new PokemonImageComponentDriver();
+  private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
   private pokemonServiceMock: IPokemonService = {
     getPokemon: url => Promise.reject(),
@@ -60,13 +56,9 @@ export class PokemonCatalogComponentDriver {
       this.reactComponentHelper.when.mount(type, mergedProps, children);
     },
     waitForNextToBeEnabled: () =>
-      this.helper.when.waitUntil(() =>
-        this.helper.get.elementByTestId("next").should("be.enabled")
-      ),
+      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("next").should("be.enabled")),
     waitForPrevToBeEnabled: () =>
-      this.helper.when.waitUntil(() =>
-        this.helper.get.elementByTestId("prev").should("be.enabled")
-      ),
+      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("prev").should("be.enabled")),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
   };
@@ -79,12 +71,8 @@ export class PokemonCatalogComponentDriver {
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
     isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
-    getPokemonSpy: () =>
-      this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
-    getPokemonByOffsetSpy: () =>
-      this.helper.get.spyFromFunction(
-        this.pokemonServiceMock.getPokemonByOffset!
-      ),
+    getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
+    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!),
     pokemonServiceMock: () => this.props.service
   };
 }

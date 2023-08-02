@@ -5,8 +5,7 @@ import { PokemonImageComponentDriver } from "./pokemon-image.component.driver";
 describe("Lit PokemonImageComponent", () => {
   const chance = new Chance();
 
-  const { when, given, get, beforeAndAfter } =
-    new PokemonImageComponentDriver();
+  const { when, given, get, beforeAndAfter } = new PokemonImageComponentDriver();
   beforeAndAfter();
 
   it("given valid pokemon index  should show picture", async () => {
