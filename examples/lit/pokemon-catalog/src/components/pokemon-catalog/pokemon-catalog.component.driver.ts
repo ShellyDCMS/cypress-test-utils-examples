@@ -5,11 +5,7 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import {
-  PokemonInternalService,
-  PokemonList,
-  PokemonServiceContext
-} from "../../services/pokemon.service";
+import { PokemonInternalService, PokemonList, PokemonServiceContext } from "../../services/pokemon.service";
 import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
@@ -37,10 +33,8 @@ export class PokemonCatalogComponentDriver {
     getPokemon: url => Promise.reject(),
     getPokemonByOffset: offset => Promise.reject()
   };
-  private pokemonImageDriver: PokemonImageComponentDriver =
-    new PokemonImageComponentDriver();
-  private pokemonGoDriver: PokemonGoComponentDriver =
-    new PokemonGoComponentDriver();
+  private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
+  private pokemonGoDriver: PokemonGoComponentDriver = new PokemonGoComponentDriver();
 
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();
@@ -74,9 +68,7 @@ export class PokemonCatalogComponentDriver {
           .pokemonService="${this.pokemonServiceMock}"
         ><pokemon-catalog></pokemon-catalog></pokemon-catalog></pokemon-service-provider>`
       );
-      this.helper.when.waitUntil(() =>
-        this.helper.get.elementByTestId("next").should("be.visible")
-      );
+      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("next").should("be.visible"));
     },
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
@@ -89,11 +81,7 @@ export class PokemonCatalogComponentDriver {
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
     isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
-    getPokemonSpy: () =>
-      this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
-    getPokemonByOffsetSpy: () =>
-      this.helper.get.spyFromFunction(
-        this.pokemonServiceMock.getPokemonByOffset!
-      )
+    getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
+    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!)
   };
 }

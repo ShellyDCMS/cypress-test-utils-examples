@@ -9,10 +9,8 @@ import type { PokemonCatalogComponent } from "./pokemon-catalog.component";
 
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
-  private angularComponentHelper =
-    new CypressAngularComponentHelper<PokemonCatalogComponent>();
-  private pokemonImageDriver: PokemonImageComponentDriver =
-    new PokemonImageComponentDriver();
+  private angularComponentHelper = new CypressAngularComponentHelper<PokemonCatalogComponent>();
+  private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
   private pokemonGoDriver: PokemonGoComponentDriver =
     new PokemonGoComponentDriver();
@@ -47,22 +45,15 @@ export class PokemonCatalogComponentDriver {
   when = {
     pokemonGo: this.pokemonGoDriver.when,
     image: this.pokemonImageDriver.when,
-    render: (
-      type: Type<PokemonCatalogComponent>,
-      config: MountConfig<PokemonCatalogComponent>
-    ) => {
+    render: (type: Type<PokemonCatalogComponent>, config: MountConfig<PokemonCatalogComponent>) => {
       this.angularComponentHelper.when.mount(type, config, {
         ...this.componentProperties
       });
     },
     waitForNextToBeEnabled: () =>
-      this.helper.when.waitUntil(() =>
-        this.helper.get.elementByTestId("next").should("be.enabled")
-      ),
+      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("next").should("be.enabled")),
     waitForPrevToBeEnabled: () =>
-      this.helper.when.waitUntil(() =>
-        this.helper.get.elementByTestId("prev").should("be.enabled")
-      ),
+      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("prev").should("be.enabled")),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
   };
@@ -76,12 +67,8 @@ export class PokemonCatalogComponentDriver {
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
     isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
-    getPokemonSpy: () =>
-      this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
-    getPokemonByOffsetSpy: () =>
-      this.helper.get.spyFromFunction(
-        this.pokemonServiceMock.getPokemonByOffset!
-      ),
+    getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
+    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!),
     pokemonServiceMock: () => this.pokemonServiceMock
   };
 }

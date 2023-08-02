@@ -33,19 +33,15 @@ export class PokemonImageComponentDriver {
     render: (element: PokemonImageComponent) => {
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-image
-          pokemonIndex="${this.props.pokemonIndex}"
-        ></pokemon-image>`
+        html`<pokemon-image pokemonIndex="${this.props.pokemonIndex}"></pokemon-image>`
       );
     }
   };
 
   get = {
     pokemonImage: () => this.helper.get.elementByTestId("pokemon-image"),
-    fallBackImage: () =>
-      this.helper.get.elementByTestId("pokemon-fallback-image"),
+    fallBackImage: () => this.helper.get.elementByTestId("pokemon-fallback-image"),
     pictureSrc: () => this.helper.get.elementsAttribute("pokemon-image", "src"),
-    fallbackPictureSrc: () =>
-      this.helper.get.elementsAttribute("pokemon-fallback-image", "src")
+    fallbackPictureSrc: () => this.helper.get.elementsAttribute("pokemon-fallback-image", "src")
   };
 }
