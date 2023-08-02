@@ -51,7 +51,7 @@ Runing the front end application while mocking the backend server
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/617fadbc-8e85-4bef-bbf4-6c102c9d5b7a)
 ### E2E Tests Example
 Using cypress as a helper robot that behaves like a user to click around the app and verify it functions correctly
-![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/acc535db-5dee-4fb5-a2fc-99e3b4a6ad33)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/00e84016-9d2b-4e4c-85a5-2e9aeb86f4b8)
 
 ## Starting Point
 Main branch contains the following components
