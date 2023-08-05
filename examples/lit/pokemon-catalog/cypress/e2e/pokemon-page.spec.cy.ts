@@ -75,7 +75,7 @@ describe("Lit Pokemon e2e", () => {
     });
   });
 
-  describe("when changing from pokemon without gif to pokemon with gif", () => {
+  describe("when changing from pokemon without gif to pokemon with gif, should show gif", () => {
     it("should render pokemon gif", async () => {
       when.pokemon.pokemonGo.typePokemonIndex("888");
       when.pokemon.pokemonGo.clickGo();
