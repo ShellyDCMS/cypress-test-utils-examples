@@ -22,7 +22,7 @@ export class PokemonPageDriver {
       this.helper.given.interceptAndMockResponse({
         url: "/**/PokeAPI/sprites/**",
         response: { fixture: fileName },
-        alias: "pokemon"
+        alias: "pokemon-image"
       })
   };
 
