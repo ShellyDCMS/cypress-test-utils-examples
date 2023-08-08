@@ -22,21 +22,20 @@ describe("Lit PokemonCatalogComponent", () => {
       when.render(new PokemonCatalogComponent());
     });
 
-    it("should show picture given pokemon provided as input", async () => {
-      when.render(new PokemonCatalogComponent());
-      expect(await get.image.pictureSrc()).to.include("1.gif");
+    it("should show picture given pokemon provided as input", () => {
+      expect(get.image.pictureSrc().should("include", "1.gif"));
     });
 
-    it("should render pokemon count", async () => {
-      expect(await get.countText()).to.include("1 of 1");
+    it("should render pokemon count", () => {
+      expect(get.countText().should("eq", "1 of 1"));
     });
 
-    it("next button should be disabled", async () => {
-      expect(await get.isNextButtonDisabled()).to.be.true;
+    it("next button should be disabled", () => {
+      expect(get.isNextButtonDisabled().should("eq", "disabled"));
     });
 
-    it("prev button should be disabled", async () => {
-      expect(await get.isPrevButtonDisabled()).to.be.true;
+    it("prev button should be disabled", () => {
+      expect(get.isPrevButtonDisabled().should("eq", "disabled"));
     });
   });
 
@@ -55,19 +54,16 @@ describe("Lit PokemonCatalogComponent", () => {
       when.render(new PokemonCatalogComponent());
     });
 
-    it("should show picture given pokemon provided as input", async () => {
-      when.render(new PokemonCatalogComponent());
-      expect(await get.image.pictureSrc()).to.include("2.gif");
+    it("should show picture given pokemon provided as input", () => {
+      expect(get.image.pictureSrc().should("include", "2.gif"));
     });
 
-    it("should render pokemon name", async () => {
-      expect(await get.nameText()).to.eq(name);
+    it("should render pokemon name", () => {
+      expect(get.nameText().should("eq", name));
     });
 
-    it("should render pokemon count", async () => {
-      given.pokemon(pokemon);
-      when.render(new PokemonCatalogComponent());
-      expect(await get.countText()).to.include("2 of 3");
+    it("should render pokemon count", () => {
+      expect(get.countText().should("eq", "2 of 3"));
     });
 
     describe("when clicking prev", () => {
