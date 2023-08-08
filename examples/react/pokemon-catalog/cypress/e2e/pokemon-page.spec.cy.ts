@@ -44,7 +44,7 @@ describe("React Pokemon e2e", () => {
     });
 
     it("prev button should be enabled", () => {
-      expect(get.pokemon.isPrevButtonDisabled().should("eq", "disabled"));
+      expect(get.pokemon.isPrevButtonDisabled().should("eq", undefined));
     });
 
     it("should render pokemon name", () => {
