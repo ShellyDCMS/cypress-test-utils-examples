@@ -33,7 +33,6 @@ describe("Angular Pokemon e2e", () => {
       when.waitUntil(() => get.elementByText("ivysaur"));
       when.pokemon.clickNext();
       when.waitUntil(() => get.elementByText("venusaur"));
-      when.wait(200);
     });
 
     it("should update index", () => {
@@ -45,7 +44,7 @@ describe("Angular Pokemon e2e", () => {
     });
 
     it("prev button should be enabled", () => {
-      expect(get.pokemon.isPrevButtonDisabled().should("eq", "disabled"));
+      expect(get.pokemon.isPrevButtonDisabled().should("eq", undefined));
     });
 
     it("should render pokemon name", () => {
