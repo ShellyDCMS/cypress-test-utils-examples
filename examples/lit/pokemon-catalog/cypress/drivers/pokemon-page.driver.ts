@@ -4,8 +4,7 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper();
-  private pokemonDriver: PokemonCatalogComponentDriver =
-    new PokemonCatalogComponentDriver();
+  private pokemonDriver: PokemonCatalogComponentDriver = new PokemonCatalogComponentDriver();
 
   beforeAndAfter = () => {
     this.helper.beforeAndAfter();
@@ -23,7 +22,7 @@ export class PokemonPageDriver {
       this.helper.given.interceptAndMockResponse({
         url: "/**/PokeAPI/sprites/**",
         response: { fixture: fileName },
-        alias: "pokemon"
+        alias: "pokemon-image"
       })
   };
 
