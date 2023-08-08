@@ -27,8 +27,8 @@ describe("Angular Pokemon Page integration Tests", () => {
     expect(get.pokemon.isPrevButtonDisabled().should("eq", "disabled"));
   });
 
-  it("should render correct image", async () => {
-    expect(await get.pokemon.image.pictureSrc()).to.include("1.gif");
+  it("should render correct image", () => {
+    expect(get.pokemon.image.pictureSrc().should("include", "1.gif"));
   });
 
   it("should fetch pokemon by index", async () => {

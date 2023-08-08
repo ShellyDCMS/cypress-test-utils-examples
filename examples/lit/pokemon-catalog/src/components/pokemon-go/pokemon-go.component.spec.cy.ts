@@ -5,16 +5,22 @@ describe("Lit PokemonImageComponent", () => {
   const { when, given, get, beforeAndAfter } = new PokemonGoComponentDriver();
   beforeAndAfter();
 
-  it("Go button should be disabled", async () => {
-    when.render(new PokemonGoComponent());
-    expect(await get.isGoButtonDisabled()).to.be.true;
-  });
-
-  it("when typing index Go button should be enabled", async () => {
+  beforeEach(() => {
     given.onSubmitSpy();
     when.render(new PokemonGoComponent());
+  });
+  it("Go button should be disabled", () => {
+    expect(get.isGoButtonDisabled().should("eq", "disabled"));
+  });
+
+  it("when typing index Go button should be enabled", () => {
     when.typePokemonIndex("33");
-    expect(await get.isGoButtonDisabled()).to.be.false;
+    expect(get.isGoButtonDisabled().should("eq", undefined));
+  });
+
+  it("When input filled should have input value", () => {
+    when.typePokemonIndex("42");
+    expect(get.pokemonIndexInputValue().should("eq", "42"));
   });
 
   it("when typing index and submitting should call onSubmit", () => {
@@ -25,18 +31,14 @@ describe("Lit PokemonImageComponent", () => {
     expect(get.onSubmitSpy().should("have.been.calledWith", "33"));
   });
 
-  it("should not update input value when typing non digits", async () => {
-    given.onSubmitSpy();
-    when.render(new PokemonGoComponent());
-    when.typePokemonIndex("abcd-");
-    expect(await get.indexValue()).to.eq("");
-  });
-
-  it("should empty input when clicking submit", async () => {
-    given.onSubmitSpy();
-    when.render(new PokemonGoComponent());
+  it("should clear input when clicking submit", () => {
     when.typePokemonIndex("33");
     when.clickGo();
-    expect(await get.indexValue()).to.eq("");
+    expect(get.pokemonIndexInputValue().should("eq", ""));
+  });
+
+  it("should not update input value when typing non digits", () => {
+    when.typePokemonIndex("abcd-");
+    expect(get.pokemonIndexInputValue().should("eq", ""));
   });
 });

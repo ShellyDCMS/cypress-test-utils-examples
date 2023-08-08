@@ -76,15 +76,14 @@ describe("Angular Pokemon e2e", () => {
   });
 
   describe("when changing from pokemon without gif to pokemon with gif, should show gif", () => {
-    it("should render pokemon gif", async () => {
+    it("should render pokemon gif", () => {
       when.pokemon.pokemonGo.typePokemonIndex("888");
       when.pokemon.pokemonGo.clickGo();
       when.waitUntil(() => get.elementByText("zacian"));
       when.pokemon.pokemonGo.typePokemonIndex("33");
       when.pokemon.pokemonGo.clickGo();
       when.waitUntil(() => get.elementByText("nidorino"));
-      when.wait(500);
-      expect(await get.pokemon.image.pictureSrc()).to.include("/33.gif");
+      expect(get.pokemon.image.pictureSrc().should("include", "/33.gif"));
     });
   });
 });

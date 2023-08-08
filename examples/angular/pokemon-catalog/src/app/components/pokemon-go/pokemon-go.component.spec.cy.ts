@@ -14,18 +14,18 @@ describe("Angular PokemonGoComponent Tests", () => {
   beforeEach(() => {
     when.render(PokemonGoComponent, testConfig);
   });
-  it("Go button should be disabled", async () => {
-    expect(await get.isGoButtonDisabled()).to.be.true;
+  it("Go button should be disabled", () => {
+    expect(get.isGoButtonDisabled().should("eq", "disabled"));
   });
 
-  it("when typing index Go button should be enabled", async () => {
+  it("when typing index Go button should be enabled", () => {
     when.typePokemonIndex("33");
-    expect(await get.isGoButtonDisabled()).to.be.false;
+    expect(get.isGoButtonDisabled().should("eq", undefined));
   });
 
-  it("When input filled should have input value", async () => {
+  it("When input filled should have input value", () => {
     when.typePokemonIndex("42");
-    expect(await get.selectedPokemon()).to.eq("42");
+    expect(get.pokemonIndexInputValue().should("eq", "42"));
   });
 
   it("When input and clicked go should fetch pokemon by index", () => {
@@ -34,14 +34,14 @@ describe("Angular PokemonGoComponent Tests", () => {
     expect(get.selectedPokemonSpy().should("have.been.calledWith", "12"));
   });
 
-  it("should clear input when clicking submit", async () => {
+  it("should clear input when clicking submit", () => {
     when.typePokemonIndex("33");
     when.clickGo();
-    expect(await get.selectedPokemon()).to.eq("");
+    expect(get.pokemonIndexInputValue().should("eq", ""));
   });
 
-  it("should not update input value when typing non digits", async () => {
+  it("should not update input value when typing non digits", () => {
     when.typePokemonIndex("abcd-");
-    expect(await get.selectedPokemon()).to.eq("");
+    expect(get.pokemonIndexInputValue().should("eq", ""));
   });
 });
