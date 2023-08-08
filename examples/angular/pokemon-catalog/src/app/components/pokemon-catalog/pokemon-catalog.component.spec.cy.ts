@@ -40,7 +40,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
     describe("when clicking prev", () => {
       beforeEach(() => {
-        when.waitForPrevToBeEnabled();
         when.clickPrev();
       });
 
@@ -55,7 +54,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
     describe("when clicking next", () => {
       beforeEach(() => {
-        when.waitForNextToBeEnabled();
         when.clickNext();
       });
 

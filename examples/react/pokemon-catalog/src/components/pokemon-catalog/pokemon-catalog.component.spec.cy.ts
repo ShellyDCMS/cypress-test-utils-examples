@@ -26,7 +26,6 @@ describe("React PokemonCatalogComponent", () => {
       given.onNextSpy();
       given.onPrevSpy();
       when.render(PokemonCatalog);
-      when.waitForNextToBeEnabled();
     });
 
     it("should show picture given pokemon provided as input", () => {
@@ -42,7 +41,6 @@ describe("React PokemonCatalogComponent", () => {
     });
     describe("when clicking next", () => {
       beforeEach(() => {
-        when.waitForNextToBeEnabled();
         when.clickNext();
       });
 
@@ -57,7 +55,6 @@ describe("React PokemonCatalogComponent", () => {
 
     describe("when clicking prev", () => {
       beforeEach(() => {
-        when.waitForPrevToBeEnabled();
         when.clickPrev();
       });
 
