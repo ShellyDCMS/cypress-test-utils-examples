@@ -68,7 +68,6 @@ export class PokemonCatalogComponentDriver {
           .pokemonService="${this.pokemonServiceMock}"
         ><pokemon-catalog></pokemon-catalog></pokemon-catalog></pokemon-service-provider>`
       );
-      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("next").should("be.visible"));
     },
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")

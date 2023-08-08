@@ -50,10 +50,6 @@ export class PokemonCatalogComponentDriver {
         ...this.componentProperties
       });
     },
-    waitForNextToBeEnabled: () =>
-      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("next").should("be.enabled")),
-    waitForPrevToBeEnabled: () =>
-      this.helper.when.waitUntil(() => this.helper.get.elementByTestId("prev").should("be.enabled")),
     clickNext: () => this.helper.when.click("next"),
     clickPrev: () => this.helper.when.click("prev")
   };

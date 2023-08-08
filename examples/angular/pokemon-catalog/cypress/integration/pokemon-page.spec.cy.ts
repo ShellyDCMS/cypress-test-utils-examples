@@ -19,12 +19,12 @@ describe("Angular Pokemon Page integration Tests", () => {
     when.visit("/");
   });
 
-  it("should disable next button once showing last pokemon", async () => {
-    expect(await get.pokemon.isNextButtonDisabled()).to.be.true;
+  it("should disable next button once showing last pokemon", () => {
+    expect(get.pokemon.isNextButtonDisabled().should("eq", "disabled"));
   });
 
-  it("should disable prev button once showing first pokemon", async () => {
-    expect(await get.pokemon.isPrevButtonDisabled()).to.be.true;
+  it("should disable prev button once showing first pokemon", () => {
+    expect(get.pokemon.isPrevButtonDisabled().should("eq", "disabled"));
   });
 
   it("should render correct image", async () => {
