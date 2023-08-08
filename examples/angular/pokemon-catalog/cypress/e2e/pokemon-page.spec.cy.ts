@@ -9,20 +9,20 @@ describe("Angular Pokemon e2e", () => {
     when.waitUntil(() => get.elementByText("bulbasaur"));
   });
 
-  it("should render prev button disabled", async () => {
-    expect(await get.pokemon.isPrevButtonDisabled()).to.be.true;
+  it("should render prev button disabled", () => {
+    expect(get.pokemon.isPrevButtonDisabled().should("eq", "disabled"));
   });
 
-  it("should render index", async () => {
-    expect(await get.pokemon.countText()).to.include("1 of");
+  it("should render index", () => {
+    expect(get.pokemon.countText().should("include", "1 of"));
   });
 
-  it("should render the first pokemon", async () => {
-    expect(await get.pokemon.image.pictureSrc()).to.include("1.gif");
+  it("should render the first pokemon", () => {
+    expect(get.pokemon.image.pictureSrc().should("include", "1.gif"));
   });
 
-  it("should render pokemon name", async () => {
-    expect(await get.pokemon.nameText()).to.eq("bulbasaur");
+  it("should render pokemon name", () => {
+    expect(get.pokemon.nameText().should("eq", "bulbasaur"));
   });
 
   describe("when clicking next twice", () => {
@@ -33,19 +33,18 @@ describe("Angular Pokemon e2e", () => {
       when.waitUntil(() => get.elementByText("ivysaur"));
       when.pokemon.clickNext();
       when.waitUntil(() => get.elementByText("venusaur"));
-      when.wait(200);
     });
 
-    it("should update index", async () => {
-      expect(await get.pokemon.countText()).to.include("3 of");
+    it("should update index", () => {
+      expect(get.pokemon.countText().should("include", "3 of"));
     });
 
-    it("should update pokemon image", async () => {
-      expect(await get.pokemon.image.pictureSrc()).to.include("3.gif");
+    it("should update pokemon image", () => {
+      expect(get.pokemon.image.pictureSrc().should("include", "3.gif"));
     });
 
-    it("prev button should be enabled", async () => {
-      expect(await get.pokemon.isPrevButtonDisabled()).to.be.false;
+    it("prev button should be enabled", () => {
+      expect(get.pokemon.isPrevButtonDisabled().should("eq", undefined));
     });
 
     it("should render pokemon name", () => {
@@ -58,16 +57,16 @@ describe("Angular Pokemon e2e", () => {
         when.waitUntil(() => get.elementByText("ivysaur"));
       });
 
-      it("should update index", async () => {
-        expect(await get.pokemon.countText()).to.include("2 of");
+      it("should update index", () => {
+        expect(get.pokemon.countText().should("include", "2 of"));
       });
 
-      it("should update pokemon image", async () => {
-        expect(await get.pokemon.image.pictureSrc()).to.include("2.gif");
+      it("should update pokemon image", () => {
+        expect(get.pokemon.image.pictureSrc().should("include", "2.gif"));
       });
 
-      it("prev button should be enabled", async () => {
-        expect(await get.pokemon.isPrevButtonDisabled()).to.be.false;
+      it("prev button should be enabled", () => {
+        expect(get.pokemon.isPrevButtonDisabled().should("eq", undefined));
       });
 
       it("should render pokemon name", () => {
