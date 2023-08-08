@@ -12,12 +12,12 @@ describe("Angular PokemonImageComponent Tests", () => {
   const { when, given, get, beforeAndAfter } = new PokemonImageComponentDriver();
   beforeAndAfter();
 
-  it("given valid pokemon index  should show picture", async () => {
+  it("given valid pokemon index  should show picture", () => {
     const pokemonIndex: number = chance.integer({ min: 1, max: 500 });
     given.pokemonIndex(pokemonIndex);
     given.mockImageResponse("default.png");
     when.render(PokemonImageComponent, testConfig);
-    expect(await get.pictureSrc()).to.include(`${pokemonIndex}.gif`);
+    expect(get.pictureSrc().should("include", `${pokemonIndex}.gif`));
   });
 
   it("given image not found should show fallback image", () => {
