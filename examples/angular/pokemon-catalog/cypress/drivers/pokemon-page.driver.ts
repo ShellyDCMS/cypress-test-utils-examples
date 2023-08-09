@@ -10,6 +10,7 @@ export class PokemonPageDriver {
     this.helper.beforeAndAfter();
     this.pokemonDriver.beforeAndAfter();
   };
+
   given = {
     fetchPokemonResponse: (response: PokemonList) =>
       this.helper.given.interceptAndMockResponse({
