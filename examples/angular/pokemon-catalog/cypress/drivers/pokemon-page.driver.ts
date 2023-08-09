@@ -28,14 +28,12 @@ export class PokemonPageDriver {
   };
 
   when = {
-    ...this.pokemonDriver.when
+    ...this.pokemonDriver.when,
+    waitForPokemonLastCall: () => this.helper.when.waitForLastCall("pokemon")
   };
 
   get = {
     ...this.pokemonDriver.get,
-    fetchPokemonOffset: () => {
-      this.helper.when.waitForResponse("pokemon");
-      return this.helper.get.requestQueryParam("pokemon", "offset");
-    }
+    fetchPokemonOffset: () => this.helper.get.requestQueryParam("pokemon", "offset")
   };
 }

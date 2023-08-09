@@ -17,6 +17,7 @@ describe("Angular Pokemon Page integration Tests", () => {
     given.pokemon.fetchPokemonResponse(pokemonList);
     given.pokemon.fetchImageResponse("default.png");
     when.visit("/");
+    when.pokemon.waitForPokemonLastCall();
   });
 
   it("should disable next button once showing last pokemon", () => {
