@@ -24,8 +24,6 @@ describe("Lit PokemonImageComponent", () => {
   });
 
   it("when typing index and submitting should call onSubmit", () => {
-    given.onSubmitSpy();
-    when.render(new PokemonGoComponent());
     when.typePokemonIndex("33");
     when.clickGo();
     expect(get.onSubmitSpy().should("have.been.calledWith", "33"));
