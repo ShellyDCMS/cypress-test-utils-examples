@@ -38,8 +38,10 @@ The get property will hold methods which will give our tests access to the “
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/74d1d376-35cf-4954-a8da-29c98bae2d72)
 ### Test Example
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/d29b23c2-7fec-4e6a-b761-de78eb166447)
-### Driver Composition Example
+### Driver Composition
 Just like Lego:tm:, we can create more elaborated drivers by composing them from smaller ones
+![ezgif com-video-to-gif (5)](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/e89771b5-e0a3-4bce-87f5-cc70032a5492)
+### Driver Composition Example
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/fd9ed402-dc49-4818-8798-f08ee33d835a)
 ### Tests Example
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/79bc30a2-6258-4937-b7f3-611b0a9b1ca6)
