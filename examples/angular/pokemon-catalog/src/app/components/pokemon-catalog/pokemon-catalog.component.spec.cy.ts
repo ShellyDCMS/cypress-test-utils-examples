@@ -100,11 +100,11 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     });
 
     it("next button should be disabled", () => {
-      expect(get.isNextButtonDisabled().should("eq", "disabled"));
+      expect(get.nextButton().should("be.disabled"));
     });
 
     it("prev button should be disabled", () => {
-      expect(get.isPrevButtonDisabled().should("eq", "disabled"));
+      expect(get.prevButton().should("be.disabled"));
     });
   });
 });
