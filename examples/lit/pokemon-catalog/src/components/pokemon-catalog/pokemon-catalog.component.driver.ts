@@ -78,8 +78,8 @@ export class PokemonCatalogComponentDriver {
     pokemonGo: this.pokemonGoDriver.get,
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
-    isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
-    isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
+    nextButton: () => this.helper.get.elementByTestId("next"),
+    prevButton: () => this.helper.get.elementByTestId("prev"),
     getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
     getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!)
   };
