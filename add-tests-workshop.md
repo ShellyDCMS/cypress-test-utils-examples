@@ -42,18 +42,19 @@ The get property will hold methods which will give our tests access to the “
 Just like Lego:tm:, we can create more elaborated drivers by composing them from smaller ones
 ![ezgif com-video-to-gif (5)](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/e89771b5-e0a3-4bce-87f5-cc70032a5492)
 ### Driver Composition Example
-![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/fd9ed402-dc49-4818-8798-f08ee33d835a)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/c38610ff-f7a2-4fd2-89c0-4cc469ad4264)
 ### Tests Example
-![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/79bc30a2-6258-4937-b7f3-611b0a9b1ca6)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/fa7c48cc-3f34-4340-ac27-84976ca60ae4)
+
 ### Integration Driver Example
 #### Front End Integration Tests
 Runing the front end application while mocking the backend server
 ![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/16f3a3f9-493d-4c0e-bec1-3bfb58b873ab)
 ### Integration Tests Example
-![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/23642b91-fd27-44ee-b9a0-95fe18e0c004)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/5578cf43-f4fa-47cd-8fa9-292e623222a8)
 ### E2E Tests Example
 Using cypress as a helper robot that behaves like a user to click around the app and verify it functions correctly
-![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/1c0c8fc6-3167-4fdb-a98a-159a51a93981)
+![image](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/ed18a960-d466-43e2-9907-ab405083c41a)
 
 ## Starting Point
 Main branch contains the following components
