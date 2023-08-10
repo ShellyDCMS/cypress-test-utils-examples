@@ -10,12 +10,12 @@ describe("Lit PokemonImageComponent", () => {
     when.render(new PokemonGoComponent());
   });
   it("Go button should be disabled", () => {
-    expect(get.isGoButtonDisabled().should("eq", "disabled"));
+    expect(get.goButton().should("be.disabled"));
   });
 
   it("when typing index Go button should be enabled", () => {
     when.typePokemonIndex("33");
-    expect(get.isGoButtonDisabled().should("eq", undefined));
+    expect(get.goButton().should("be.enabled"));
   });
 
   it("When input filled should have input value", () => {

@@ -29,6 +29,6 @@ export class PokemonGoComponentDriver {
   get = {
     pokemonIndexInputValue: () => this.helper.get.inputValue("pokemon-index"),
     selectedPokemonSpy: () => this.helper.get.spy("selectedPokemon"),
-    isGoButtonDisabled: () => this.helper.get.isElementDisabled("go")
+    goButton: () => this.helper.get.elementByTestId("go")
   };
 }
