@@ -1,6 +1,7 @@
 import { PokemonCatalogComponentDriver } from "@components/pokemon-catalog/pokemon-catalog.component.driver";
 import { PokemonList } from "@services/pokemon.service";
 import { CypressHelper } from "@shellygo/cypress-test-utils";
+import { Interception } from "cypress/types/net-stubbing";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper();
@@ -30,7 +31,7 @@ export class PokemonPageDriver {
 
   when = {
     ...this.pokemonDriver.when,
-    waitForPokemonLastCall: () => this.helper.when.waitForLastCall("pokemon")
+    waitForPokemonLastCall: (): Cypress.Chainable<Interception> => this.helper.when.waitForLastCall("pokemon")
   };
 
   get = {
