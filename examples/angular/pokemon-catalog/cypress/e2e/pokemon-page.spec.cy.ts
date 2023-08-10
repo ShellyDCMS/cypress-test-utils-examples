@@ -10,7 +10,7 @@ describe("Angular Pokemon e2e", () => {
   });
 
   it("should render prev button disabled", () => {
-    expect(get.pokemon.isPrevButtonDisabled().should("eq", "disabled"));
+    expect(get.pokemon.prevButton().should("be.disabled"));
   });
 
   it("should render index", () => {
@@ -44,7 +44,7 @@ describe("Angular Pokemon e2e", () => {
     });
 
     it("prev button should be enabled", () => {
-      expect(get.pokemon.isPrevButtonDisabled().should("eq", undefined));
+      expect(get.pokemon.prevButton().should("be.enabled"));
     });
 
     it("should render pokemon name", () => {
@@ -66,7 +66,7 @@ describe("Angular Pokemon e2e", () => {
       });
 
       it("prev button should be enabled", () => {
-        expect(get.pokemon.isPrevButtonDisabled().should("eq", undefined));
+        expect(get.pokemon.prevButton().should("be.enabled"));
       });
 
       it("should render pokemon name", () => {

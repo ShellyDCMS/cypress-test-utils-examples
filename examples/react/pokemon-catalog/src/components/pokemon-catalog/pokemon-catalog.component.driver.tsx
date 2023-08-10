@@ -70,9 +70,10 @@ export class PokemonCatalogComponentDriver {
     onPrevSpy: () => this.helper.get.spy("onPrev"),
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
-    isNextButtonDisabled: () => this.helper.get.isElementDisabled("next"),
+    nextButton: () => this.helper.get.elementByTestId("next"),
+    prevButton: () => this.helper.get.elementByTestId("prev"),
     isGoButtonDisabled: () => this.helper.get.isElementDisabled("go"),
-    isPrevButtonDisabled: () => this.helper.get.isElementDisabled("prev"),
+
     getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
     getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!),
     pokemonServiceMock: () => this.props.service

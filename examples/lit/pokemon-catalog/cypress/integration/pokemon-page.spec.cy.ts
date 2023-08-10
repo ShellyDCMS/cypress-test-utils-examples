@@ -21,11 +21,11 @@ describe("Lit Pokemon Page integration Tests", () => {
   });
 
   it("should disable next button once showing last pokemon", () => {
-    expect(get.pokemon.isNextButtonDisabled().should("eq", "disabled"));
+    expect(get.pokemon.nextButton().should("be.disabled"));
   });
 
   it("should disable prev button once showing first pokemon", () => {
-    expect(get.pokemon.isPrevButtonDisabled().should("eq", "disabled"));
+    expect(get.pokemon.prevButton().should("be.disabled"));
   });
 
   it("should render correct image", () => {
