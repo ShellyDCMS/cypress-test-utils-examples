@@ -36,6 +36,6 @@ export class PokemonPageDriver {
 
   get = {
     ...this.pokemonDriver.get,
-    fetchPokemonOffset: () => this.helper.get.requestQueryParam("pokemon", "offset")
+    fetchPokemonQueryParams: () => this.helper.get.requestQueryParams("pokemon")
   };
 }

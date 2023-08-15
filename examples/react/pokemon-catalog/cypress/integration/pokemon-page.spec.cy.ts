@@ -32,9 +32,9 @@ describe("React Pokemon Page integration Tests", () => {
     expect(get.pokemon.image.pictureSrc().should("include", "1.gif"));
   });
 
-  it("should fetch pokemon by index", async () => {
+  it("should fetch pokemon by index", () => {
     when.pokemon.pokemonGo.typePokemonIndex("78");
     when.pokemon.pokemonGo.clickGo();
-    expect(await get.pokemon.fetchPokemonOffset()).to.eq("77");
+    expect(get.pokemon.fetchPokemonQueryParams().should("include", { offset: "77" }));
   });
 });
