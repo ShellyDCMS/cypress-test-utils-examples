@@ -1,4 +1,4 @@
-import { AppDriver } from "cypress/drivers/app.driver";
+import { AppDriver } from "../drivers/app.driver";
 
 describe("Angular Pokemon e2e", () => {
   const { when, get, beforeAndAfter } = new AppDriver();
