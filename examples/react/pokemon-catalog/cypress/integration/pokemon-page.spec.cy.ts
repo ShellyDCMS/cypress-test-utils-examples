@@ -1,6 +1,6 @@
+import { PokemonList } from "@services/pokemon.service";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import { PokemonList } from "../../src/services/pokemon.service";
 import { AppDriver } from "../drivers/app.driver";
 
 describe("React Pokemon Page integration Tests", () => {
