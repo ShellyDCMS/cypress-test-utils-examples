@@ -20,7 +20,8 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
-      "@components": ["src/components"]
+      "@components/*": ["src/app/components/*"],
+      "@services/*": ["src/app/services/*"]
     }
   },
   "angularCompilerOptions": {
