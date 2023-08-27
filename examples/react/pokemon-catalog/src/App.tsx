@@ -7,9 +7,7 @@ function App() {
       <header className="App-header">
         <PokemonCatalog></PokemonCatalog>
       </header>
-      <span>
-        Pokémon and Pokémon character names are trademarks of Nintendo.
-      </span>
+      <span>Pokémon and Pokémon character names are trademarks of Nintendo.</span>
     </div>
   );
 }

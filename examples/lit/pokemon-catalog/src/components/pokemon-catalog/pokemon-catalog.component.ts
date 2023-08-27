@@ -2,11 +2,17 @@ import { PokemonImageComponent } from "@components/pokemon-image/pokemon-image.c
 import { ContextConsumer } from "@lit-labs/context";
 import { PokemonInternalService, PokemonList, PokemonServiceContext } from "@services/pokemon.service";
 import { LitElement, html } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import styles from "./pokemon-catalog.component.scss";
 
 @customElement("pokemon-catalog")
-export class PokemonCatalogComponent extends LitElement {
+export class PokemonCatalog extends LitElement {
+  @property()
+  onPrev?: () => void;
+
+  @property()
+  onNext?: () => void;
+
   @state()
   pokemon!: PokemonList;
 
@@ -39,9 +45,15 @@ export class PokemonCatalogComponent extends LitElement {
 
   loadPokemon = async () => (this.pokemon = await this.pokemonService.getPokemonByOffset());
 
-  loadNext = async () => (this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next));
+  loadNext = async () => {
+    this.onNext && this.onNext();
+    this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next);
+  };
 
-  loadPrev = async () => (this.pokemon = await this.pokemonService.getPokemon(this.pokemon.previous));
+  loadPrev = async () => {
+    this.pokemon = await this.pokemonService.getPokemon(this.pokemon.previous);
+    this.onPrev && this.onPrev();
+  };
 
   getPokemonIndex = () =>
     Number(
