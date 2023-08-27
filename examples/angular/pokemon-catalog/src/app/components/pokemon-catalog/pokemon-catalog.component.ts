@@ -23,7 +23,7 @@ import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 })
 
 //
-export class PokemonCatalogComponent {
+export class PokemonCatalog {
   pokemon: PokemonList = {
     count: 0,
     next: null,

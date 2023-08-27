@@ -5,17 +5,16 @@ import { MountConfig } from "cypress/angular";
 import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 import { PokemonGoComponentDriver } from "../pokemon-go/pokemon-go.component.driver";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
-import type { PokemonCatalogComponent } from "./pokemon-catalog.component";
+import type { PokemonCatalog } from "./pokemon-catalog.component";
 
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
-  private angularComponentHelper = new CypressAngularComponentHelper<PokemonCatalogComponent>();
+  private angularComponentHelper = new CypressAngularComponentHelper<PokemonCatalog>();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
-  private pokemonGoDriver: PokemonGoComponentDriver =
-    new PokemonGoComponentDriver();
+  private pokemonGoDriver: PokemonGoComponentDriver = new PokemonGoComponentDriver();
 
-  private componentProperties: Partial<PokemonCatalogComponent> = {};
+  private componentProperties: Partial<PokemonCatalog> = {};
   private pokemonServiceMock: Partial<PokemonService> = {
     getPokemon: url => Promise.reject(),
     getPokemonByOffset: offset => Promise.reject()
@@ -45,7 +44,7 @@ export class PokemonCatalogComponentDriver {
   when = {
     pokemonGo: this.pokemonGoDriver.when,
     image: this.pokemonImageDriver.when,
-    render: (type: Type<PokemonCatalogComponent>, config: MountConfig<PokemonCatalogComponent>) => {
+    render: (type: Type<PokemonCatalog>, config: MountConfig<PokemonCatalog>) => {
       this.angularComponentHelper.when.mount(type, config, {
         ...this.componentProperties
       });
