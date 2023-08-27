@@ -1,7 +1,7 @@
 import { PokemonList } from "@services/pokemon.service";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import { PokemonCatalogComponent } from "./pokemon-catalog.component";
+import { PokemonCatalog } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
 describe("Lit PokemonCatalogComponent", () => {
@@ -24,7 +24,7 @@ describe("Lit PokemonCatalogComponent", () => {
       given.image.mockImageResponse("default.png");
       given.onNextSpy();
       given.onPrevSpy();
-      when.render(new PokemonCatalogComponent());
+      when.render(new PokemonCatalog());
     });
 
     it("should show picture given pokemon provided as input", () => {
@@ -76,7 +76,7 @@ describe("Lit PokemonCatalogComponent", () => {
     beforeEach(() => {
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
-      when.render(new PokemonCatalogComponent());
+      when.render(new PokemonCatalog());
     });
 
     it("should show picture given pokemon provided as input", () => {

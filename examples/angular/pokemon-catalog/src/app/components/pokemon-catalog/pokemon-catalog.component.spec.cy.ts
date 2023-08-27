@@ -2,7 +2,7 @@ import { PokemonList, PokemonService } from "@services/pokemon.service";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
-import { PokemonCatalogComponent } from "./pokemon-catalog.component";
+import { PokemonCatalog } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
 describe("Angular PokemonCatalogComponent Tests", () => {
@@ -10,7 +10,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
   const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
 
   const testConfig = {
-    declarations: [PokemonCatalogComponent, PokemonImageComponent],
+    declarations: [PokemonCatalog, PokemonImageComponent],
     providers: [
       {
         provide: PokemonService,
@@ -34,7 +34,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     beforeEach(() => {
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
-      when.render(PokemonCatalogComponent, testConfig);
+      when.render(PokemonCatalog, testConfig);
     });
 
     describe("when clicking prev", () => {
@@ -88,7 +88,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     beforeEach(() => {
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
-      when.render(PokemonCatalogComponent, testConfig);
+      when.render(PokemonCatalog, testConfig);
     });
 
     it("should show picture given pokemon provided as input", () => {

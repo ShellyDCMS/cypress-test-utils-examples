@@ -6,7 +6,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import styles from "./pokemon-catalog.component.scss";
 
 @customElement("pokemon-catalog")
-export class PokemonCatalogComponent extends LitElement {
+export class PokemonCatalog extends LitElement {
   @property()
   onPrev?: () => void;
 

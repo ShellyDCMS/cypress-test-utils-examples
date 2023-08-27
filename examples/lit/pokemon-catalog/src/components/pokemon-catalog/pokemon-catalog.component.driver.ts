@@ -5,7 +5,7 @@ import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { PokemonInternalService, PokemonList, PokemonServiceContext } from "../../services/pokemon.service";
-import { PokemonCatalogComponent } from "./pokemon-catalog.component";
+import { PokemonCatalog } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
   @property({ type: Object, reflect: true })
@@ -62,7 +62,7 @@ export class PokemonCatalogComponentDriver {
 
   when = {
     image: this.pokemonImageDriver.when,
-    render: (element: PokemonCatalogComponent) => {
+    render: (element: PokemonCatalog) => {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
         element,
