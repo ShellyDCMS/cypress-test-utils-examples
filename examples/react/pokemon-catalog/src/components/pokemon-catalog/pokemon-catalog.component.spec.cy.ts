@@ -48,11 +48,10 @@ describe("React PokemonCatalogComponent", () => {
         expect(get.onNextSpy().should("have.been.calledOnce"));
       });
 
-      it("should fetch next pokemon when next is click", () => {
+      it("should call getPokemon with the next pokemon's url", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
       });
     });
-
     describe("when clicking prev", () => {
       beforeEach(() => {
         when.clickPrev();

@@ -22,6 +22,8 @@ describe("Lit PokemonCatalogComponent", () => {
     beforeEach(() => {
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
+      given.onNextSpy();
+      given.onPrevSpy();
       when.render(new PokemonCatalogComponent());
     });
 
@@ -40,6 +42,11 @@ describe("Lit PokemonCatalogComponent", () => {
       beforeEach(() => {
         when.clickNext();
       });
+
+      it("should call onNext", () => {
+        expect(get.onNextSpy().should("have.been.calledOnce"));
+      });
+
       it("should call getPokemon with the next pokemon's url", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
       });
@@ -48,6 +55,11 @@ describe("Lit PokemonCatalogComponent", () => {
       beforeEach(() => {
         when.clickPrev();
       });
+
+      it("should call onPrev", () => {
+        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      });
+
       it("should call getPokemon with the prev pokemon's url", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
       });
