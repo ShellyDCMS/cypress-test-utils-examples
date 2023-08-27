@@ -56,8 +56,8 @@ export class PokemonCatalogComponentDriver {
         .as(this.pokemonServiceMock.getPokemonByOffset!.name)
         .returns(value);
     },
-    onNextSpy: () => (this.props.onNext = this.helper.given.spy("onNext")),
-    onPrevSpy: () => (this.props.onPrev = this.helper.given.spy("onPrev"))
+    onNextSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onNext = this.helper.given.spy("onNext")),
+    onPrevSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onPrev = this.helper.given.spy("onPrev"))
   };
 
   when = {
