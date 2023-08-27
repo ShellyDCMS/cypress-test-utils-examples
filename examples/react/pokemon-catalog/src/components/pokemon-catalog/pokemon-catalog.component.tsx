@@ -7,7 +7,7 @@ export interface IPokemonCatalogComponentsProps {
   onNext?: () => void;
 }
 
-export const PokemonCatalogComponent = (props: IPokemonCatalogComponentsProps) => {
+export const PokemonCatalog = (props: IPokemonCatalogComponentsProps) => {
   const { onNext, onPrev } = props;
   const [pokemon, setPokemon] = useState<PokemonList>();
   const pokemonService: IPokemonService | undefined = useContext(PokemonServiceContext);

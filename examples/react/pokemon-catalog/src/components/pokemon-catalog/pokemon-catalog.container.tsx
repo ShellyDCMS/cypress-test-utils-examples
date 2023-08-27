@@ -1,5 +1,5 @@
 import { IPokemonService, PokemonService, PokemonServiceContext } from "../../services/pokemon.service";
-import { IPokemonCatalogComponentsProps, PokemonCatalogComponent } from "./pokemon-catalog.component";
+import { IPokemonCatalogComponentsProps, PokemonCatalog } from "./pokemon-catalog.component";
 
 export interface IPokemonCatalogPros extends IPokemonCatalogComponentsProps {
   service?: IPokemonService;
@@ -10,7 +10,7 @@ export const PokemonCatalog = ({ onNext, onPrev, service }: IPokemonCatalogPros)
 
   return (
     <PokemonServiceContext.Provider value={pokemonService}>
-      <PokemonCatalogComponent onNext={onNext} onPrev={onPrev}></PokemonCatalogComponent>
+      <PokemonCatalog onNext={onNext} onPrev={onPrev}></PokemonCatalog>
     </PokemonServiceContext.Provider>
   );
 };

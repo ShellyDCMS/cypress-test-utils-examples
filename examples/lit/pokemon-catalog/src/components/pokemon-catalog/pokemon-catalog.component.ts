@@ -46,8 +46,8 @@ export class PokemonCatalogComponent extends LitElement {
   loadPokemon = async () => (this.pokemon = await this.pokemonService.getPokemonByOffset());
 
   loadNext = async () => {
-    this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next);
     this.onNext && this.onNext();
+    this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next);
   };
 
   loadPrev = async () => {

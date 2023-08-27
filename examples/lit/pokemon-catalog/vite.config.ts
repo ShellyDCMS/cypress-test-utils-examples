@@ -9,15 +9,12 @@ const aliases = {
 };
 
 const resolvedAliases = Object.fromEntries(
-  Object.entries(aliases).map(([key, value]) => [
-    key,
-    resolve(__dirname, value)
-  ])
+  Object.entries(aliases).map(([key, value]) => [key, resolve(__dirname, value)])
 );
 
 export default defineConfig({
   optimizeDeps: {
-    force: true,
+    force: true
   },
   resolve: {
     alias: {
@@ -33,16 +30,7 @@ export default defineConfig({
       formats: ["es", "cjs"]
     },
     rollupOptions: {
-      external: [
-        /^tslib/,
-        /^ramda/,
-        /^@lit/,
-        /^lit/,
-        /^lit-html/,
-        /^rxjs/,
-        /^lit-element/,
-        /^@edf\/test-utils/
-      ]
+      external: [/^tslib/, /^ramda/, /^@lit/, /^lit/, /^lit-html/, /^rxjs/, /^lit-element/]
     }
   }
 });
