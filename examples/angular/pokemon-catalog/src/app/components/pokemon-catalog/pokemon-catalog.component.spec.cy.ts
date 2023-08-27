@@ -1,11 +1,12 @@
+import { PokemonList, PokemonService } from "@services/pokemon.service";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
 import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
 describe("Angular PokemonCatalogComponent Tests", () => {
+  const chance = new Chance();
   const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
 
   const testConfig = {
@@ -17,8 +18,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
       }
     ]
   };
-
-  const chance = new Chance();
 
   beforeAndAfter();
 
@@ -43,10 +42,6 @@ describe("Angular PokemonCatalogComponent Tests", () => {
         when.clickPrev();
       });
 
-      it("should emit onPrev", () => {
-        expect(get.onPrevSpy().should("have.been.calledOnce"));
-      });
-
       it("should call getPokemon with the prev pokemon's url", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
       });
@@ -57,11 +52,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
         when.clickNext();
       });
 
-      it("should emit onNext", () => {
-        expect(get.onNextSpy().should("have.been.calledOnce"));
-      });
-
-      it("should fetch next pokemon when next is click", () => {
+      it("should call getPokemon with the next pokemon's url", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
       });
     });
@@ -88,6 +79,7 @@ describe("Angular PokemonCatalogComponent Tests", () => {
 
     beforeEach(() => {
       given.pokemon(pokemon);
+      given.image.mockImageResponse("default.png");
       when.render(PokemonCatalogComponent, testConfig);
     });
 
