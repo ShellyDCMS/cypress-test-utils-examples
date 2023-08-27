@@ -27,6 +27,10 @@ export class PokemonServiceProvider extends LitElement {
 export class PokemonCatalogComponentDriver {
   private helper = new CypressHelper();
   private litComponentHelper = new CypressLitComponentHelper();
+  private props = {
+    onPrev: () => {},
+    onNext: () => {}
+  };
 
   private pokemonServiceMock: Partial<PokemonInternalService> = {
     getPokemon: url => Promise.reject(),
@@ -51,7 +55,9 @@ export class PokemonCatalogComponentDriver {
         .stub()
         .as(this.pokemonServiceMock.getPokemonByOffset!.name)
         .returns(value);
-    }
+    },
+    onNextSpy: () => (this.props.onNext = this.helper.given.spy("onNext")),
+    onPrevSpy: () => (this.props.onPrev = this.helper.given.spy("onPrev"))
   };
 
   when = {
@@ -61,7 +67,7 @@ export class PokemonCatalogComponentDriver {
       this.litComponentHelper.when.mount(
         element,
         html`<pokemon-service-provider
-          .pokemonService="${this.pokemonServiceMock}"
+          .pokemonService="${this.pokemonServiceMock}" .onPrev="${this.props.onPrev}" .onNext="${this.props.onNext}"}
         ><pokemon-catalog></pokemon-catalog></pokemon-catalog></pokemon-service-provider>`
       );
     },
@@ -71,6 +77,8 @@ export class PokemonCatalogComponentDriver {
 
   get = {
     image: this.pokemonImageDriver.get,
+    onNextSpy: () => this.helper.get.spy("onNext"),
+    onPrevSpy: () => this.helper.get.spy("onPrev"),
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     nextButton: () => this.helper.get.elementByTestId("next"),

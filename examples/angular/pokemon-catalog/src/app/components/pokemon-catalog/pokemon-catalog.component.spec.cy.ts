@@ -42,6 +42,10 @@ describe("Angular PokemonCatalogComponent Tests", () => {
         when.clickPrev();
       });
 
+      it("should emit onPrev", () => {
+        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      });
+
       it("should call getPokemon with the prev pokemon's url", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
       });
@@ -50,6 +54,10 @@ describe("Angular PokemonCatalogComponent Tests", () => {
     describe("when clicking next", () => {
       beforeEach(() => {
         when.clickNext();
+      });
+
+      it("should emit onNext", () => {
+        expect(get.onNextSpy().should("have.been.calledOnce"));
       });
 
       it("should call getPokemon with the next pokemon's url", () => {

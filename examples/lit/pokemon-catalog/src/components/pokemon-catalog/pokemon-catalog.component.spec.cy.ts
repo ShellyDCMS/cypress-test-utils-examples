@@ -25,24 +25,6 @@ describe("Lit PokemonCatalogComponent", () => {
       when.render(new PokemonCatalogComponent());
     });
 
-    describe("when clicking prev", () => {
-      beforeEach(() => {
-        when.clickPrev();
-      });
-      it("should call getPokemon with the prev pokemon's url", () => {
-        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
-      });
-    });
-
-    describe("when clicking next", () => {
-      beforeEach(() => {
-        when.clickNext();
-      });
-      it("should call getPokemon with the next pokemon's url", () => {
-        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
-      });
-    });
-
     it("should show picture given pokemon provided as input", () => {
       expect(get.image.pictureSrc().should("include", "2.gif"));
     });
@@ -53,6 +35,22 @@ describe("Lit PokemonCatalogComponent", () => {
 
     it("should render pokemon count", () => {
       expect(get.countText().should("eq", "2 of 3"));
+    });
+    describe("when clicking next", () => {
+      beforeEach(() => {
+        when.clickNext();
+      });
+      it("should call getPokemon with the next pokemon's url", () => {
+        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
+      });
+    });
+    describe("when clicking prev", () => {
+      beforeEach(() => {
+        when.clickPrev();
+      });
+      it("should call getPokemon with the prev pokemon's url", () => {
+        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
+      });
     });
   });
 
