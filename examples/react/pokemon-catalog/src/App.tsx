@@ -1,11 +1,11 @@
 import "./App.scss";
-import { PokemonCatalogComponent } from "./components/pokemon-catalog/pokemon-catalog.container";
+import { PokemonCatalog } from "./components/pokemon-catalog/pokemon-catalog.container";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <PokemonCatalogComponent></PokemonCatalogComponent>
+        <PokemonCatalog></PokemonCatalog>
       </header>
       <span>Pokémon and Pokémon character names are trademarks of Nintendo.</span>
     </div>
