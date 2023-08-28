@@ -75,6 +75,30 @@ describe("Lit Pokemon e2e", () => {
     });
   });
 
+  describe("when typing pokemon index and clicking Go", () => {
+    beforeEach(() => {
+      when.pokemon.pokemonGo.typePokemonIndex("25");
+      when.pokemon.pokemonGo.clickGo();
+      when.waitUntil(() => get.elementByText("pikachu"));
+    });
+
+    it("should update index", () => {
+      expect(get.pokemon.countText().should("include", "25 of"));
+    });
+
+    it("should update pokemon image", () => {
+      expect(get.pokemon.image.pictureSrc().should("include", "25.gif"));
+    });
+
+    it("prev button should be enabled", () => {
+      expect(get.pokemon.prevButton().should("be.enabled"));
+    });
+
+    it("should render pokemon name", () => {
+      expect(get.elementByText("pikachu")).to.exist;
+    });
+  });
+
   describe("when changing from pokemon without gif to pokemon with gif, should show gif", () => {
     it("should render pokemon gif", () => {
       when.pokemon.pokemonGo.typePokemonIndex("888");
