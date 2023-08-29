@@ -8,7 +8,7 @@ describe("PokemonImageComponent", () => {
   const { when, given, get, beforeAndAfter } = new PokemonImageComponentDriver();
   beforeAndAfter();
 
-  it("given valid pokemon index  should show picture", () => {
+  it("given valid pokemon index should show gif", () => {
     const pokemonIndex: number = chance.integer({ min: 1, max: 500 });
     given.pokemonIndex(pokemonIndex);
     given.mockImageResponse("default.png");
