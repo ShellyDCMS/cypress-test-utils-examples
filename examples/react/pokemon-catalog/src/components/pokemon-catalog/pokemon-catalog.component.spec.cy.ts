@@ -1,6 +1,6 @@
+import { PokemonList } from "@services/pokemon.service";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
-import { PokemonList } from "../../services/pokemon.service";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 import { PokemonCatalog } from "./pokemon-catalog.container";
 
