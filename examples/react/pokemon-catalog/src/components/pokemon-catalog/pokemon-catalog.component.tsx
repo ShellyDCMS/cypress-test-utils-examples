@@ -1,6 +1,6 @@
+import { IPokemonService, PokemonList, PokemonServiceContext } from "@services/pokemon.service";
 import { useCallback, useContext, useEffect, useState } from "react";
 import "../../App.scss";
-import { IPokemonService, PokemonList, PokemonServiceContext } from "../../services/pokemon.service";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";
 export interface IPokemonCatalogComponentsProps {
   onPrev?: () => void;

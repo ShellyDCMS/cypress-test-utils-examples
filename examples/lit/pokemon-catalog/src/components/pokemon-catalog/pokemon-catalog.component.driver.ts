@@ -1,10 +1,10 @@
 import { PokemonImageComponentDriver } from "@components/pokemon-image/pokemon-image.component.driver";
 import { ContextProvider } from "@lit-labs/context";
+import { PokemonInternalService, PokemonList, PokemonServiceContext } from "@services/pokemon.service";
 import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { PokemonInternalService, PokemonList, PokemonServiceContext } from "../../services/pokemon.service";
 import { PokemonCatalogComponent } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {

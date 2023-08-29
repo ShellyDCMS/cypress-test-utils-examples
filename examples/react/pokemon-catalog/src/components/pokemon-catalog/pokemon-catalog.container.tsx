@@ -1,4 +1,4 @@
-import { IPokemonService, PokemonService, PokemonServiceContext } from "../../services/pokemon.service";
+import { IPokemonService, PokemonService, PokemonServiceContext } from "@services/pokemon.service";
 import { IPokemonCatalogComponentsProps, PokemonCatalogComponent } from "./pokemon-catalog.component";
 
 export interface IPokemonCatalogPros extends IPokemonCatalogComponentsProps {
