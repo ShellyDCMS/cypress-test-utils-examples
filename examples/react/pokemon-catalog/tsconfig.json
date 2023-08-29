@@ -3,8 +3,8 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
-      "@components/*": ["src/app/components/*"],
-      "@services/*": ["src/app/services/*"]
+      "@components/*": ["src/components/*"],
+      "@services/*": ["src/services/*"]
     },
     "baseUrl": ".",
     "allowJs": true,
