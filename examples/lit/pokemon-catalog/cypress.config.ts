@@ -2,16 +2,15 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   reporter: "mochawesome",
-  reporterOptions: 
-   {
-      "reportDir": "cypress/results/json",
-      "overwrite": false,
-      "html": false,
-      "json": true,
-      suiteTitleSeparatedBy: " > ",
-      testCaseSwitchClassnameAndName: false,
-      rootSuiteTitle: "Lit Tests",
-      toConsole: true,
+  reporterOptions: {
+    reportDir: "cypress/results/json",
+    overwrite: false,
+    html: false,
+    json: true,
+    suiteTitleSeparatedBy: " > ",
+    testCaseSwitchClassnameAndName: false,
+    rootSuiteTitle: "Lit Tests",
+    toConsole: true
   },
   includeShadowDom: true,
 

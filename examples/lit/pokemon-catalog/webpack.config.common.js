@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   resolve: {
+    fullySpecified: false,
     extensions: [".ts", ".js"],
     alias: {
       "@src": path.resolve(__dirname, "src"),
