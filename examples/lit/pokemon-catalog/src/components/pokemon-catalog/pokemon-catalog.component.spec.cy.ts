@@ -51,6 +51,7 @@ describe("PokemonCatalogComponent", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
       });
     });
+
     describe("when clicking prev", () => {
       beforeEach(() => {
         when.clickPrev();

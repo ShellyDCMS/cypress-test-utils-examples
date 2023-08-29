@@ -37,20 +37,17 @@ describe("PokemonCatalogComponent Tests", () => {
       when.render(PokemonCatalog, testConfig);
     });
 
-    describe("when clicking prev", () => {
-      beforeEach(() => {
-        when.clickPrev();
-      });
-
-      it("should emit onPrev", () => {
-        expect(get.onPrevSpy().should("have.been.calledOnce"));
-      });
-
-      it("should call getPokemon with the prev pokemon's url", () => {
-        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
-      });
+    it("should show picture given pokemon provided as input", () => {
+      expect(get.image.pictureSrc().should("include", "2.gif"));
     });
 
+    it("should render pokemon name", () => {
+      expect(get.nameText().should("eq", name));
+    });
+
+    it("should render pokemon count", () => {
+      expect(get.countText().should("eq", "2 of 3"));
+    });
     describe("when clicking next", () => {
       beforeEach(() => {
         when.clickNext();
@@ -65,16 +62,18 @@ describe("PokemonCatalogComponent Tests", () => {
       });
     });
 
-    it("should show picture given pokemon provided as input", () => {
-      expect(get.image.pictureSrc().should("include", "2.gif"));
-    });
+    describe("when clicking prev", () => {
+      beforeEach(() => {
+        when.clickPrev();
+      });
 
-    it("should render pokemon name", () => {
-      expect(get.nameText().should("eq", name));
-    });
+      it("should emit onPrev", () => {
+        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      });
 
-    it("should render pokemon count", () => {
-      expect(get.countText().should("eq", "2 of 3"));
+      it("should call getPokemon with the prev pokemon's url", () => {
+        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
+      });
     });
   });
 
