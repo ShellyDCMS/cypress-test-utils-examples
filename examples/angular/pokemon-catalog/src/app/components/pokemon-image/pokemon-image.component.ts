@@ -7,7 +7,7 @@ import { Component, Input } from "@angular/core";
       <img
         *ngIf="!showFallbackImage"
         class="pokemon"
-        data-hook="pokemon-image"
+        data-cy="pokemon-image"
         src="{{ getPokemonImage() }}"
         alt="pokemon"
         (error)="onImageError($event)"
@@ -15,7 +15,7 @@ import { Component, Input } from "@angular/core";
       <img
         *ngIf="showFallbackImage"
         class="pokemon-fallback"
-        data-hook="pokemon-fallback-image"
+        data-cy="pokemon-fallback-image"
         src="{{ getFallbackImage() }}"
         alt="pokemon"
       />

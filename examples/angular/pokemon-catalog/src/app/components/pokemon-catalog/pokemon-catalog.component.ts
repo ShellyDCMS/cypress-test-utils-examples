@@ -5,12 +5,12 @@ import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
   selector: "pokemon-catalog",
   template: `<div class="catalog">
     <pokemon-image [pokemonIndex]="getPokemonIndex()"></pokemon-image>
-    <h1 *ngIf="pokemon" data-hook="pokemon-name">{{ getPokemonName() }}</h1>
+    <h1 *ngIf="pokemon" data-cy="pokemon-name">{{ getPokemonName() }}</h1>
 
-    <p data-hook="count" *ngIf="pokemon">{{ getPokemonIndex() }} of {{ pokemon.count }}</p>
+    <p data-cy="count" *ngIf="pokemon">{{ getPokemonIndex() }} of {{ pokemon.count }}</p>
     <div>
-      <button data-hook="prev" (click)="fetchPrev()" [disabled]="prevDisabled()">Prev</button>
-      <button data-hook="next" (click)="fetchNext()" [disabled]="nextDisabled()">Next</button>
+      <button data-cy="prev" (click)="fetchPrev()" [disabled]="prevDisabled()">Prev</button>
+      <button data-cy="next" (click)="fetchNext()" [disabled]="nextDisabled()">Next</button>
     </div>
     <div>
       <br />

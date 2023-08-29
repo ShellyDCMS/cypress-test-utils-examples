@@ -29,13 +29,13 @@ export class PokemonImageComponent extends LitElement {
       <div>
         ${this.showFallbackImage
           ? html` <img
-              data-hook="pokemon-fallback-image"
+              data-cy="pokemon-fallback-image"
               src="${this.getFallbackImage()}"
               class="pokemon-fallback"
               alt="pokemon"
             />`
           : html`<img
-              data-hook="pokemon-image"
+              data-cy="pokemon-image"
               src="${this.getPokemonImage()}"
               class="pokemon"
               alt="pokemon"

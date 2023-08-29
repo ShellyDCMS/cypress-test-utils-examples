@@ -80,11 +80,11 @@ export class PokemonCatalog extends LitElement {
       : html`
           <div class="catalog">
             <pokemon-image pokemonIndex="${this.getPokemonIndex()}"></pokemon-image>
-            <h2 data-hook="pokemon-name">${this.pokemon.results[0].name}</h2>
-            <p data-hook="count">${this.getPokemonIndex()} of ${this.pokemon.count}</p>
+            <h2 data-cy="pokemon-name">${this.pokemon.results[0].name}</h2>
+            <p data-cy="count">${this.getPokemonIndex()} of ${this.pokemon.count}</p>
             <div>
-              <button data-hook="prev" @click="${this.loadPrev}" .disabled="${this.isPrevDisabled()}">Prev</button>
-              <button data-hook="next" @click="${this.loadNext}" .disabled="${this.isNextDisabled()}">Next</button>
+              <button data-cy="prev" @click="${this.loadPrev}" .disabled="${this.isPrevDisabled()}">Prev</button>
+              <button data-cy="next" @click="${this.loadNext}" .disabled="${this.isNextDisabled()}">Next</button>
             </div>
           </div>
         `;
