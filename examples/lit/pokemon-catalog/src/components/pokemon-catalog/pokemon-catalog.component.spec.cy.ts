@@ -4,7 +4,7 @@ import { Chance } from "chance";
 import { PokemonCatalog } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
-describe("Lit PokemonCatalogComponent", () => {
+describe("PokemonCatalogComponent", () => {
   const chance = new Chance();
   const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
   beforeAndAfter();

@@ -3,7 +3,7 @@ import { Builder } from "builder-pattern";
 import { Chance } from "chance";
 import { AppDriver } from "../drivers/app.driver";
 
-describe("Angular Pokemon Page integration Tests", () => {
+describe("Pokemon Page integration Tests", () => {
   const chance = new Chance();
 
   const { when, given, get, beforeAndAfter } = new AppDriver();
