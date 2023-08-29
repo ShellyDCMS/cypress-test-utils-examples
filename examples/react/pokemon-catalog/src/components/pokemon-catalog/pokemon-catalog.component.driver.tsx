@@ -4,7 +4,7 @@ import { IPokemonService, PokemonList } from "../../services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import { IPokemonCatalogPros, PokemonCatalog } from "./pokemon-catalog.container";
 export class PokemonCatalogComponentDriver {
-  private helper = newCypressHelper("data-hook");
+  private helper = new CypressHelper("data-hook");
   private reactComponentHelper = new CypressReactComponentHelper();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 

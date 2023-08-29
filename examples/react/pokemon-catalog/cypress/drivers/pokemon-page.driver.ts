@@ -3,7 +3,7 @@ import { PokemonCatalogComponentDriver } from "../../src/components/pokemon-cata
 import { PokemonList } from "../../src/services/pokemon.service";
 
 export class PokemonPageDriver {
-  private helper: CypressHelper = newCypressHelper("data-hook");
+  private helper: CypressHelper = new CypressHelper("data-hook");
   private pokemonDriver: PokemonCatalogComponentDriver = new PokemonCatalogComponentDriver();
 
   beforeAndAfter = () => {

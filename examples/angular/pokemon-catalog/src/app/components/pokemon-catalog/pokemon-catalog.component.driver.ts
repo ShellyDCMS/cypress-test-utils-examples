@@ -6,7 +6,7 @@ import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.comp
 import type { PokemonCatalog } from "./pokemon-catalog.component";
 
 export class PokemonCatalogComponentDriver {
-  private helper = newCypressHelper("data-hook");
+  private helper = new CypressHelper("data-hook");
   private angularComponentHelper = new CypressAngularComponentHelper<PokemonCatalog>();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
