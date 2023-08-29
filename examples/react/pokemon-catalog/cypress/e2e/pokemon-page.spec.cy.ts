@@ -9,15 +9,15 @@ describe("Pokemon e2e", () => {
     when.waitUntil(() => get.elementByText("bulbasaur"));
   });
 
-  it("should render prev button disabled", () => {
+  it("prev button should be disabled", () => {
     expect(get.pokemon.prevButton().should("be.disabled"));
   });
 
-  it("should render index", () => {
+  it("should render pokemon index", () => {
     expect(get.pokemon.countText().should("include", "1 of"));
   });
 
-  it("should render the first pokemon", () => {
+  it("should render pokemon image", () => {
     expect(get.pokemon.image.pictureSrc().should("include", "1.gif"));
   });
 
