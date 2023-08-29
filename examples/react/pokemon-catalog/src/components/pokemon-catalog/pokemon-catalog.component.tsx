@@ -62,13 +62,13 @@ export const PokemonCatalogComponent = (props: IPokemonCatalogComponentsProps) =
         {pokemon && (
           <>
             <PokemonImageComponent pokemonIndex={getPokemonIndex()} />
-            <h2 data-cy="pokemon-name">{getPokemonName()}</h2>
-            <div data-cy="count">{`${getPokemonIndex()} of ${pokemon.count}`}</div>
+            <h2 data-hook="pokemon-name">{getPokemonName()}</h2>
+            <div data-hook="count">{`${getPokemonIndex()} of ${pokemon.count}`}</div>
             <div>
-              <button data-cy="prev" onClick={fetchPrev} disabled={!(pokemon && pokemon.previous)}>
+              <button data-hook="prev" onClick={fetchPrev} disabled={!(pokemon && pokemon.previous)}>
                 Prev
               </button>
-              <button data-cy="next" onClick={fetchNext} disabled={!(pokemon && pokemon.next)}>
+              <button data-hook="next" onClick={fetchNext} disabled={!(pokemon && pokemon.next)}>
                 Next
               </button>
             </div>

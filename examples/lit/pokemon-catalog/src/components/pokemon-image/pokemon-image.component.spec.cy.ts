@@ -2,7 +2,7 @@ import { Chance } from "chance";
 import { PokemonImageComponent } from "./pokemon-image.component";
 import { PokemonImageComponentDriver } from "./pokemon-image.component.driver";
 
-describe("Lit PokemonImageComponent", () => {
+describe("PokemonImageComponent", () => {
   const chance = new Chance();
 
   const { when, given, get, beforeAndAfter } = new PokemonImageComponentDriver();

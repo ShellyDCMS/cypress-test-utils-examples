@@ -23,14 +23,10 @@ export const PokemonImageComponent = (props: IProps) => {
   return (
     <div>
       {showFallbackImage ? (
-        <img
-          data-cy="pokemon-fallback-image"
-          src={getFallbackImage()}
-          alt="pokemon"
-        />
+        <img data-hook="pokemon-fallback-image" src={getFallbackImage()} alt="pokemon" />
       ) : (
         <img
-          data-cy="pokemon-image"
+          data-hook="pokemon-image"
           src={getPokemonImage()}
           className="pokemon"
           alt="pokemon"

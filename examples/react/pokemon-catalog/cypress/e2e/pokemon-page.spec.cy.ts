@@ -1,6 +1,6 @@
 import { AppDriver } from "../drivers/app.driver";
 
-describe("React Pokemon e2e", () => {
+describe("Pokemon e2e", () => {
   const { when, get, beforeAndAfter } = new AppDriver();
   beforeAndAfter();
 
