@@ -26,7 +26,7 @@ export class PokemonServiceProvider extends LitElement {
 }
 
 export class PokemonCatalogComponentDriver {
-  private helper = new CypressHelper();
+  private helper = new CypressHelper("data-hook");
   private litComponentHelper = new CypressLitComponentHelper();
   private props = {
     onPrev: () => {},

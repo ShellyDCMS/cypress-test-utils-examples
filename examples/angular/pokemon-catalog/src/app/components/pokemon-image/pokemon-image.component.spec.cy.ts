@@ -2,7 +2,7 @@ import { Chance } from "chance";
 import { PokemonImageComponent } from "./pokemon-image.component";
 import { PokemonImageComponentDriver } from "./pokemon-image.component.driver";
 
-describe("Angular PokemonImageComponent Tests", () => {
+describe("PokemonImageComponent Tests", () => {
   const testConfig = {
     declarations: [PokemonImageComponent]
   };

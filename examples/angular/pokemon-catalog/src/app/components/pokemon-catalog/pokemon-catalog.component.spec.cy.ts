@@ -5,7 +5,7 @@ import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component"
 import { PokemonCatalog } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
-describe("Angular PokemonCatalogComponent Tests", () => {
+describe("PokemonCatalogComponent Tests", () => {
   const chance = new Chance();
   const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
 
