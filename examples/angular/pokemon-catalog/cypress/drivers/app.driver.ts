@@ -2,7 +2,7 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { PokemonPageDriver } from "./pokemon-page.driver";
 
 export class AppDriver {
-  private helper: CypressHelper = new CypressHelper();
+  private helper: CypressHelper = newCypressHelper("data-hook");
   private pokemonDriver: PokemonPageDriver = new PokemonPageDriver();
 
   beforeAndAfter = () => {

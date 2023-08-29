@@ -1,6 +1,5 @@
 import { PokemonImageComponentDriver } from "@components/pokemon-image/pokemon-image.component.driver";
 import { ContextProvider } from "@lit-labs/context";
-import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
@@ -25,7 +24,7 @@ export class PokemonServiceProvider extends LitElement {
 }
 
 export class PokemonCatalogComponentDriver {
-  private helper = new CypressHelper();
+  private helper = newCypressHelper("data-hook");
   private litComponentHelper = new CypressLitComponentHelper();
   private props = {
     onPrev: () => {},

@@ -1,5 +1,4 @@
 import type { Type } from "@angular/core";
-import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressAngularComponentHelper } from "@shellygo/cypress-test-utils/angular";
 import { MountConfig } from "cypress/angular";
 import { PokemonList, PokemonService } from "src/app/services/pokemon.service";
@@ -7,7 +6,7 @@ import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.comp
 import type { PokemonCatalog } from "./pokemon-catalog.component";
 
 export class PokemonCatalogComponentDriver {
-  private helper = new CypressHelper();
+  private helper = newCypressHelper("data-hook");
   private angularComponentHelper = new CypressAngularComponentHelper<PokemonCatalog>();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 

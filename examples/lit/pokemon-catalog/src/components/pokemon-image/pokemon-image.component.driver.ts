@@ -1,10 +1,9 @@
-import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { html } from "lit";
 import { PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {
-  private helper = new CypressHelper();
+  private helper = newCypressHelper("data-hook");
   private litComponentHelper = new CypressLitComponentHelper();
   private props = {
     pokemonIndex: 0

@@ -1,11 +1,10 @@
-import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressReactComponentHelper } from "@shellygo/cypress-test-utils/react";
 import { Attributes, ReactNode } from "react";
 import { IPokemonService, PokemonList } from "../../services/pokemon.service";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import { IPokemonCatalogPros, PokemonCatalog } from "./pokemon-catalog.container";
 export class PokemonCatalogComponentDriver {
-  private helper = new CypressHelper();
+  private helper = newCypressHelper("data-hook");
   private reactComponentHelper = new CypressReactComponentHelper();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 

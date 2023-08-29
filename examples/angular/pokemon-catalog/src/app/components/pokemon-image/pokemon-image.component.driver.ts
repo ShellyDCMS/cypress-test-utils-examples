@@ -1,11 +1,10 @@
 import type { Type } from "@angular/core";
-import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressAngularComponentHelper } from "@shellygo/cypress-test-utils/angular";
 import { MountConfig } from "cypress/angular";
 import type { PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {
-  private helper = new CypressHelper();
+  private helper = newCypressHelper("data-hook");
   private angularComponentHelper = new CypressAngularComponentHelper<PokemonImageComponent>();
   private componentProperties: Partial<PokemonImageComponent> = {};
 
