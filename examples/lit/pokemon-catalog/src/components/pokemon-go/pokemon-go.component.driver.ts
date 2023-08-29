@@ -4,7 +4,7 @@ import { html } from "lit";
 import { PokemonGoComponent } from "./pokemon-go.component";
 
 export class PokemonGoComponentDriver {
-  private helper = new CypressHelper();
+  private helper = new CypressHelper("data-hook");
   private litComponentHelper = new CypressLitComponentHelper();
   private props = {
     onSubmit: (pokemonIndex: string) => {}

@@ -4,7 +4,7 @@ import type { Attributes, ReactNode } from "react";
 import { IProps, PokemonGoComponent } from "./pokemon-go";
 
 export class PokemonGoComponentDriver {
-  private helper = new CypressHelper();
+  private helper = new CypressHelper("data-hook");
   private reactComponentHelper = new CypressReactComponentHelper();
 
   private props: IProps = {
