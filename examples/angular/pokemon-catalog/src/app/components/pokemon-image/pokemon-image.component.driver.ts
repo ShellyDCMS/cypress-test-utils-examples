@@ -5,7 +5,7 @@ import { MountConfig } from "cypress/angular";
 import type { PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {
-  private helper = new CypressHelper();
+  private helper = new CypressHelper("data-hook");
   private angularComponentHelper = new CypressAngularComponentHelper<PokemonImageComponent>();
   private componentProperties: Partial<PokemonImageComponent> = {};
 

@@ -5,7 +5,7 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { PokemonCatalogComponent } from "./pokemon-catalog.component";
+import { PokemonCatalog } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
   @property({ type: Object, reflect: true })
@@ -25,8 +25,12 @@ export class PokemonServiceProvider extends LitElement {
 }
 
 export class PokemonCatalogComponentDriver {
-  private helper = new CypressHelper();
+  private helper = new CypressHelper("data-hook");
   private litComponentHelper = new CypressLitComponentHelper();
+  private props = {
+    onPrev: () => {},
+    onNext: () => {}
+  };
 
   private pokemonServiceMock: Partial<PokemonInternalService> = {
     getPokemon: url => Promise.reject(),
@@ -51,18 +55,20 @@ export class PokemonCatalogComponentDriver {
         .stub()
         .as(this.pokemonServiceMock.getPokemonByOffset!.name)
         .returns(value);
-    }
+    },
+    onNextSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onNext = this.helper.given.spy("onNext")),
+    onPrevSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onPrev = this.helper.given.spy("onPrev"))
   };
 
   when = {
     image: this.pokemonImageDriver.when,
-    render: (element: PokemonCatalogComponent) => {
+    render: (element: PokemonCatalog) => {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
         element,
         html`<pokemon-service-provider
-          .pokemonService="${this.pokemonServiceMock}"
-        ><pokemon-catalog></pokemon-catalog></pokemon-catalog></pokemon-service-provider>`
+          .pokemonService="${this.pokemonServiceMock}" }
+        ><pokemon-catalog .onPrev="${this.props.onPrev}" .onNext="${this.props.onNext}"></pokemon-catalog ></pokemon-catalog></pokemon-service-provider>`
       );
     },
     clickNext: () => this.helper.when.click("next"),
@@ -71,6 +77,8 @@ export class PokemonCatalogComponentDriver {
 
   get = {
     image: this.pokemonImageDriver.get,
+    onNextSpy: () => this.helper.get.spy("onNext"),
+    onPrevSpy: () => this.helper.get.spy("onPrev"),
     countText: () => this.helper.get.elementsText("count"),
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     nextButton: () => this.helper.get.elementByTestId("next"),

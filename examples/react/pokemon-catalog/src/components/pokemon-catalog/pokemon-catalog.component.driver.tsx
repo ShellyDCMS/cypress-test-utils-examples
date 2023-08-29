@@ -5,7 +5,7 @@ import { Attributes, ReactNode } from "react";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import { IPokemonCatalogPros, PokemonCatalog } from "./pokemon-catalog.container";
 export class PokemonCatalogComponentDriver {
-  private helper = new CypressHelper();
+  private helper = new CypressHelper("data-hook");
   private reactComponentHelper = new CypressReactComponentHelper();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 

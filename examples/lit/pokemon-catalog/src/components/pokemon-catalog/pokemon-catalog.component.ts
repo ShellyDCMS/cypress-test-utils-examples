@@ -2,11 +2,17 @@ import { PokemonImageComponent } from "@components/pokemon-image/pokemon-image.c
 import { ContextConsumer } from "@lit-labs/context";
 import { PokemonInternalService, PokemonList, PokemonServiceContext } from "@services/pokemon.service";
 import { LitElement, html } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import styles from "./pokemon-catalog.component.scss";
 
 @customElement("pokemon-catalog")
-export class PokemonCatalogComponent extends LitElement {
+export class PokemonCatalog extends LitElement {
+  @property()
+  onPrev?: () => void;
+
+  @property()
+  onNext?: () => void;
+
   @state()
   pokemon!: PokemonList;
 
@@ -39,9 +45,15 @@ export class PokemonCatalogComponent extends LitElement {
 
   loadPokemon = async () => (this.pokemon = await this.pokemonService.getPokemonByOffset());
 
-  loadNext = async () => (this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next));
+  loadNext = async () => {
+    this.onNext && this.onNext();
+    this.pokemon = await this.pokemonService.getPokemon(this.pokemon.next);
+  };
 
-  loadPrev = async () => (this.pokemon = await this.pokemonService.getPokemon(this.pokemon.previous));
+  loadPrev = async () => {
+    this.pokemon = await this.pokemonService.getPokemon(this.pokemon.previous);
+    this.onPrev && this.onPrev();
+  };
 
   getPokemonIndex = () =>
     Number(
@@ -68,11 +80,11 @@ export class PokemonCatalogComponent extends LitElement {
       : html`
           <div class="catalog">
             <pokemon-image pokemonIndex="${this.getPokemonIndex()}"></pokemon-image>
-            <h2 data-cy="pokemon-name">${this.pokemon.results[0].name}</h2>
-            <p data-cy="count">${this.getPokemonIndex()} of ${this.pokemon.count}</p>
+            <h2 data-hook="pokemon-name">${this.pokemon.results[0].name}</h2>
+            <p data-hook="count">${this.getPokemonIndex()} of ${this.pokemon.count}</p>
             <div>
-              <button data-cy="prev" @click="${this.loadPrev}" .disabled="${this.isPrevDisabled()}">Prev</button>
-              <button data-cy="next" @click="${this.loadNext}" .disabled="${this.isNextDisabled()}">Next</button>
+              <button data-hook="prev" @click="${this.loadPrev}" .disabled="${this.isPrevDisabled()}">Prev</button>
+              <button data-hook="next" @click="${this.loadNext}" .disabled="${this.isNextDisabled()}">Next</button>
             </div>
           </div>
         `;
