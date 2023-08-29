@@ -36,14 +36,14 @@ export class PokemonGoComponent extends LitElement {
     return html`
       <form class="go" @submit=${this.handleFormSubmit}>
         <input
-          data-cy="pokemon-index"
+          data-hook="pokemon-index"
           type="text"
           .value=${this.inputValue}
           @input=${this.handleInputChange}
           @keydown=${this.handleKeyDown}
           placeholder="Pokemon"
         />
-        <button type="submit" .disabled=${this.inputValue === ""} data-cy="go">Go</button>
+        <button type="submit" .disabled=${this.inputValue === ""} data-hook="go">Go</button>
       </form>
     `;
   }

@@ -23,8 +23,8 @@ export const PokemonGoComponent = ({ onSubmit }: IProps) => {
         setValue("");
       }}
     >
-      <input data-cy="pokemon-index" value={pokemonIndex} onChange={onChange} placeholder="Pokemon" />
-      <button type="submit" data-cy="go" disabled={pokemonIndex === ""}>
+      <input data-hook="pokemon-index" value={pokemonIndex} onChange={onChange} placeholder="Pokemon" />
+      <button type="submit" data-hook="go" disabled={pokemonIndex === ""}>
         Go
       </button>
     </form>

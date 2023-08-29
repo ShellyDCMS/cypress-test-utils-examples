@@ -3,10 +3,10 @@ import { Component, EventEmitter, Output } from "@angular/core";
 @Component({
   selector: "pokemon-go",
   template: `<form>
-    <input data-cy="pokemon-index" [(ngModel)]="pokemonIndex" (keypress)="numericOnly($event)" name="pokemon-index" />
+    <input data-hook="pokemon-index" [(ngModel)]="pokemonIndex" (keypress)="numericOnly($event)" name="pokemon-index" />
     <button
       type="submit"
-      data-cy="go"
+      data-hook="go"
       (click)="onSubmit()"
       (keydown.enter)="onSubmit()"
       [disabled]="pokemonIndex === ''"
