@@ -6,7 +6,6 @@ import { PokemonCatalog } from "./pokemon-catalog.container";
 
 describe("PokemonCatalogComponent", () => {
   const chance = new Chance();
-
   const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
   beforeAndAfter();
 
@@ -52,6 +51,7 @@ describe("PokemonCatalogComponent", () => {
         expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
       });
     });
+
     describe("when clicking prev", () => {
       beforeEach(() => {
         when.clickPrev();
