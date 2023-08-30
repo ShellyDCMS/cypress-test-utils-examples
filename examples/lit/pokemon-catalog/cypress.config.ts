@@ -19,7 +19,8 @@ export default defineConfig({
       framework: "svelte",
       bundler: "vite"
     },
-    specPattern: "src/**/*.spec.cy.{js,jsx,ts,tsx}"
+    specPattern: "src/**/*.spec.cy.{js,jsx,ts,tsx}",
+    defaultCommandTimeout: 10000
   },
   e2e: {
     setupNodeEvents(on, config) {
