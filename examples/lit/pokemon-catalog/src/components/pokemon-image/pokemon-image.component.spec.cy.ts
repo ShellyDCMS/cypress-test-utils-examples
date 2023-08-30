@@ -23,4 +23,12 @@ describe("PokemonImageComponent", () => {
     when.render(new PokemonImageComponent());
     expect(get.fallBackImage()).to.exist;
   });
+
+  it("given image not found should show correct fallback image", () => {
+    const pokemonIndex: number = chance.integer({ min: 501, max: 1000 });
+    given.pokemonIndex(pokemonIndex);
+    given.missingImage();
+    when.render(new PokemonImageComponent());
+    expect(get.fallbackPictureSrc().should("include", `${pokemonIndex}.png`));
+  });
 });
