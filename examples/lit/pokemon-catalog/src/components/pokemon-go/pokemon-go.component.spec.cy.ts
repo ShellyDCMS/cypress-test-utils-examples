@@ -1,1 +1,1 @@
-describe("Lit PokemonImageComponent", () => {});
+describe("PokemonGo Component Tests", () => {});

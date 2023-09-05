@@ -1,1 +1,1 @@
-describe("Angular PokemonGoComponent Tests", () => {});
+describe("PokemonGo Component Tests", () => {});
