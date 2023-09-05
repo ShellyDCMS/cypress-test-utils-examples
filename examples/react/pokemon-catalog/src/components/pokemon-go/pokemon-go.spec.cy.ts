@@ -18,7 +18,7 @@ describe("PokemonGo Component Tests", () => {
     expect(get.goButton().should("be.enabled"));
   });
 
-  it("when typing index and submiting should call onSubmit", () => {
+  it("when typing index and submitting should call onSubmit", () => {
     when.typePokemonIndex("33");
     when.clickGo();
     expect(get.onSubmitSpy().should("have.been.calledWith", "33"));
