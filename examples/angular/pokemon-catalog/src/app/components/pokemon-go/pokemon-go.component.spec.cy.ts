@@ -2,7 +2,7 @@ import { FormsModule } from "@angular/forms";
 import { PokemonGoComponent } from "./pokemon-go.component";
 import { PokemonGoComponentDriver } from "./pokemon-go.component.driver";
 
-describe("Angular PokemonGoComponent Tests", () => {
+describe("PokemonGo Component Tests", () => {
   const testConfig = {
     declarations: [PokemonGoComponent],
     imports: [FormsModule]

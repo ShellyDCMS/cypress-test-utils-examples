@@ -1,7 +1,7 @@
 import { PokemonGoComponent } from "./pokemon-go.component";
 import { PokemonGoComponentDriver } from "./pokemon-go.component.driver";
 
-describe("Lit PokemonImageComponent", () => {
+describe("PokemonGo Component Tests", () => {
   const { when, given, get, beforeAndAfter } = new PokemonGoComponentDriver();
   beforeAndAfter();
 
