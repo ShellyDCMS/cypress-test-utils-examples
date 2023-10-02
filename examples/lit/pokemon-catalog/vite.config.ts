@@ -2,6 +2,7 @@ import { resolve } from "path";
 import postcssLit from "rollup-plugin-postcss-lit";
 import { litScss } from "rollup-plugin-scss-lit";
 import { defineConfig } from "vite";
+import istanbul from "vite-plugin-istanbul";
 
 const aliases = {
   "@services": "src/services",
@@ -21,8 +22,19 @@ export default defineConfig({
       ...resolvedAliases
     }
   },
-  //@ts-ignore
-  plugins: [litScss(), postcssLit()],
+  plugins: [
+    //@ts-ignore
+    litScss(),
+    postcssLit(),
+    istanbul({
+      include: "src/**/*",
+      exclude: ["node_modules", "test/"],
+      extension: [".js", ".ts"],
+      requireEnv: false,
+      cypress: true,
+      forceBuildInstrument: true
+    })
+  ],
 
   build: {
     lib: {
