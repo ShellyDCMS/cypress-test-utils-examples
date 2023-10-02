@@ -19,6 +19,10 @@ export default defineConfig({
       framework: "svelte",
       bundler: "vite"
     },
+    setupNodeEvents(on, config) {
+      require("@cypress/code-coverage/task")(on, config);
+      return config;
+    },
     specPattern: "src/**/*.spec.cy.{js,jsx,ts,tsx}",
     defaultCommandTimeout: 10000
   },
