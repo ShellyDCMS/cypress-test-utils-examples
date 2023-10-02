@@ -4076,7 +4076,7 @@ istanbul-lib-instrument@^4.0.0:
     istanbul-lib-coverage "^3.0.0"
     semver "^6.3.0"
 
-istanbul-lib-instrument@^5.1.0:
+istanbul-lib-instrument@^5.1.0, istanbul-lib-instrument@^5.2.1:
   version "5.2.1"
   resolved "https://registry.npmjs.org/istanbul-lib-instrument/-/istanbul-lib-instrument-5.2.1.tgz"
   integrity sha512-pzqtp31nLv/XFOzXGuvhCb8qhjmTVo5vjVk19XE4CRlSWz0KoeJ3bw9XsA7nOp9YBf4qHjwBxkDzKcME/J29Yg==
@@ -6515,6 +6515,14 @@ webpack-merge@5.9.0, webpack-merge@^5.7.3:
   dependencies:
     clone-deep "^4.0.1"
     wildcard "^2.0.0"
+
+webpack-plugin-istanbul@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/webpack-plugin-istanbul/-/webpack-plugin-istanbul-1.0.3.tgz#62d09ba4dbacad23a44f915be785a00d53215f5b"
+  integrity sha512-Anq0fVljKrTw4pdyKCVx269VrEimT2TUkjuKHYbldMhMseWmxwI8U0sW2JIw2LCQrpSsLsa5Hrw7ilFyVg2G6Q==
+  dependencies:
+    istanbul-lib-instrument "^5.2.1"
+    test-exclude "^6.0.0"
 
 webpack-sources@^1.4.3:
   version "1.4.3"

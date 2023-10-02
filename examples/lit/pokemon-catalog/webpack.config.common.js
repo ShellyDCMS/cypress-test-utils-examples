@@ -1,7 +1,6 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { WebpackPluginIstanbul } = require("webpack-plugin-istanbul");
 
 module.exports = {
   resolve: {
@@ -28,12 +27,6 @@ module.exports = {
       filename: "index.html",
       inject: true,
       template: path.resolve(__dirname, "src", "index.html")
-    }),
-    new WebpackPluginIstanbul({
-      include: ["src/**/*.ts"],
-      exclude: ["src/**/*.spec.cy.ts"],
-      extension: [".ts"],
-      cwd: process.cwd()
     })
   ],
   module: {
