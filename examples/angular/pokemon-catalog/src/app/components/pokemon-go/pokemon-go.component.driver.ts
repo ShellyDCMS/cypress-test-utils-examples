@@ -5,7 +5,7 @@ import { MountConfig } from "cypress/angular";
 import { PokemonGoComponent } from "./pokemon-go.component";
 
 export class PokemonGoComponentDriver {
-  private helper = new CypressHelper("data-hook");
+  private helper = new CypressHelper({ defaultDataAttribute: "data-hook" });
   private angularComponentHelper = new CypressAngularComponentHelper<PokemonGoComponent>();
 
   private componentProperties: Partial<PokemonGoComponent> = {};
