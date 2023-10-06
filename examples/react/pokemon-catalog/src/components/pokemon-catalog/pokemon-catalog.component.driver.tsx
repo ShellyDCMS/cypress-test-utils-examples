@@ -6,7 +6,7 @@ import { PokemonGoComponentDriver } from "../pokemon-go/pokemon-go.driver";
 import { PokemonImageComponentDriver } from "../pokemon-image/pokemon-image.component.driver";
 import { IPokemonCatalogPros, PokemonCatalog } from "./pokemon-catalog.container";
 export class PokemonCatalogComponentDriver {
-  private helper = new CypressHelper("data-hook");
+  private helper = new CypressHelper({ defaultDataAttribute: "data-hook" });
   private reactComponentHelper = new CypressReactComponentHelper();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
   private pokemonGoDriver: PokemonGoComponentDriver = new PokemonGoComponentDriver();

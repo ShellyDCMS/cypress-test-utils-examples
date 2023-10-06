@@ -4,7 +4,7 @@ import { html } from "lit";
 import { PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {
-  private helper = new CypressHelper("data-hook");
+  private helper = new CypressHelper({ defaultDataAttribute: "data-hook" });
   private litComponentHelper = new CypressLitComponentHelper();
   private props = {
     pokemonIndex: 0
