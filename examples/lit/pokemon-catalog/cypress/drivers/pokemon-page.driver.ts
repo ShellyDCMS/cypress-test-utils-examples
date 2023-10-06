@@ -4,7 +4,7 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { Interception } from "cypress/types/net-stubbing";
 
 export class PokemonPageDriver {
-  private helper: CypressHelper = new CypressHelper("data-hook");
+  private helper: CypressHelper = new CypressHelper({ defaultDataAttribute: "data-hook" });
   private pokemonDriver: PokemonCatalogComponentDriver = new PokemonCatalogComponentDriver();
 
   beforeAndAfter = () => {
