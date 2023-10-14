@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.15
+      - name: Use Node.js 18.0.0
         uses: actions/setup-node@v3
         with:
-          node-version: 16.15
+          node-version: 18.0.0
           cache: "npm"
       - run: npx yarn install --frozen-lockfile
       - name: Build Angular
