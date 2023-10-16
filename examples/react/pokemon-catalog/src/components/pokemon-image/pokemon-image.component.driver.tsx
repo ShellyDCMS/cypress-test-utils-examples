@@ -4,7 +4,7 @@ import type { Attributes, ReactNode } from "react";
 import { IProps, PokemonImageComponent } from "./pokemon-image.component";
 
 export class PokemonImageComponentDriver {
-  private helper = new CypressHelper("data-hook");
+  private helper = new CypressHelper({ defaultDataAttribute: "data-hook" });
   private reactComponentHelper = new CypressReactComponentHelper();
 
   private props: IProps = {
