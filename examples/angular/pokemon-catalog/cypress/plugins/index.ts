@@ -9,7 +9,7 @@ export default (on, config) => {
   const webpackOptions = webpackPreprocessor.defaultOptions.webpackOptions;
 
   webpackOptions.module.rules.unshift({
-    test: /[/\\]@shellygo[/\\].+\.m?js$/,
+    test: /\.m?js$/,
     resolve: {
       fullySpecified: false
     },

@@ -4,9 +4,7 @@ import { defineConfig } from "cypress";
 import * as path from "path";
 import * as Webpack from "webpack";
 
-const webpackConfig = (
-  cypressConfig: Cypress.PluginConfigOptions
-): Webpack.Configuration => {
+const webpackConfig = (cypressConfig: Cypress.PluginConfigOptions): Webpack.Configuration => {
   return {
     resolve: {
       extensions: [".js", ".ts"]
@@ -22,6 +20,20 @@ const webpackConfig = (
               options: { transpileOnly: true }
             }
           ]
+        },
+        {
+          test: /\.m?js$/,
+          resolve: {
+            fullySpecified: false
+          },
+          use: {
+            loader: "babel-loader",
+            options: {
+              plugins: ["@angular/compiler-cli/linker/babel"],
+              compact: false,
+              cacheDirectory: true
+            }
+          }
         },
         {
           test: /\.(js|ts)$/,
@@ -69,18 +81,17 @@ export default defineConfig({
     // Default is 0
     openMode: 0
   },
-  
+
   reporter: "mochawesome",
-  reporterOptions: 
-   {
-      "reportDir": "cypress/results/json",
-      "overwrite": false,
-      "html": false,
-      "json": true,
-      suiteTitleSeparatedBy: " > ",
-      testCaseSwitchClassnameAndName: false,
-      rootSuiteTitle: "Angular Tests",
-      toConsole: true,
+  reporterOptions: {
+    reportDir: "cypress/results/json",
+    overwrite: false,
+    html: false,
+    json: true,
+    suiteTitleSeparatedBy: " > ",
+    testCaseSwitchClassnameAndName: false,
+    rootSuiteTitle: "Angular Tests",
+    toConsole: true
   },
   e2e: {
     setupNodeEvents(on, config) {

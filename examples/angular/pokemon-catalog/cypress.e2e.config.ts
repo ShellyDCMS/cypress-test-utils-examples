@@ -16,13 +16,16 @@ export default defineConfig({
     toConsole: true
   },
   e2e: {
-    baseUrl:
-      "https://shellydcms.github.io/cypress-test-utils-examples/angular/",
+    baseUrl: "https://shellydcms.github.io/cypress-test-utils-examples/angular/",
     supportFile: false,
     specPattern: "cypress/e2e/**/*.spec.cy.{js,jsx,ts,tsx}",
     excludeSpecPattern: "cypress/**/*.driver.{js,jsx,ts,tsx}",
     viewportHeight: 1000,
     viewportWidth: 1600,
-    defaultCommandTimeout: 10000
+    defaultCommandTimeout: 10000,
+    setupNodeEvents(on, config) {
+      require("./cypress/plugins/index.ts").default(on, config);
+      return config;
+    }
   }
 });
