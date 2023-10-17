@@ -1,5 +1,5 @@
-import { CypressHelper } from "@shellygo/cypress-test-utils/dist/cypress-helper";
-import { CypressReactComponentHelper } from "@shellygo/cypress-test-utils/dist/react/cypress-react-component-helper";
+import { CypressHelper } from "@shellygo/cypress-test-utils";
+import { CypressReactComponentHelper } from "@shellygo/cypress-test-utils/react";
 import type { Attributes, ReactNode } from "react";
 import { IProps, PokemonImageComponent } from "./pokemon-image.component";
 
