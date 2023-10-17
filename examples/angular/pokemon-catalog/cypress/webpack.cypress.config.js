@@ -7,6 +7,18 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /[/\\]@shellygo[/\\].+\.m?js$/,
+        resolve: {
+          fullySpecified: false
+        },
+        use: {
+          loader: "babel-loader",
+          options: {
+            plugins: ["@angular/compiler-cli/linker/babel"],
+            compact: false,
+            cacheDirectory: true
+          }
+        },
         test: /\.tsx?$/,
         exclude: [/node_modules/],
         use: [
