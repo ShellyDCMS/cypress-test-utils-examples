@@ -1689,10 +1689,10 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@shellygo/cypress-test-utils@^1.0.46":
-  version "1.0.46"
-  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-1.0.46.tgz#1e9219696d979997dfa365cc9e27e7b0899db005"
-  integrity sha512-zg836Echs6MkdEnvod7cRoS0bob1ihuv2eEp2XpFt5nWdwnQNINBfRZl5mK3/G//hBLHCrZLUkLOw70mTON4dQ==
+"@shellygo/cypress-test-utils@1.0.47":
+  version "1.0.47"
+  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-1.0.47.tgz#528bd7521eb89f9839f1ba77e7c69301d6a5f6e5"
+  integrity sha512-gPZCLNYzJcNba4tYTfZUbNCzH6MRJgg6VA1WnUoM45ZgoqVdsm31RsvSh/ccxegto/JSF9U6GZcX+yxe/uhcFQ==
   dependencies:
     "@cypress/mount-utils" "^4.0.0"
     "@types/chai-subset" "^1.3.3"
