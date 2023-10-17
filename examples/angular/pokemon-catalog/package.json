@@ -40,6 +40,7 @@
     "@angular/compiler-cli": "^14.2.0",
     "@cypress/code-coverage": "^3.10.6",
     "@cypress/schematic": "^2.5.0",
+    "@cypress/webpack-batteries-included-preprocessor": "^3.0.2",
     "@cypress/webpack-dev-server": "^3.4.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
