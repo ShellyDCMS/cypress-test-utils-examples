@@ -63,8 +63,8 @@
     "[module-name]": false
   },
   "engines": {
-    "npm": ">=6.0.0",
-    "node": ">=14.18.0"
+    "npm": ">=9.8.1",
+    "node": ">=18.18.2"
   },
   "nyc": {
     "all": true,
