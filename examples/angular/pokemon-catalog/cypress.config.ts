@@ -21,20 +21,7 @@ const webpackConfig = (cypressConfig: Cypress.PluginConfigOptions): Webpack.Conf
             }
           ]
         },
-        {
-          test: /\.m?js$/,
-          resolve: {
-            fullySpecified: false
-          },
-          use: {
-            loader: "babel-loader",
-            options: {
-              plugins: ["@angular/compiler-cli/linker/babel"],
-              compact: false,
-              cacheDirectory: true
-            }
-          }
-        },
+
         {
           test: /\.(js|ts)$/,
           loader: "@jsdevtools/coverage-istanbul-loader",
