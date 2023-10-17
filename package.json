@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@angular/core": "^14.2.0",
-    "@shellygo/cypress-test-utils": "1.0.6",
+    "@shellygo/cypress-test-utils": "^1.0.46",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.7",
     "concurrently": "^8.2.0",
