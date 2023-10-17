@@ -21,7 +21,7 @@ jobs:
       - name: Use Node.js 18.18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.18.0
+          node-version: 18.18.2
           cache: "npm"
       - run: npx yarn install --frozen-lockfile
       - name: Build Angular
