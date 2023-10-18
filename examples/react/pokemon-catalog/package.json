@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
-    "cy:run": "start-server-and-test 'npm run start' http://localhost:3000 'cypress run'",
+    "cy:run": "start-server-and-test 'npm run start' http://127.0.0.1:3000 'cypress run'",
     "cy-component:run": "yarn && cypress run --component",
     "cy-e2e:open": "cypress open --config-file cypress.e2e.config.ts",
     "cy-e2e:run": "cypress run --config-file cypress.e2e.config.ts",
