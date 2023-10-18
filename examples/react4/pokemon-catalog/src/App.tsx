@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.scss";
 import { PokemonCatalog } from "./components/pokemon-catalog/pokemon-catalog.container";
 
