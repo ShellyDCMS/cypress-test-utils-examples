@@ -10,12 +10,6 @@
 
 # production
 /build
-/target
-
-# compiled output
-/dist
-/tmp
-/out-tsc
 
 # misc
 .DS_Store
