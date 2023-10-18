@@ -4,15 +4,12 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/node": "^16.18.59",
-    "@types/react": "^18.2.29",
-    "@types/react-dom": "^18.2.13",
+    "@types/node": "^20.5.6",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "sass": "^1.69.4",
+    "react-scripts": "^4.0.3",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -22,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
-    "cy:run": "start-server-and-test 'npm run start' http://127.0.0.1:3000 'cypress run'",
+    "cy:run": "start-server-and-test 'npm run start' http://localhost:3000 'cypress run'",
     "cy-component:run": "yarn && cypress run --component",
     "cy-e2e:open": "cypress open --config-file cypress.e2e.config.ts",
     "cy-e2e:run": "cypress run --config-file cypress.e2e.config.ts",
@@ -51,20 +48,28 @@
     ]
   },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.12.4",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@cypress/code-coverage": "^3.10.7",
     "@cypress/instrument-cra": "^1.4.0",
-    "@shellygo/cypress-test-utils": "^2.0.0",
-    "@types/chance": "^1.1.5",
+    "@shellygo/cypress-test-utils": "1.0.47",
+    "@types/chance": "^1.1.3",
     "builder-pattern": "^2.2.0",
     "chance": "^1.1.11",
-    "cypress": "^13.3.1",
+    "cypress": "^12.15.0",
     "istanbul-lib-coverage": "^3.2.0",
-    "mocha-junit-reporter": "^2.2.1",
+    "mocha-junit-reporter": "^2.2.0",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "nyc": "^15.1.0",
-    "start-server-and-test": "^2.0.1",
-    "ts-loader": "^9.5.0"
+    "saas": "^1.0.0",
+    "sass": "^1.63.4",
+    "start-server-and-test": "^2.0.0",
+    "ts-loader": "^9.4.3"
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0",
+    "webpack": "4.44.2",
+    "react-error-overlay": "6.0.9"
   }
 }
