@@ -31,6 +31,9 @@ export class PokemonImageComponent {
     this.showFallbackImage = true;
   }
 
+  ngOnChanges() {
+    this.showFallbackImage = false;
+  }
   getPokemonImage = () => {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${this.pokemonIndex}.gif`;
   };

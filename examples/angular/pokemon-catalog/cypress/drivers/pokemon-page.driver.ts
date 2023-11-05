@@ -10,6 +10,7 @@ export class PokemonPageDriver {
     this.helper.beforeAndAfter();
     this.pokemonDriver.beforeAndAfter();
   };
+
   given = {
     fetchPokemonResponse: (response: PokemonList) =>
       this.helper.given.interceptAndMockResponse({
@@ -27,14 +28,12 @@ export class PokemonPageDriver {
   };
 
   when = {
-    ...this.pokemonDriver.when
+    ...this.pokemonDriver.when,
+    waitForPokemonLastCall: () => this.helper.when.waitForLastCall("pokemon")
   };
 
   get = {
     ...this.pokemonDriver.get,
-    fetchPokemonOffset: () => {
-      this.helper.when.waitForLastCall("pokemon");
-      return this.helper.get.requestQueryParam("pokemon", "offset");
-    }
+    fetchPokemonQueryParams: () => this.helper.get.requestQueryParams("pokemon")
   };
 }
