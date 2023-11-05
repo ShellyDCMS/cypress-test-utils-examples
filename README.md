@@ -3,8 +3,7 @@
 
 [![codecov](https://codecov.io/gh/ShellyDCMS/cypress-test-utils-examples/branch/more-covreage/graph/badge.svg?token=D9TQE3K9UE)](https://codecov.io/gh/ShellyDCMS/cypress-test-utils-examples)
 
-![ezgif com-video-to-gif (3)](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/9764ff15-2fc1-4527-9865-51696529ddce)
-
+![3-apps](https://github.com/ShellyDCMS/cypress-test-utils-examples/assets/60476837/017a0fff-e8bf-41e4-991c-3313b3eb326f)
 Test Examples using Cypress helpers to control your UI components that work in all test levels. From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.
 Making TDD fun in the modular UI area.
 
