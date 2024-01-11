@@ -1,3 +1,4 @@
+import { then } from "@shellygo/cypress-test-utils/assertable";
 import { Chance } from "chance";
 import { PokemonImageComponent } from "./pokemon-image.component";
 import { PokemonImageComponentDriver } from "./pokemon-image.component.driver";
@@ -17,7 +18,7 @@ describe("PokemonImageComponent Tests", () => {
     given.pokemonIndex(pokemonIndex);
     given.mockImageResponse("default.png");
     when.render(PokemonImageComponent, testConfig);
-    expect(get.pictureSrc().should("include", `${pokemonIndex}.gif`));
+    then(get.pictureSrc()).shouldInclude(`${pokemonIndex}.gif`);
   });
 
   it("given image not found should show fallback image", () => {
@@ -25,7 +26,7 @@ describe("PokemonImageComponent Tests", () => {
     given.pokemonIndex(pokemonIndex);
     given.missingImage();
     when.render(PokemonImageComponent, testConfig);
-    expect(get.fallBackImage()).to.exist;
+    then(get.fallBackImage()).shouldExist();
   });
 
   it("given image not found should show correct fallback image", () => {
@@ -33,6 +34,6 @@ describe("PokemonImageComponent Tests", () => {
     given.pokemonIndex(pokemonIndex);
     given.missingImage();
     when.render(PokemonImageComponent, testConfig);
-    expect(get.fallbackPictureSrc().should("include", `${pokemonIndex}.png`));
+    then(get.fallbackPictureSrc()).shouldInclude(`${pokemonIndex}.png`);
   });
 });
