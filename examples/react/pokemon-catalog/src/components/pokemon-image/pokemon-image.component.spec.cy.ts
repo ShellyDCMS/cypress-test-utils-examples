@@ -14,7 +14,7 @@ describe("PokemonImageComponent Tests", () => {
     given.pokemonIndex(pokemonIndex);
     given.mockImageResponse("default.png");
     when.render(PokemonImageComponent);
-    then(get.pictureSrc()).shouldInclude(`${pokemonIndex}.gif`);
+    then(get.pictureSrc()).shouldEndWith(`/${pokemonIndex}.gif`);
   });
 
   it("given image not found should show fallback image", () => {
@@ -30,6 +30,6 @@ describe("PokemonImageComponent Tests", () => {
     given.pokemonIndex(pokemonIndex);
     given.missingImage();
     when.render(PokemonImageComponent);
-    then(get.fallbackPictureSrc()).shouldInclude(`${pokemonIndex}.png`);
+    then(get.fallbackPictureSrc()).shouldEndWith(`/${pokemonIndex}.png`);
   });
 });

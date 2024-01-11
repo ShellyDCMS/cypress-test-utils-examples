@@ -15,11 +15,11 @@ describe("Pokemon e2e", () => {
   });
 
   it("should render pokemon index", () => {
-    then(get.pokemon.countText()).shouldInclude("1 of");
+    then(get.pokemon.countText()).shouldStartWith("1 of");
   });
 
   it("should render pokemon image", () => {
-    then(get.pokemon.image.pictureSrc()).shouldInclude("1.gif");
+    then(get.pokemon.image.pictureSrc()).shouldEndWith("/1.gif");
   });
 
   it("should render pokemon name", () => {
@@ -37,11 +37,11 @@ describe("Pokemon e2e", () => {
     });
 
     it("should update index", () => {
-      then(get.pokemon.countText()).shouldInclude("3 of");
+      then(get.pokemon.countText()).shouldStartWith("3 of");
     });
 
     it("should update pokemon image", () => {
-      then(get.pokemon.image.pictureSrc()).shouldInclude("3.gif");
+      then(get.pokemon.image.pictureSrc()).shouldEndWith("/3.gif");
     });
 
     it("prev button should be enabled", () => {
@@ -59,11 +59,11 @@ describe("Pokemon e2e", () => {
       });
 
       it("should update index", () => {
-        then(get.pokemon.countText()).shouldInclude("2 of");
+        then(get.pokemon.countText()).shouldStartWith("2 of");
       });
 
       it("should update pokemon image", () => {
-        then(get.pokemon.image.pictureSrc()).shouldInclude("2.gif");
+        then(get.pokemon.image.pictureSrc()).shouldEndWith("/2.gif");
       });
 
       it("prev button should be enabled", () => {

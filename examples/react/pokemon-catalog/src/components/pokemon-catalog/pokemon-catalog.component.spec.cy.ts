@@ -30,7 +30,7 @@ describe("PokemonCatalogComponent Tests", () => {
     });
 
     it("should show picture given pokemon provided as input", () => {
-      then(get.image.pictureSrc()).shouldInclude("2.gif");
+      then(get.image.pictureSrc()).shouldEndWith("/2.gif");
     });
 
     it("should render pokemon name", () => {
@@ -83,7 +83,7 @@ describe("PokemonCatalogComponent Tests", () => {
     });
 
     it("should show picture given pokemon provided as input", () => {
-      then(get.image.pictureSrc()).shouldInclude("1.gif");
+      then(get.image.pictureSrc()).shouldEndWith("/1.gif");
     });
 
     it("should render pokemon count", () => {
