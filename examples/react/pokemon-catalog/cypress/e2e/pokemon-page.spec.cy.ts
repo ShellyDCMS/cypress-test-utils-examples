@@ -1,3 +1,4 @@
+import { then } from "@shellygo/cypress-test-utils/assertable";
 import { AppDriver } from "../drivers/app.driver";
 
 describe("Pokemon e2e", () => {
@@ -10,19 +11,19 @@ describe("Pokemon e2e", () => {
   });
 
   it("prev button should be disabled", () => {
-    expect(get.pokemon.prevButton().should("be.disabled"));
+    then(get.pokemon.prevButton()).shouldBeDisabled();
   });
 
   it("should render pokemon index", () => {
-    expect(get.pokemon.countText().should("include", "1 of"));
+    then(get.pokemon.countText()).shouldInclude("1 of");
   });
 
   it("should render pokemon image", () => {
-    expect(get.pokemon.image.pictureSrc().should("include", "1.gif"));
+    then(get.pokemon.image.pictureSrc()).shouldInclude("1.gif");
   });
 
   it("should render pokemon name", () => {
-    expect(get.pokemon.nameText().should("eq", "bulbasaur"));
+    then(get.pokemon.nameText()).shouldEqual("bulbasaur");
   });
 
   describe("when clicking next twice", () => {
@@ -36,19 +37,19 @@ describe("Pokemon e2e", () => {
     });
 
     it("should update index", () => {
-      expect(get.pokemon.countText().should("include", "3 of"));
+      then(get.pokemon.countText()).shouldInclude("3 of");
     });
 
     it("should update pokemon image", () => {
-      expect(get.pokemon.image.pictureSrc().should("include", "3.gif"));
+      then(get.pokemon.image.pictureSrc()).shouldInclude("3.gif");
     });
 
     it("prev button should be enabled", () => {
-      expect(get.pokemon.prevButton().should("be.enabled"));
+      then(get.pokemon.prevButton()).shouldBeEnabled();
     });
 
     it("should render pokemon name", () => {
-      expect(get.elementByText("venusaur")).to.exist;
+      then(get.elementByText("venusaur")).shouldExist();
     });
 
     describe("when clicking prev", () => {
@@ -58,19 +59,19 @@ describe("Pokemon e2e", () => {
       });
 
       it("should update index", () => {
-        expect(get.pokemon.countText().should("include", "2 of"));
+        then(get.pokemon.countText()).shouldInclude("2 of");
       });
 
       it("should update pokemon image", () => {
-        expect(get.pokemon.image.pictureSrc().should("include", "2.gif"));
+        then(get.pokemon.image.pictureSrc()).shouldInclude("2.gif");
       });
 
       it("prev button should be enabled", () => {
-        expect(get.pokemon.prevButton().should("be.enabled"));
+        then(get.pokemon.prevButton()).shouldBeEnabled();
       });
 
       it("should render pokemon name", () => {
-        expect(get.elementByText("ivysaur")).to.exist;
+        then(get.elementByText("ivysaur")).shouldExist();
       });
     });
   });
