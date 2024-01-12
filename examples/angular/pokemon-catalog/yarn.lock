@@ -1794,10 +1794,10 @@
     "@angular-devkit/schematics" "16.2.9"
     jsonc-parser "3.2.0"
 
-"@shellygo/cypress-test-utils@^2.0.0":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-2.0.4.tgz#9dd0a0bd44f23379db4398297052e38830b339e4"
-  integrity sha512-X98AW6Z5rN/Z4NtE2zfBob64eEzVuh3X3SkJ2YK9pjxKmzeKldR4DlJjhKaYWtjTZvHvl1qumLAlTf2jnqMbUg==
+"@shellygo/cypress-test-utils@^2.0.26":
+  version "2.0.26"
+  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-2.0.26.tgz#09cd62130446b45854702280ac9548e49dd1afea"
+  integrity sha512-k4MFyr0Y62QZ61XAHVxLK75CyUSw8XxGTyJsRRlQCyuRhzwPmlYPWtpWnJ/5eHArXkhX0FU7u9kG5S2EuO19vw==
   dependencies:
     "@cypress/mount-utils" "^4.0.0"
     "@types/chai-subset" "^1.3.3"

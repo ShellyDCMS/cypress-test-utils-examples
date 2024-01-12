@@ -1,4 +1,5 @@
 import { PokemonList } from "@services/pokemon.service";
+import { then } from "@shellygo/cypress-test-utils/assertable";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
 import { AppDriver } from "../drivers/app.driver";
@@ -21,11 +22,11 @@ describe("Pokemon Page integration Tests", () => {
     });
 
     it("should disable next button once showing last pokemon", () => {
-      expect(get.pokemon.nextButton().should("be.disabled"));
+      then(get.pokemon.nextButton()).shouldBeDisabled();
     });
 
     it("should disable prev button once showing first pokemon", () => {
-      expect(get.pokemon.prevButton().should("be.disabled"));
+      then(get.pokemon.prevButton()).shouldBeDisabled();
     });
   });
 });

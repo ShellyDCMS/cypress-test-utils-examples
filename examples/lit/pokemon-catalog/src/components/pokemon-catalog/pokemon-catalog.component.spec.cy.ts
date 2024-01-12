@@ -1,12 +1,14 @@
 import { PokemonList } from "@services/pokemon.service";
+import { then } from "@shellygo/cypress-test-utils/assertable";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
 import { PokemonCatalog } from "./pokemon-catalog.component";
 import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.driver";
 
-describe("PokemonCatalogComponent", () => {
+describe("PokemonCatalogComponent Tests", () => {
   const chance = new Chance();
   const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
+
   beforeAndAfter();
 
   describe("given one of many pokemons", () => {
@@ -28,27 +30,27 @@ describe("PokemonCatalogComponent", () => {
     });
 
     it("should show picture given pokemon provided as input", () => {
-      expect(get.image.pictureSrc().should("include", "2.gif"));
+      then(get.image.pictureSrc()).shouldEndWith("/2.gif");
     });
 
     it("should render pokemon name", () => {
-      expect(get.nameText().should("eq", name));
+      then(get.nameText()).shouldEqual(name);
     });
 
     it("should render pokemon count", () => {
-      expect(get.countText().should("eq", "2 of 3"));
+      then(get.countText()).shouldEqual("2 of 3");
     });
     describe("when clicking next", () => {
       beforeEach(() => {
         when.clickNext();
       });
 
-      it("should call onNext", () => {
-        expect(get.onNextSpy().should("have.been.calledOnce"));
+      it("should emit onNext", () => {
+        then(get.onNextSpy()).shouldHaveBeenCalledOnce();
       });
 
       it("should call getPokemon with the next pokemon's url", () => {
-        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.next));
+        then(get.getPokemonSpy()).shouldHaveBeenCalledWith(pokemon.next);
       });
     });
 
@@ -57,12 +59,12 @@ describe("PokemonCatalogComponent", () => {
         when.clickPrev();
       });
 
-      it("should call onPrev", () => {
-        expect(get.onPrevSpy().should("have.been.calledOnce"));
+      it("should emit onPrev", () => {
+        then(get.onPrevSpy()).shouldHaveBeenCalledOnce();
       });
 
       it("should call getPokemon with the prev pokemon's url", () => {
-        expect(get.getPokemonSpy().should("have.been.calledWith", pokemon.previous));
+        then(get.getPokemonSpy()).shouldHaveBeenCalledWith(pokemon.previous);
       });
     });
   });
@@ -81,19 +83,19 @@ describe("PokemonCatalogComponent", () => {
     });
 
     it("should show picture given pokemon provided as input", () => {
-      expect(get.image.pictureSrc().should("include", "1.gif"));
+      then(get.image.pictureSrc()).shouldEndWith("/1.gif");
     });
 
     it("should render pokemon count", () => {
-      expect(get.countText().should("eq", "1 of 1"));
+      then(get.countText()).shouldEqual("1 of 1");
     });
 
     it("next button should be disabled", () => {
-      expect(get.nextButton().should("be.disabled"));
+      then(get.nextButton()).shouldBeDisabled();
     });
 
     it("prev button should be disabled", () => {
-      expect(get.prevButton().should("be.disabled"));
+      then(get.prevButton()).shouldBeDisabled();
     });
   });
 });
