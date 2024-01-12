@@ -15,7 +15,6 @@ describe("PokemonGo Component Tests", () => {
   beforeEach(() => {
     when.render(PokemonGoComponent, testConfig);
   });
-
   it("Go button should be disabled", () => {
     then(get.goButton()).shouldBeDisabled();
   });
@@ -25,10 +24,21 @@ describe("PokemonGo Component Tests", () => {
     then(get.goButton()).shouldBeEnabled();
   });
 
-  it("when typing index and submitting should call onSubmit", () => {
+  it("When input filled should have input value", () => {
+    when.typePokemonIndex("42");
+    then(get.pokemonIndexInputValue()).shouldEqual("42");
+  });
+
+  it("When input and clicked go should fetch pokemon by index", () => {
+    when.typePokemonIndex("12");
+    when.clickGo();
+    then(get.selectedPokemonSpy()).shouldHaveBeenCalledWith("12");
+  });
+
+  it("should clear input when clicking submit", () => {
     when.typePokemonIndex("33");
     when.clickGo();
-    then(get.onSubmitSpy()).shouldHaveBeenCalledWith("33");
+    then(get.pokemonIndexInputValue()).shouldEqual("");
   });
 
   it("should not update input value when typing non digits", () => {
