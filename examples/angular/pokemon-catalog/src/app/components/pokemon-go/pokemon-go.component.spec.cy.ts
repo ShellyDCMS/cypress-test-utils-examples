@@ -1,4 +1,5 @@
 import { FormsModule } from "@angular/forms";
+import { then } from "@shellygo/cypress-test-utils/assertable";
 import { PokemonGoComponent } from "./pokemon-go.component";
 import { PokemonGoComponentDriver } from "./pokemon-go.component.driver";
 
@@ -15,33 +16,33 @@ describe("PokemonGo Component Tests", () => {
     when.render(PokemonGoComponent, testConfig);
   });
   it("Go button should be disabled", () => {
-    expect(get.goButton().should("be.disabled"));
+    then(get.goButton()).shouldBeDisabled();
   });
 
   it("when typing index Go button should be enabled", () => {
     when.typePokemonIndex("33");
-    expect(get.goButton().should("be.enabled"));
+    then(get.goButton()).shouldBeEnabled();
   });
 
   it("When input filled should have input value", () => {
     when.typePokemonIndex("42");
-    expect(get.pokemonIndexInputValue().should("eq", "42"));
+    then(get.pokemonIndexInputValue()).shouldEqual("42");
   });
 
   it("When input and clicked go should fetch pokemon by index", () => {
     when.typePokemonIndex("12");
     when.clickGo();
-    expect(get.selectedPokemonSpy().should("have.been.calledWith", "12"));
+    then(get.selectedPokemonSpy()).shouldHaveBeenCalledWith("12");
   });
 
   it("should clear input when clicking submit", () => {
     when.typePokemonIndex("33");
     when.clickGo();
-    expect(get.pokemonIndexInputValue().should("eq", ""));
+    then(get.pokemonIndexInputValue()).shouldEqual("");
   });
 
   it("should not update input value when typing non digits", () => {
     when.typePokemonIndex("abcd-");
-    expect(get.pokemonIndexInputValue().should("eq", ""));
+    then(get.pokemonIndexInputValue()).shouldEqual("");
   });
 });

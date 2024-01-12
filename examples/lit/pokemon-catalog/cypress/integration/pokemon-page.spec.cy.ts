@@ -31,13 +31,13 @@ describe("Pokemon Page integration Tests", () => {
     });
 
     it("should render correct image", () => {
-      expect(get.pokemon.image.pictureSrc().should("include", "1.gif"));
+      then(get.pokemon.image.pictureSrc()).shouldEndWith("/1.gif");
     });
 
     it("should fetch pokemon by index", () => {
       when.pokemon.pokemonGo.typePokemonIndex("78");
       when.pokemon.pokemonGo.clickGo();
-      expect(get.pokemon.fetchPokemonQueryParams().should("include", { offset: "77" }));
+      then(get.pokemon.fetchPokemonQueryParams()).shouldInclude({ offset: "77" });
     });
   });
 });
