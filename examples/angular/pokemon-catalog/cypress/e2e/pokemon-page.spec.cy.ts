@@ -84,19 +84,19 @@ describe("Pokemon e2e", () => {
     });
 
     it("should update index", () => {
-      expect(get.pokemon.countText().should("include", "25 of"));
+      then(get.pokemon.countText()).shouldStartWith("25 of");
     });
 
     it("should update pokemon image", () => {
-      expect(get.pokemon.image.pictureSrc().should("include", "25.gif"));
+      then(get.pokemon.image.pictureSrc()).shouldEndWith("/25.gif");
     });
 
     it("prev button should be enabled", () => {
-      expect(get.pokemon.prevButton().should("be.enabled"));
+      then(get.pokemon.prevButton()).shouldBeEnabled();
     });
 
     it("should render pokemon name", () => {
-      expect(get.elementByText("pikachu")).to.exist;
+      then(get.elementByText("pikachu")).shouldExist();
     });
   });
 
@@ -108,7 +108,7 @@ describe("Pokemon e2e", () => {
       when.pokemon.pokemonGo.typePokemonIndex("33");
       when.pokemon.pokemonGo.clickGo();
       when.waitUntil(() => get.elementByText("nidorino"));
-      expect(get.pokemon.image.pictureSrc().should("include", "/33.gif"));
+      then(get.pokemon.image.pictureSrc()).shouldEndWith("/33.gif");
     });
   });
 });
