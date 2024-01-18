@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+/target
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# cypress
+/cypress/videos
+/cypress/screenshots
+/instrumented
+.nyc_output
+cypress/results
