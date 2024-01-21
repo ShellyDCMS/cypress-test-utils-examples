@@ -2,10 +2,11 @@ import { then } from "@shellygo/cypress-test-utils/assertable";
 import { AppDriver } from "../drivers/app.driver";
 
 describe("Pokemon e2e", () => {
-  const { when, get, beforeAndAfter } = new AppDriver();
+  let { when, get, beforeAndAfter } = new AppDriver();
   beforeAndAfter();
 
   beforeEach(function () {
+    ({ when, get } = new AppDriver());
     when.visit("/");
     when.waitUntil(() => get.elementByText("bulbasaur"));
   });

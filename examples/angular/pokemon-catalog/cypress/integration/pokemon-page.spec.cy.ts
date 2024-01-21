@@ -6,8 +6,12 @@ import { AppDriver } from "../drivers/app.driver";
 
 describe("Pokemon Page integration Tests", () => {
   const chance = new Chance();
-  const { when, given, get, beforeAndAfter } = new AppDriver();
+  let { when, given, get, beforeAndAfter } = new AppDriver();
   beforeAndAfter();
+
+  beforeEach(() => {
+    ({ given, when, get } = new AppDriver());
+  });
 
   describe("given a single pokemon", () => {
     const pokemonList: PokemonList = Builder<PokemonList>()
