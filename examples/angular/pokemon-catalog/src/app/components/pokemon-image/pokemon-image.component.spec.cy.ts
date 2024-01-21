@@ -10,8 +10,12 @@ describe("PokemonImageComponent Tests", () => {
 
   const chance = new Chance();
 
-  const { when, given, get, beforeAndAfter } = new PokemonImageComponentDriver();
+  let { when, given, get, beforeAndAfter } = new PokemonImageComponentDriver();
   beforeAndAfter();
+
+  beforeEach(() => {
+    ({ when, given, get } = new PokemonImageComponentDriver());
+  });
 
   it("given valid pokemon index should show gif", () => {
     const pokemonIndex: number = chance.integer({ min: 1, max: 500 });
