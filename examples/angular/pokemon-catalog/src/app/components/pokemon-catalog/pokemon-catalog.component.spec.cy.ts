@@ -8,7 +8,7 @@ import { PokemonCatalogComponentDriver } from "./pokemon-catalog.component.drive
 
 describe("PokemonCatalogComponent Tests", () => {
   const chance = new Chance();
-  const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
+  let { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
 
   const testConfig = {
     declarations: [PokemonCatalog, PokemonImageComponent],
@@ -21,6 +21,9 @@ describe("PokemonCatalogComponent Tests", () => {
   };
 
   beforeAndAfter();
+  beforeEach(() => {
+    ({ when, given, get } = new PokemonCatalogComponentDriver());
+  });
 
   describe("given one of many pokemons", () => {
     const name = chance.word();
