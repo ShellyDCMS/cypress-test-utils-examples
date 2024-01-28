@@ -37,6 +37,7 @@
     "deploy": "cd examples && gh-pages -d build"
   },
   "devDependencies": {
+    "@shellygo/cypress-test-utils": "^2.0.37",
     "concurrently": "^8.2.0",
     "gh-pages": "^5.0.0",
     "lit": "^2.7.4",
