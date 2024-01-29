@@ -1,5 +1,5 @@
 import { PokemonList, PokemonService } from "@services/pokemon.service";
-import { then } from "@shellygo/cypress-test-utils/assertable";
+import { then } from "@shellygo/cypress-test-utils";
 import { Builder } from "builder-pattern";
 import { Chance } from "chance";
 import { PokemonImageComponent } from "../pokemon-image/pokemon-image.component";

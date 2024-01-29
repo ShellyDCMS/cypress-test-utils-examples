@@ -1,4 +1,4 @@
-import { then } from "@shellygo/cypress-test-utils/assertable";
+import { then } from "@shellygo/cypress-test-utils";
 import { AppDriver } from "../drivers/app.driver";
 
 describe("Pokemon e2e", () => {
