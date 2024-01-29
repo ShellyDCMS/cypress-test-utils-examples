@@ -57,7 +57,7 @@
     "@types/chance": "^1.1.5",
     "builder-pattern": "^2.2.0",
     "chance": "^1.1.11",
-    "cypress": "^13.3.1",
+    "cypress": "^13.6.3",
     "istanbul-lib-coverage": "^3.2.0",
     "mocha-junit-reporter": "^2.2.1",
     "mochawesome": "^7.1.3",
