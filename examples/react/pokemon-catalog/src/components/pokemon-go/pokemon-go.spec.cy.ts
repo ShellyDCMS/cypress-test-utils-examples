@@ -1,4 +1,4 @@
-import { then } from "@shellygo/cypress-test-utils/assertable";
+import { then } from "@shellygo/cypress-test-utils";
 import { PokemonGoComponent } from "./pokemon-go";
 import { PokemonGoComponentDriver } from "./pokemon-go.driver";
 

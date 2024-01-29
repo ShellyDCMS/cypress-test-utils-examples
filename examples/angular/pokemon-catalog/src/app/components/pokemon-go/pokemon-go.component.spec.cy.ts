@@ -1,5 +1,5 @@
 import { FormsModule } from "@angular/forms";
-import { then } from "@shellygo/cypress-test-utils/assertable";
+import { then } from "@shellygo/cypress-test-utils";
 import { PokemonGoComponent } from "./pokemon-go.component";
 import { PokemonGoComponentDriver } from "./pokemon-go.component.driver";
 
