@@ -1,3 +1,4 @@
+import { PokemonGoComponent } from "@components/pokemon-go/pokemon-go.component";
 import { PokemonList, PokemonService } from "@services/pokemon.service";
 import { then } from "@shellygo/cypress-test-utils";
 import { Builder } from "builder-pattern";
@@ -11,7 +12,7 @@ describe("PokemonCatalogComponent Tests", () => {
   const { when, given, get, beforeAndAfter } = new PokemonCatalogComponentDriver();
 
   const testConfig = {
-    declarations: [PokemonCatalog, PokemonImageComponent],
+    declarations: [PokemonCatalog, PokemonImageComponent, PokemonGoComponent],
     providers: [
       {
         provide: PokemonService,
