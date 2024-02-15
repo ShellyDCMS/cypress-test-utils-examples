@@ -1,13 +1,9 @@
-:host {
-  display: flex;
-  height: 95vh;
-  background-color: lightyellow;
-}
-
 .catalog {
   display: flex;
   flex-direction: column;
   align-self: center;
   align-items: center;
-  width: 100vw;
+  width: 95vw;
+  height: 95vh;
+  justify-content: center;
 }
