@@ -28,13 +28,13 @@
     "predeploy:react": "cd examples/react/pokemon-catalog && npm run build",
     "predeploy:angular": "cd examples/angular/pokemon-catalog && npm run build -- --base-href='./'",
     "predeploy:lit": "cd examples/lit/pokemon-catalog && npm run build",
-    "copy-build:lit": "mkdir -p build/lit && cp -r examples/lit/pokemon-catalog/dist/* examples/build/lit/",
-    "copy-build:react": "mkdir -p build/react && cp -r examples/react/pokemon-catalog/build/* examples/build/react/",
-    "copy-build:angular": "mkdir -p build/angular && cp -r examples/angular/pokemon-catalog/dist/pokemon-catalog/* examples/build/angular/",
+    "copy-build:lit": "mkdir -p build/lit && cp -r examples/lit/pokemon-catalog/dist/* build/lit/",
+    "copy-build:react": "mkdir -p build/react && cp -r examples/react/pokemon-catalog/build/* build/react/",
+    "copy-build:angular": "mkdir -p build/angular && cp -r examples/angular/pokemon-catalog/dist/pokemon-catalog/* build/angular/",
     "copy-build:examples": "mkdir -p build && npm run copy-build:react && npm run copy-build:angular && npm run copy-build:lit ",
     "predeploy:examples": "npm run predeploy:react && npm run predeploy:angular && npm run predeploy:lit",
     "predeploy": "npm run predeploy:examples && npm run copy-build:examples",
-    "deploy": "cd examples && gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@shellygo/cypress-test-utils": "^2.0.37",
