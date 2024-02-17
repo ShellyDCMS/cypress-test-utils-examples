@@ -22,6 +22,10 @@
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-red">
+  <a href="#pokemon" class="w3-bar-item w3-button w3-padding-large w3-hover-black ">
+    <i class="fa fa-brands fa-github w3-xxlarge"></i>
+    <p>POKEMON REPO</p>
+  </a>
   <a href="#npm" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <i class="fa fa-brands fa-npm w3-xxlarge"></i>
     <p>NPM PACKAGE</p>
@@ -29,11 +33,7 @@
   <a href="#medium" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <i class="fa fa-medium fa-brands w3-xxlarge"></i>
     <p>MEDIUM ARTICLE</p>
-  </a>
-  <a href="#pokemon" class="w3-bar-item w3-button w3-padding-large w3-hover-black ">
-    <i class="fa fa-brands fa-github w3-xxlarge"></i>
-    <p>POKEMON REPO</p>
-  </a>
+  </a> 
   <a href="#docs" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <i class="fa fa-book w3-xxlarge"></i>
     <p>HELPER DOCS</p>
@@ -47,22 +47,42 @@
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
   <div class="w3-bar w3-red w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#npm" class="w3-bar-item w3-button w3-hover-black" style="width:20% !important">NPM</a>
-    <a href="#medium" class="w3-bar-item w3-button w3-hover-black" style="width:20% !important">MEDIUM</a>
-    <a href="#pokemon" class="w3-bar-item w3-button w3-hover-black" style="width:20% !important">POKEMON</a>
-    <a href="#docs" class="w3-bar-item w3-button w3-hover-black" style="width:20% !important">DOCS</a>
-    <a href="#examples" class="w3-bar-item w3-button w3-hover-black" style="width:20% !important">EXAMPLES</a>
+    <a href="#pokemon" class="w3-bar-item w3-button w3-hover-black" style="width:19% !important">POKE</a>
+    <a href="#npm" class="w3-bar-item w3-button w3-hover-black" style="width:19% !important">NPM</a>
+    <a href="#medium" class="w3-bar-item w3-button w3-hover-black" style="width:19% !important">MEDIUM</a>
+    <a href="#docs" class="w3-bar-item w3-button w3-hover-black" style="width:19% !important">DOCS</a>
+    <a href="#examples" class="w3-bar-item w3-button w3-hover-black" style="width:24% !important">EXAMPLE</a>
   </div>
 </div>
 
 <!-- Page Content -->
-<div class="w3-padding-large" id="main">
- <header class="w3-container w3-padding-32 w3-center" id="home">   
-    <img src="https://images.unsplash.com/photo-1638613067237-b1127ef06c00?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="pokeball="w3-image" width="100%"/>
-  </header>
+<div class="w3-padding-large" id="main"> 
+  <!-- Pokemon -->  
+  <div class="w3-padding-64 w3-content" id="pokemon">
+    <header class="w3-container w3-padding-32 w3-center" id="home">   
+      <img src="https://images.unsplash.com/photo-1638613067237-b1127ef06c00?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="pokeball="w3-image" width="100%"/>
+    </header>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Pokémon Catalog</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <h2>
+      <a href="https://shellydcms.github.io/cypress-test-utils-examples/react/"><i class="fa-brands fa-react"></i></a> 
+      <a href="https://shellydcms.github.io/cypress-test-utils-examples/angular/"><i class="fa-brands fa-angular"></i></a>
+      <a href="https://shellydcms.github.io/cypress-test-utils-examples/lit/"><i class="fa-solid fa-code"></i></a></h2>
+    <hr  class="w3-opacity">
+    <h2> <a href="https://github.com/ShellyDCMS/cypress-test-utils-examples">Github Repo</a></h2>
+
+    <p>
+        Test Examples using Cypress helpers to control your UI components that work in all test levels.<br/>
+        From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.<br/>
+        Making TDD fun in the modular UI area. <br/>
+        You can follow the <a href="https://github.com/ShellyDCMS/cypress-test-utils-examples/blob/main/add-tests-workshop.md">workshop instructions</a> if you wish to get "hands-on"<br/>
+        CypressHelper makes it saner to write UI testing. It enables creating component drivers that will work on all testing levels (component, integration, e2e).       
+    </p>
+  </div>
+
   <!-- npm -->
   <div class="w3-content w3-justify w3-padding-64" id="npm">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Test Utils npm</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>TestUtils npm</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
     <h2> <a href="https://www.npmjs.com/package/@shellygo/cypress-test-utils">@shellygo/cypress-test-utils</a></h2>
     <hr  class="w3-opacity">
@@ -87,20 +107,7 @@
     </p>
   </div>
   
-  <!-- Pokemon -->
-  <div class="w3-padding-64 w3-content" id="pokemon">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Github Repo</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <h2> <a href="https://github.com/ShellyDCMS/cypress-test-utils-examples">Pokemon Examples</a></h2>
-    <hr  class="w3-opacity">
-    <p>
-        Test Examples using Cypress helpers to control your UI components that work in all test levels.<br/>
-        From component tests, through integration tests to e2e tests, for all frameworks: angular, lit, react.<br/>
-        Making TDD fun in the modular UI area. <br/>
-        You can follow the <a href="https://github.com/ShellyDCMS/cypress-test-utils-examples/blob/main/add-tests-workshop.md">workshop instructions</a> if you wish to get "hands-on"<br/>
-        CypressHelper makes it saner to write UI testing. It enables creating component drivers that will work on all testing levels (component, integration, e2e).       
-    </p>
-  </div>
+  
 
   <!-- Docs Section -->
   <div class="w3-padding-64 w3-content" id="docs">
