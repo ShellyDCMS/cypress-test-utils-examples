@@ -32,8 +32,8 @@
     "copy-build:react": "mkdir -p build/react && cp -r examples/react/pokemon-catalog/build/* build/react/",
     "copy-build:angular": "mkdir -p build/angular && cp -r examples/angular/pokemon-catalog/dist/pokemon-catalog/* build/angular/",
     "copy-build:examples": "mkdir -p build && npm run copy-build:react && npm run copy-build:angular && npm run copy-build:lit ",
-    "predeploy:examples": "npm run predeploy:react && npm run predeploy:angular && npm run predeploy:lit",
-    "predeploy": "npm run predeploy:examples && npm run copy-build:examples && cp examples/index.html build/",
+    "predeploy:examples": "npm run predeploy:react && npm run predeploy:angular && npm run predeploy:lit && cp examples/index.html build/ && cp examples/favicon.ico build/" ,
+    "predeploy": "npm run predeploy:examples && npm run copy-build:examples",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
