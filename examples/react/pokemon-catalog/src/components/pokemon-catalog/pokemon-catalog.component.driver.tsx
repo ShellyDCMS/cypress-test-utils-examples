@@ -9,10 +9,7 @@ export class PokemonCatalogComponentDriver {
   private reactComponentHelper = new CypressReactComponentHelper();
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
-  private pokemonServiceMock: IPokemonService = {
-    getPokemon: url => Promise.reject(),
-    getPokemonByOffset: offset => Promise.reject()
-  };
+  private pokemonServiceMock = this.helper.given.stubbedInterface<IPokemonService>("IPokemonService");
 
   private props: IPokemonCatalogPros = {
     onNext: () => {},
@@ -30,15 +27,8 @@ export class PokemonCatalogComponentDriver {
     onNextSpy: () => (this.props.onNext = this.helper.given.spy("onNext")),
     onPrevSpy: () => (this.props.onPrev = this.helper.given.spy("onPrev")),
     pokemon: (value: PokemonList) => {
-      this.pokemonServiceMock.getPokemon = this.helper.given
-        .stub()
-        .as(this.pokemonServiceMock.getPokemon!.name)
-        .returns(value);
-
-      this.pokemonServiceMock.getPokemonByOffset = this.helper.given
-        .stub()
-        .as(this.pokemonServiceMock.getPokemonByOffset!.name)
-        .returns(value);
+      this.pokemonServiceMock.getPokemon.returns(value);
+      this.pokemonServiceMock.getPokemonByOffset.returns(value);
     }
   };
 

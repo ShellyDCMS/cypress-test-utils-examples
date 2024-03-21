@@ -53,7 +53,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.12.4",
     "@cypress/instrument-cra": "^1.4.0",
-    "@shellygo/cypress-test-utils": "^2.0.37",
+    "@shellygo/cypress-test-utils": "^2.0.52",
     "@types/chance": "^1.1.5",
     "builder-pattern": "^2.2.0",
     "chance": "^1.1.11",

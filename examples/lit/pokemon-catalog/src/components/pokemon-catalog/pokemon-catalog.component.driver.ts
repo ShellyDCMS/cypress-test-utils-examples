@@ -32,10 +32,11 @@ export class PokemonCatalogComponentDriver {
     onNext: () => {}
   };
 
-  private pokemonServiceMock: Partial<PokemonInternalService> = {
-    getPokemon: url => Promise.reject(),
-    getPokemonByOffset: offset => Promise.reject()
-  };
+  private pokemonServiceMock = this.helper.given.stubbedInstance(PokemonInternalService);
+  //  {
+  //   getPokemon: url => Promise.reject(),
+  //   getPokemonByOffset: offset => Promise.reject()
+  // };
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
   beforeAndAfter = () => {
@@ -46,15 +47,8 @@ export class PokemonCatalogComponentDriver {
   given = {
     image: this.pokemonImageDriver.given,
     pokemon: (value: PokemonList) => {
-      this.pokemonServiceMock.getPokemon = this.helper.given
-        .stub()
-        .as(this.pokemonServiceMock.getPokemon!.name)
-        .returns(value);
-
-      this.pokemonServiceMock.getPokemonByOffset = this.helper.given
-        .stub()
-        .as(this.pokemonServiceMock.getPokemonByOffset!.name)
-        .returns(value);
+      this.pokemonServiceMock.getPokemon.returns(value);
+      this.pokemonServiceMock.getPokemonByOffset.returns(value);
     },
     onNextSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onNext = this.helper.given.spy("onNext")),
     onPrevSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onPrev = this.helper.given.spy("onPrev"))

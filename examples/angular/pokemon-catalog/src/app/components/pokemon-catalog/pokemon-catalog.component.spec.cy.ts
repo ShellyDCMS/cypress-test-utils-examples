@@ -32,10 +32,10 @@ describe("PokemonCatalogComponent Tests", () => {
       .previous(chance.url())
       .build();
 
-    beforeEach(() => {
+    beforeEach(async () => {
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
-      when.render(PokemonCatalog, testConfig);
+      const fixture = (await when.render(PokemonCatalog, testConfig)).componentInstance;
     });
 
     it("should show picture given pokemon provided as input", () => {
