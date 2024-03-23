@@ -8,7 +8,7 @@ import { PokemonInternalService, PokemonList, PokemonServiceContext } from "../.
 import { PokemonCatalog } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
-  @property({ type: Object, reflect: true })
+  @property()
   private pokemonService: PokemonInternalService;
 
   override connectedCallback() {
@@ -56,11 +56,9 @@ export class PokemonCatalogComponentDriver {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-service-provider
-          .pokemonService="${this.get.mock.pokemonService()}" }
-        ><pokemon-catalog .onPrev="${this.props.onPrev}" .onNext="${
-          this.props.onNext
-        }"></pokemon-catalog ></pokemon-catalog></pokemon-service-provider>`
+        html`<pokemon-service-provider .pokemonService="${this.get.mock.pokemonService()}" }
+          ><pokemon-catalog .onPrev="${this.props.onPrev}" .onNext="${this.props.onNext}"></pokemon-catalog
+        ></pokemon-service-provider>`
       );
     },
     clickNext: () => this.helper.when.click("next"),
