@@ -29,7 +29,7 @@ describe("PokemonCatalogComponent Tests", () => {
       when.render(new PokemonCatalog());
     });
 
-    it("should show picture given pokemon provided as input", () => {
+    it.only("should show picture given pokemon provided as input", () => {
       then(get.image.pictureSrc()).shouldEndWith("/2.gif");
     });
 
@@ -50,7 +50,7 @@ describe("PokemonCatalogComponent Tests", () => {
       });
 
       it("should call getPokemon with the next pokemon's url", () => {
-        then(get.getPokemonSpy()).shouldHaveBeenCalledWith(pokemon.next);
+        then(get.mock.pokemonService().getPokemon).shouldHaveBeenCalledWith(pokemon.next);
       });
     });
 
@@ -64,7 +64,7 @@ describe("PokemonCatalogComponent Tests", () => {
       });
 
       it("should call getPokemon with the prev pokemon's url", () => {
-        then(get.getPokemonSpy()).shouldHaveBeenCalledWith(pokemon.previous);
+        then(get.mock.pokemonService().getPokemon).shouldHaveBeenCalledWith(pokemon.previous);
       });
     });
   });

@@ -33,10 +33,6 @@ export class PokemonCatalogComponentDriver {
   };
 
   private pokemonServiceMock = this.helper.given.stubbedInstance(PokemonInternalService);
-  //  {
-  //   getPokemon: url => Promise.reject(),
-  //   getPokemonByOffset: offset => Promise.reject()
-  // };
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
   beforeAndAfter = () => {
@@ -61,7 +57,7 @@ export class PokemonCatalogComponentDriver {
       this.litComponentHelper.when.mount(
         element,
         html`<pokemon-service-provider
-          .pokemonService="${this.pokemonServiceMock}" }
+          .pokemonService="${this.get.mock.pokemonService}" }
         ><pokemon-catalog .onPrev="${this.props.onPrev}" .onNext="${this.props.onNext}"></pokemon-catalog ></pokemon-catalog></pokemon-service-provider>`
       );
     },
@@ -78,6 +74,7 @@ export class PokemonCatalogComponentDriver {
     nextButton: () => this.helper.get.elementByTestId("next"),
     prevButton: () => this.helper.get.elementByTestId("prev"),
     getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
-    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!)
+    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!),
+    mock: { pokemonService: () => this.pokemonServiceMock }
   };
 }

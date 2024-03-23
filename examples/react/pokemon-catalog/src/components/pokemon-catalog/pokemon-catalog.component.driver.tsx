@@ -57,8 +57,6 @@ export class PokemonCatalogComponentDriver {
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     nextButton: () => this.helper.get.elementByTestId("next"),
     prevButton: () => this.helper.get.elementByTestId("prev"),
-    getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
-    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!),
-    pokemonServiceMock: () => this.props.service
+    mock: { pokemonService: () => this.props.service }
   };
 }

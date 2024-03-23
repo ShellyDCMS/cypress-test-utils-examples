@@ -1418,10 +1418,10 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@shellygo/cypress-test-utils@^2.0.52":
-  version "2.0.52"
-  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-2.0.52.tgz#5c765d4840fb67d6478be1cad46da7f59a191ced"
-  integrity sha512-TtB0wv1Ms9fxHNYDPXL8ki8sPSrHNrDgEs5Fjtw4jqXdf2VXTfhU6cX1lNBhRHVKTzBL5Zx5zg2VNt+zGvq2vg==
+"@shellygo/cypress-test-utils@^2.0.53":
+  version "2.0.53"
+  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-2.0.53.tgz#60771c5f71699a1d00983ce3afd09623287546df"
+  integrity sha512-vB9K2m7l1g2BScedNvTqF0h8VrAADIQbqc/eoEqulZRUFIkBtRyHH2ZHnFbvazuDM0JwToN4/0cYDlyrMn0MqQ==
   dependencies:
     "@cypress/mount-utils" "^4.0.0"
     "@types/chai-subset" "^1.3.3"
