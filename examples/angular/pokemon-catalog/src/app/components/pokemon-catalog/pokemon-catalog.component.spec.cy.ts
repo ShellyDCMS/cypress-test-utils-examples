@@ -15,7 +15,7 @@ describe("PokemonCatalogComponent Tests", () => {
     providers: [
       {
         provide: PokemonService,
-        useValue: get.pokemonServiceMock()
+        useValue: get.mock.pokemonService()
       }
     ]
   };
@@ -32,10 +32,10 @@ describe("PokemonCatalogComponent Tests", () => {
       .previous(chance.url())
       .build();
 
-    beforeEach(() => {
+    beforeEach(async () => {
       given.pokemon(pokemon);
       given.image.mockImageResponse("default.png");
-      when.render(PokemonCatalog, testConfig);
+      const fixture = (await when.render(PokemonCatalog, testConfig)).componentInstance;
     });
 
     it("should show picture given pokemon provided as input", () => {
@@ -59,7 +59,7 @@ describe("PokemonCatalogComponent Tests", () => {
       });
 
       it("should call getPokemon with the next pokemon's url", () => {
-        then(get.getPokemonSpy()).shouldHaveBeenCalledWith(pokemon.next);
+        then(get.mock.pokemonService().getPokemon).shouldHaveBeenCalledWith(pokemon.next);
       });
     });
 
@@ -73,7 +73,7 @@ describe("PokemonCatalogComponent Tests", () => {
       });
 
       it("should call getPokemon with the prev pokemon's url", () => {
-        then(get.getPokemonSpy()).shouldHaveBeenCalledWith(pokemon.previous);
+        then(get.mock.pokemonService().getPokemon).shouldHaveBeenCalledWith(pokemon.previous);
       });
     });
   });

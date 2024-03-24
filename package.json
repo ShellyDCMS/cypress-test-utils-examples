@@ -32,12 +32,12 @@
     "copy-build:react": "mkdir -p build/react && cp -r examples/react/pokemon-catalog/build/* build/react/",
     "copy-build:angular": "mkdir -p build/angular && cp -r examples/angular/pokemon-catalog/dist/pokemon-catalog/* build/angular/",
     "copy-build:examples": "mkdir -p build && npm run copy-build:react && npm run copy-build:angular && npm run copy-build:lit ",
-    "predeploy:examples": "npm run predeploy:react && npm run predeploy:angular && npm run predeploy:lit && cp examples/index.html build/ && cp examples/favicon.ico build/" ,
+    "predeploy:examples": "npm run predeploy:react && npm run predeploy:angular && npm run predeploy:lit && cp examples/index.html build/ && cp examples/favicon.ico build/",
     "predeploy": "npm run predeploy:examples && npm run copy-build:examples",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "@shellygo/cypress-test-utils": "^2.0.37",
+    "@shellygo/cypress-test-utils": "^2.0.52",
     "concurrently": "^8.2.0",
     "gh-pages": "^5.0.0",
     "lit": "^2.7.4",
