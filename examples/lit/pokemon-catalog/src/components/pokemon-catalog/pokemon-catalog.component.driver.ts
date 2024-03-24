@@ -56,9 +56,11 @@ export class PokemonCatalogComponentDriver {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-service-provider .pokemonService="${this.get.mock.pokemonService()}" }
-          ><pokemon-catalog .onPrev="${this.props.onPrev}" .onNext="${this.props.onNext}"></pokemon-catalog
-        ></pokemon-service-provider>`
+        html`<pokemon-catalog
+          .onPrev="${this.props.onPrev}"
+          .onNext="${this.props.onNext}"
+          .getPokemonService="${() => this.get.mock.pokemonService()}"
+        ></pokemon-catalog>`
       );
     },
     clickNext: () => this.helper.when.click("next"),

@@ -1,10 +1,7 @@
 import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import "./components/pokemon-catalog/pokemon-catalog.component";
-import {
-  PokemonInternalService,
-  PokemonServiceContext
-} from "./services/pokemon.service";
+import { PokemonInternalService, PokemonServiceContext } from "./services/pokemon.service";
 
 import { ContextProvider } from "@lit-labs/context";
 import styles from "./styles.scss";
@@ -17,11 +14,11 @@ export class PokemonApp extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     new ContextProvider(this, PokemonServiceContext, {
-      pokemonService: () => {
+      getPokemonService: () => {
         if (!this.pokemonService) {
           this.pokemonService = new PokemonInternalService();
         }
-        return this.pokemonService;
+        return () => this.pokemonService;
       }
     });
   }
