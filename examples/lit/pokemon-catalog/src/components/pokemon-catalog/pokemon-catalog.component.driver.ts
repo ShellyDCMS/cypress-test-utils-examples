@@ -4,12 +4,12 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { PokemonInternalService, PokemonList, PokemonServiceContext } from "../../services/pokemon.service";
+import { PokemonList, PokemonService, PokemonServiceContext } from "../../services/pokemon.service";
 import { PokemonCatalog } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
   @property()
-  private pokemonService: PokemonInternalService;
+  private pokemonService: PokemonService;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -32,7 +32,7 @@ export class PokemonCatalogComponentDriver {
     onNext: () => {}
   };
 
-  private pokemonServiceMock = this.helper.given.stubbedInstance(PokemonInternalService);
+  private pokemonServiceMock = this.helper.given.stubbedInstance(PokemonService);
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
   beforeAndAfter = () => {
@@ -56,11 +56,13 @@ export class PokemonCatalogComponentDriver {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-catalog
-          .onPrev="${this.props.onPrev}"
-          .onNext="${this.props.onNext}"
-          .getPokemonService="${() => this.get.mock.pokemonService()}"
-        ></pokemon-catalog>`
+        html`<pokemon-service-provider .getPokemonService="${() => this.pokemonServiceMock}" }
+          ><pokemon-catalog
+            .onPrev="${this.props.onPrev}"
+            .onNext="${this.props.onNext}"
+            .getPokemonService="${() => this.get.mock.pokemonService()}"
+          ></pokemon-catalog
+        ></pokemon-service-provider>`
       );
     },
     clickNext: () => this.helper.when.click("next"),

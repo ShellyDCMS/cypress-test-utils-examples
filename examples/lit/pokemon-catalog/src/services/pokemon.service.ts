@@ -1,9 +1,9 @@
 import { createContext } from "@lit-labs/context";
 
-export const PokemonServiceContext = createContext<PokemonService>("__pokemon_context__");
+export const PokemonServiceContext = createContext<PokemonServicePovider>("__pokemon_context__");
 
-export interface PokemonService {
-  getPokemonService: () => () => PokemonInternalService;
+export interface PokemonServicePovider {
+  getPokemonService: () => () => PokemonService;
 }
 export interface Pokemon {
   name: string;
@@ -17,7 +17,7 @@ export interface PokemonList {
   results: Pokemon[];
 }
 
-export class PokemonInternalService {
+export class PokemonService {
   private baseUrl = "https://pokeapi.co/api/v2/pokemon";
   getPokemon = async (url: string | URL): Promise<PokemonList> => await (await fetch(url)).json();
 
