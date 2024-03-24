@@ -1,5 +1,6 @@
 import { PokemonImageComponent } from "@components/pokemon-image/pokemon-image.component";
-import { PokemonInternalService, PokemonList } from "@services/pokemon.service";
+import { ContextConsumer } from "@lit-labs/context";
+import { PokemonInternalService, PokemonList, PokemonServiceContext } from "@services/pokemon.service";
 import { LitElement, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import styles from "./pokemon-catalog.component.scss";
@@ -30,15 +31,18 @@ export class PokemonCatalog extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
+
+    debugger;
+    new ContextConsumer(
+      this,
+      PokemonServiceContext,
+      context => {
+        debugger;
+        this.pokemonService = context.getPokemonService()();
+      },
+      true
+    );
     this.pokemonService = this.getPokemonService();
-    // new ContextConsumer(
-    //   this,
-    //   PokemonServiceContext,
-    //   context => {
-    //     this.pokemonService = context.pokemonService();
-    //   },
-    //   true
-    // );
     if (this.pokemonService.getPokemon) this.loadPokemon();
   }
 

@@ -29,7 +29,7 @@ describe("PokemonCatalogComponent Tests", () => {
       when.render(new PokemonCatalog());
     });
 
-    it("should show picture given pokemon provided as input", () => {
+    it.only("should show picture given pokemon provided as input", () => {
       then(get.image.pictureSrc()).shouldEndWith("/2.gif");
     });
 
