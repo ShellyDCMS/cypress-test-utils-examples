@@ -4,18 +4,18 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { PokemonInternalService, PokemonList, PokemonServiceContext } from "../../services/pokemon.service";
+import { PokemonList, PokemonService, PokemonServiceContext } from "../../services/pokemon.service";
 import { PokemonCatalog } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
-  @property({ type: Object, reflect: true })
-  private pokemonService: PokemonInternalService;
+  @property()
+  private getPokemonService: () => PokemonService;
 
   override connectedCallback() {
     super.connectedCallback();
     new ContextProvider(this, PokemonServiceContext, {
-      pokemonService: () => {
-        return this.pokemonService;
+      getPokemonService: () => {
+        return this.getPokemonService;
       }
     });
   }
@@ -32,10 +32,7 @@ export class PokemonCatalogComponentDriver {
     onNext: () => {}
   };
 
-  private pokemonServiceMock: Partial<PokemonInternalService> = {
-    getPokemon: url => Promise.reject(),
-    getPokemonByOffset: offset => Promise.reject()
-  };
+  private pokemonServiceMock = this.helper.given.stubbedInstance(PokemonService);
   private pokemonImageDriver: PokemonImageComponentDriver = new PokemonImageComponentDriver();
 
   beforeAndAfter = () => {
@@ -46,15 +43,8 @@ export class PokemonCatalogComponentDriver {
   given = {
     image: this.pokemonImageDriver.given,
     pokemon: (value: PokemonList) => {
-      this.pokemonServiceMock.getPokemon = this.helper.given
-        .stub()
-        .as(this.pokemonServiceMock.getPokemon!.name)
-        .returns(value);
-
-      this.pokemonServiceMock.getPokemonByOffset = this.helper.given
-        .stub()
-        .as(this.pokemonServiceMock.getPokemonByOffset!.name)
-        .returns(value);
+      this.pokemonServiceMock.getPokemon.returns(value);
+      this.pokemonServiceMock.getPokemonByOffset.returns(value);
     },
     onNextSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onNext = this.helper.given.spy("onNext")),
     onPrevSpy: (): Cypress.Agent<sinon.SinonSpy<any[], any>> => (this.props.onPrev = this.helper.given.spy("onPrev"))
@@ -66,9 +56,13 @@ export class PokemonCatalogComponentDriver {
       this.litComponentHelper.when.unmount(element);
       this.litComponentHelper.when.mount(
         element,
-        html`<pokemon-service-provider
-          .pokemonService="${this.pokemonServiceMock}" }
-        ><pokemon-catalog .onPrev="${this.props.onPrev}" .onNext="${this.props.onNext}"></pokemon-catalog ></pokemon-catalog></pokemon-service-provider>`
+        html`<pokemon-service-provider .getPokemonService="${() => this.pokemonServiceMock}" }
+          ><pokemon-catalog
+            .onPrev="${this.props.onPrev}"
+            .onNext="${this.props.onNext}"
+            .getPokemonService="${() => this.get.mock.pokemonService()}"
+          ></pokemon-catalog
+        ></pokemon-service-provider>`
       );
     },
     clickNext: () => this.helper.when.click("next"),
@@ -83,7 +77,6 @@ export class PokemonCatalogComponentDriver {
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     nextButton: () => this.helper.get.elementByTestId("next"),
     prevButton: () => this.helper.get.elementByTestId("prev"),
-    getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
-    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!)
+    mock: { pokemonService: () => this.pokemonServiceMock }
   };
 }
