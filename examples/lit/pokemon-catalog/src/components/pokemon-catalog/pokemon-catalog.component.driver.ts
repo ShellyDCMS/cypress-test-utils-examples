@@ -9,13 +9,13 @@ import { PokemonCatalog } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
   @property()
-  private pokemonService: PokemonService;
+  private getPokemonService: () => PokemonService;
 
   override connectedCallback() {
     super.connectedCallback();
     new ContextProvider(this, PokemonServiceContext, {
-      pokemonService: () => {
-        return this.pokemonService;
+      getPokemonService: () => {
+        return this.getPokemonService;
       }
     });
   }
@@ -77,8 +77,6 @@ export class PokemonCatalogComponentDriver {
     nameText: () => this.helper.get.elementsText("pokemon-name"),
     nextButton: () => this.helper.get.elementByTestId("next"),
     prevButton: () => this.helper.get.elementByTestId("prev"),
-    getPokemonSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemon!),
-    getPokemonByOffsetSpy: () => this.helper.get.spyFromFunction(this.pokemonServiceMock.getPokemonByOffset!),
     mock: { pokemonService: () => this.pokemonServiceMock }
   };
 }

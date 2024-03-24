@@ -32,12 +32,10 @@ export class PokemonCatalog extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
 
-    debugger;
     new ContextConsumer(
       this,
       PokemonServiceContext,
       context => {
-        debugger;
         this.pokemonService = context.getPokemonService()();
       },
       true
