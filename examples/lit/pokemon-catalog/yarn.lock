@@ -1418,10 +1418,10 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@shellygo/cypress-test-utils@^2.0.53":
-  version "2.0.53"
-  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-2.0.53.tgz#60771c5f71699a1d00983ce3afd09623287546df"
-  integrity sha512-vB9K2m7l1g2BScedNvTqF0h8VrAADIQbqc/eoEqulZRUFIkBtRyHH2ZHnFbvazuDM0JwToN4/0cYDlyrMn0MqQ==
+"@shellygo/cypress-test-utils@^2.0.54":
+  version "2.0.54"
+  resolved "https://registry.yarnpkg.com/@shellygo/cypress-test-utils/-/cypress-test-utils-2.0.54.tgz#d8a3777d1682d436e3b3723091f8b22a85766772"
+  integrity sha512-xQiWrqbwTV1538AIUAlGCuPMecCoUztfghy0JmPYjAFrfsYjCRfePMB59551NVYqW41QHOoEA4bhEdD3ltE/1w==
   dependencies:
     "@cypress/mount-utils" "^4.0.0"
     "@types/chai-subset" "^1.3.3"
@@ -1431,7 +1431,7 @@
     cypress-real-events "^1.7.6"
     cypress-wait-if-happens "^1.3.3"
     cypress-wait-until "^1.7.2"
-    ts-stubber "^1.0.1"
+    ts-stubber "^1.0.2"
 
 "@sideway/address@^4.1.3":
   version "4.1.4"
@@ -6366,10 +6366,10 @@ transform-ast@^2.4.4:
     merge-source-map "1.0.4"
     nanobench "^2.1.1"
 
-ts-stubber@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ts-stubber/-/ts-stubber-1.0.1.tgz#7363ffd81118638e88e25db2068d4ea3839d7441"
-  integrity sha512-TnOCDvxg2w+TKgqwbPv5o188yjn6udE2XobtVldLjbOV/2VFOwJhyyug+9UZ4N0lSlijdoXs+j8lSuv5FKqXgA==
+ts-stubber@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ts-stubber/-/ts-stubber-1.0.2.tgz#0ec63772c24ab50b7fe4f5ecda18f045ed82d237"
+  integrity sha512-co88e8mQaXB7dyxU0Df9ZmhE8YV5FXpj1x+tAX1+CDB+SND1SKLNIOLMxWE5xze/UvCuE8J0B3tvTJVO0kOe9w==
 
 tslib@^2.0.3, tslib@^2.1.0:
   version "2.6.2"
