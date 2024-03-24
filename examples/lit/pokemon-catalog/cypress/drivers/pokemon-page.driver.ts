@@ -1,6 +1,7 @@
 import { PokemonCatalogComponentDriver } from "@components/pokemon-catalog/pokemon-catalog.component.driver";
 import { PokemonList } from "@services/pokemon.service";
 import { CypressHelper } from "@shellygo/cypress-test-utils";
+import { Interception } from "cypress/types/net-stubbing";
 
 export class PokemonPageDriver {
   private helper: CypressHelper = new CypressHelper({ defaultDataAttribute: "data-hook" });
@@ -10,7 +11,9 @@ export class PokemonPageDriver {
     this.helper.beforeAndAfter();
     this.pokemonDriver.beforeAndAfter();
   };
+
   given = {
+    ...this.pokemonDriver.given,
     fetchPokemonResponse: (response: PokemonList) =>
       this.helper.given.interceptAndMockResponse({
         url: "https://pokeapi.co/api/v2/pokemon**",
@@ -27,10 +30,12 @@ export class PokemonPageDriver {
   };
 
   when = {
-    ...this.pokemonDriver.when
+    ...this.pokemonDriver.when,
+    waitForPokemonLastCall: (): Cypress.Chainable<Interception> => this.helper.when.waitForLastCall("pokemon")
   };
 
   get = {
-    ...this.pokemonDriver.get
+    ...this.pokemonDriver.get,
+    fetchPokemonQueryParams: () => this.helper.get.requestQueryParams("pokemon")
   };
 }

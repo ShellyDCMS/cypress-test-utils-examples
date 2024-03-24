@@ -19,6 +19,7 @@ describe("Pokemon Page integration Tests", () => {
       given.pokemon.fetchPokemonResponse(pokemonList);
       given.pokemon.fetchImageResponse("default.png");
       when.visit("/");
+      when.pokemon.waitForPokemonLastCall();
     });
 
     it("should disable next button once showing last pokemon", () => {
@@ -27,6 +28,16 @@ describe("Pokemon Page integration Tests", () => {
 
     it("should disable prev button once showing first pokemon", () => {
       then(get.pokemon.prevButton()).shouldBeDisabled();
+    });
+
+    it("should render correct image", () => {
+      then(get.pokemon.image.pictureSrc()).shouldEndWith("/1.gif");
+    });
+
+    it("should fetch pokemon by index", () => {
+      when.pokemon.pokemonGo.typePokemonIndex("78");
+      when.pokemon.pokemonGo.clickGo();
+      then(get.pokemon.fetchPokemonQueryParams()).shouldInclude({ offset: "77" });
     });
   });
 });
