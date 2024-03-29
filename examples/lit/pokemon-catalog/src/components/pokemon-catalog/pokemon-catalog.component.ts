@@ -1,7 +1,7 @@
 import { PokemonGoComponent } from "@components/pokemon-go/pokemon-go.component";
 import { PokemonImageComponent } from "@components/pokemon-image/pokemon-image.component";
-import { ContextConsumer } from "@lit-labs/context";
-import { PokemonList, PokemonService, PokemonServiceContext } from "@services/pokemon.service";
+import { consume } from "@lit/context";
+import { PokemonList, PokemonService, pokemonServiceContext } from "@services/pokemon.service";
 import { LitElement, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import styles from "./pokemon-catalog.component.scss";
@@ -17,11 +17,6 @@ export class PokemonCatalog extends LitElement {
   @state()
   pokemon!: PokemonList;
 
-  @state()
-  getPokemonService!: () => PokemonService;
-
-  private pokemonService;
-
   static override get styles() {
     return styles;
   }
@@ -31,17 +26,12 @@ export class PokemonCatalog extends LitElement {
     new PokemonGoComponent();
   }
 
+  @consume({ context: pokemonServiceContext })
+  @property({ attribute: false })
+  private pokemonService?: PokemonService;
+
   override connectedCallback() {
     super.connectedCallback();
-
-    new ContextConsumer(
-      this,
-      PokemonServiceContext,
-      context => {
-        this.pokemonService = context.getPokemonService()();
-      },
-      true
-    );
     if (this.pokemonService.getPokemon) this.loadPokemon();
   }
 

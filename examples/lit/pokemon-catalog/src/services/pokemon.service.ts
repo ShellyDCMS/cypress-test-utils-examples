@@ -1,10 +1,6 @@
-import { createContext } from "@lit-labs/context";
+import { createContext } from "@lit/context";
 
-export const PokemonServiceContext = createContext<PokemonServicePovider>("__pokemon_context__");
-
-export interface PokemonServicePovider {
-  getPokemonService: () => () => PokemonService;
-}
+export const pokemonServiceContext = createContext<PokemonService>("__pokemon_context__");
 export interface Pokemon {
   name: string;
   url: string;
