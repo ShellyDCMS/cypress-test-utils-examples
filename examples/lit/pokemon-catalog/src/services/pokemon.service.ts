@@ -1,10 +1,23 @@
-import { createContext } from "@lit-labs/context";
+import { createContext } from "@lit/context";
 
-export const PokemonServiceContext = createContext<PokemonServicePovider>("__pokemon_context__");
+export const pokemonServiceContext = createContext<PokemonService>("__pokemon_context__");
 
-export interface PokemonServicePovider {
-  getPokemonService: () => () => PokemonService;
-}
+// @customElement("pokemon-service-provider")
+// export class PokemonServiceProvider extends LitElement {
+//   constructor(private readonly service: PokemonService) {
+//     super();
+//   }
+
+//   @provide({ context: pokemonServiceContext })
+//   pokemonService: PokemonService = this.service;
+//   protected override render() {
+//     return html`<slot></slot>`;
+//   }
+// }
+
+// export interface PokemonServiceProvider {
+//   getPokemonService: () => () => PokemonService;
+// }
 export interface Pokemon {
   name: string;
   url: string;
@@ -19,7 +32,14 @@ export interface PokemonList {
 
 export class PokemonService {
   private baseUrl = "https://pokeapi.co/api/v2/pokemon";
-  getPokemon = async (url: string | URL): Promise<PokemonList> => await (await fetch(url)).json();
+  getPokemon = async (
+    url: string | URL
+  ): Promise<{
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Pokemon[];
+  }> => await (await fetch(url)).json();
 
   getPokemonByOffset = async (offset: string = "0"): Promise<PokemonList> => {
     const params = new URLSearchParams({ limit: "1", offset });

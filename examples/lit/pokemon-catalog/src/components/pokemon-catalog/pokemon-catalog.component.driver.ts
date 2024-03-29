@@ -4,7 +4,7 @@ import { CypressHelper } from "@shellygo/cypress-test-utils";
 import { CypressLitComponentHelper } from "@shellygo/cypress-test-utils/lit";
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { PokemonList, PokemonService, PokemonServiceContext } from "../../services/pokemon.service";
+import { PokemonList, PokemonService, pokemonServiceContext } from "../../services/pokemon.service";
 import { PokemonCatalog } from "./pokemon-catalog.component";
 @customElement("pokemon-service-provider")
 export class PokemonServiceProvider extends LitElement {
@@ -13,7 +13,7 @@ export class PokemonServiceProvider extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
-    new ContextProvider(this, PokemonServiceContext, {
+    new ContextProvider(this, pokemonServiceContext, {
       getPokemonService: () => {
         return this.getPokemonService;
       }

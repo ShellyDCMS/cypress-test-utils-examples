@@ -1,6 +1,6 @@
 import { PokemonImageComponent } from "@components/pokemon-image/pokemon-image.component";
 import { ContextConsumer } from "@lit-labs/context";
-import { PokemonList, PokemonService, PokemonServiceContext } from "@services/pokemon.service";
+import { PokemonList, PokemonService, pokemonServiceContext } from "@services/pokemon.service";
 import { LitElement, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import styles from "./pokemon-catalog.component.scss";
@@ -34,7 +34,7 @@ export class PokemonCatalog extends LitElement {
 
     new ContextConsumer(
       this,
-      PokemonServiceContext,
+      pokemonServiceContext,
       context => {
         this.pokemonService = context.getPokemonService()();
       },
