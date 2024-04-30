@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit";
+import { LitElement, PropertyValues, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import styles from "./pokemon-image.component.scss";
 
@@ -12,6 +12,12 @@ export class PokemonImageComponent extends LitElement {
 
   static override get styles() {
     return styles;
+  }
+
+  override willUpdate(changedProperties: PropertyValues<this>) {
+    if (changedProperties.has("pokemonIndex")) {
+      this.showFallbackImage = false;
+    }
   }
 
   onImageError = event => {

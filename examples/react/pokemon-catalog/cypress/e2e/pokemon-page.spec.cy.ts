@@ -75,4 +75,40 @@ describe("Pokemon e2e", () => {
       });
     });
   });
+
+  describe("when typing pokemon index and clicking Go", () => {
+    beforeEach(() => {
+      when.pokemon.pokemonGo.typePokemonIndex("25");
+      when.pokemon.pokemonGo.clickGo();
+      when.waitUntil(() => get.elementByText("pikachu"));
+    });
+
+    it("should update index", () => {
+      then(get.pokemon.countText()).shouldStartWith("25 of");
+    });
+
+    it("should update pokemon image", () => {
+      then(get.pokemon.image.pictureSrc()).shouldEndWith("/25.gif");
+    });
+
+    it("prev button should be enabled", () => {
+      then(get.pokemon.prevButton()).shouldBeEnabled();
+    });
+
+    it("should render pokemon name", () => {
+      then(get.elementByText("pikachu")).shouldExist();
+    });
+  });
+
+  describe("when changing from pokemon without gif to pokemon with gif, should show gif", () => {
+    it("should render pokemon gif", () => {
+      when.pokemon.pokemonGo.typePokemonIndex("888");
+      when.pokemon.pokemonGo.clickGo();
+      when.waitUntil(() => get.elementByText("zacian"));
+      when.pokemon.pokemonGo.typePokemonIndex("33");
+      when.pokemon.pokemonGo.clickGo();
+      when.waitUntil(() => get.elementByText("nidorino"));
+      then(get.pokemon.image.pictureSrc()).shouldEndWith("/33.gif");
+    });
+  });
 });
